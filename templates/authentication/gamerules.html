@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+{% load static %}   
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Character Forge</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'stylesheet/gamerules.css' %}">
+    <link rel="icon" href="{% static 'assets/logo.ico' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Handjet:wght@100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="head">
+            <nav class="nav-left">
+                <ul>
+                    <li><a href="{% url 'home' %}"><img src="{% static 'assets/logo.png' %}"></a></li>
+                    <li><a href="{% url 'gamerules' %}">GAME RULES</a></li>
+                    <li><a href="{% url 'community' %}">COMMUNITY</a></li>
+                    <li><a href="{% url 'forum' %}">FORUM</a></li>
+                    <li><a href="#">TOOLS</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="logButtons">
+            <nav class="nav-right">
+                <ul>
+                    <li><a href="{% url 'signup' %}">Sign Up</a></li>
+                    
+                    <li class="dropdown">
+                        <a href="#" class="dropbtn" onclick="toggleDropdown(event)">Sign In</a>
+                        <div class="dropdown-content" id="dropdown-content">
+                            <form action="{% url 'signin' %}" method="post">
+                                {% csrf_token %}
+                                <input type="text" name="username" placeholder="Username" required>
+                                <input type="password" name="password" placeholder="Password" required>
+                                <button type="submit">Sign In</button>
+                            </form>
+                            <div class="forgot-password">
+                                <a href="#">Forgot Password?</a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+
+<!-- MAIN CONTENT HERE -->
+
+<div class="container">
+    <img src="{% static 'assets/drag2.png' %}", class="dragimg">
+    <div class="rules">
+        <h2>RULES OF THE GAME</h2>
+        <h3>CHOOSE A RACE:</h3>
+        <p><ul>Select a race (e.g., Human, Elf, Dwarf) which provides 
+            specific racial traits like bonuses to ability scores, 
+            special skills, or abilities (e.g., darkvision, resistance 
+            to certain damage types).</ul></p>
+
+        <h3>CHOOSE A CLASS:</h3>
+        <p><ul>Roll 4d6 (drop the lowest die) for each ability score: 
+            Strength, Dexterity, Constitution, Intelligence, Wisdom, 
+            and Charisma. Alternatively, use the point-buy or standard 
+            array system to assign scores.</ul></p>
+        
+
+        <h3>DETERMINE ABILITY SCORES:</h3>
+        <p><ul>Pick a class (e.g., Fighter, Wizard, Rogue) which defines 
+            your character’s role in combat and adventuring. Each class 
+            comes with specific hit points, proficiencies, and abilities 
+            (like spellcasting or fighting styles).</ul></p>
+
+        <p><ul>Your ability scores determine bonuses or penalties 
+            (known as modifiers) applied to your actions.</ul></p>
+
+        <h3>PICK A BACKGROUND:</h3>
+        <p><ul>Choose a background (e.g., Acolyte, Criminal, Noble) which 
+            gives your character additional skills, tool proficiencies, 
+            languages, and personality traits.</ul></p>
+
+
+        <h3>CALCULATE HIT POINTS:</h3>
+        <p><ul>Your starting hit points are determined by your class. 
+            For example, a Fighter has a higher starting hit point pool
+             than a Wizard. HP is calculated using your class’s hit die + 
+             your Constitution modifier.</ul></p>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- END OF MAIN CONTENT -->
+
+    <footer class="footer">
+        <p>Terms of Service</p>
+        <p>©Copyright</p>
+        <p>Privacy</p>
+    </footer>
+
+    <script>
+        function toggleDropdown(event) {
+            event.preventDefault(); // Prevent default link behavior
+            var dropdown = document.getElementById('dropdown-content');
+            // Toggle visibility
+            dropdown.style.display = (dropdown.style.display === 'block') ? 'none' : 'block';
+        }
+
+        // Close dropdown if clicked outside
+        window.onclick = function(event) {
+            if (!event.target.matches('.dropbtn') && !event.target.closest('.dropdown-content')) {
+                var dropdowns = document.getElementsByClassName("dropdown-content");
+                for (var i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.style.display === 'block') {
+                        openDropdown.style.display = 'none';
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>

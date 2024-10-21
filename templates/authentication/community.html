@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+{% load static %}   
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Character Forge</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'stylesheet/community.css' %}">
+    <link rel="icon" href="{% static 'assets/logo.ico' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Handjet:wght@100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="head">
+            <nav class="nav-left">
+                <ul>
+                    <li><a href="{% url 'home' %}"><img src="{% static 'assets/logo.png' %}"></a></li>
+                    <li><a href="{% url 'gamerules' %}">GAME RULES</a></li>
+                    <li><a href="{% url 'community' %}">COMMUNITY</a></li>
+                    <li><a href="{% url 'forum' %}">FORUM</a></li>
+                    <li><a href="#">TOOLS</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="logButtons">
+            <nav class="nav-right">
+                <ul>
+                    <li><a href="{% url 'signup' %}">Sign Up</a></li>
+                    
+                    <li class="dropdown">
+                        <a href="#" class="dropbtn" onclick="toggleDropdown(event)">Sign In</a>
+                        <div class="dropdown-content" id="dropdown-content">
+                            <form action="{% url 'signin' %}" method="post">
+                                {% csrf_token %}
+                                <input type="text" name="username" placeholder="Username" required>
+                                <input type="password" name="password" placeholder="Password" required>
+                                <button type="submit">Sign In</button>
+                            </form>
+                            <div class="forgot-password">
+                                <a href="#">Forgot Password?</a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+
+<!-- MAIN CONTENT HERE -->
+
+<div class="container">
+    <img src="{% static 'assets/drag.png' %}", class="dragimg">
+    <div class="community">
+        <p>Follow our adventures online!</p>
+        <div class="social-meds">
+            <div class="ikinamada">
+                <a href="https://discord.com">
+                    <img src="{% static 'assets/discord.png' %}">
+                    <p>Discord</p>
+                </a>
+            </div>
+
+            <div class="ikinamada">
+                <a href="https://twitter.com">
+                    <img src="{% static 'assets/x_logo.png' %}">
+                    <p>Twitter</p>
+                </a>
+            </div>
+
+            <div class="ikinamada">
+                <a href="https://instagram.com">
+                    <img src="{% static 'assets/ig_logo.png' %}">
+                    <p>Instagram</p>
+                </a>
+            </div>
+            <div class="ikinamada">
+                <a href="https://facebook.com">
+                    <img src="{% static 'assets/fb_logo.png' %}">
+                    <p>Facebook</p>
+                </a>
+                    
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END OF MAIN CONTENT -->
+
+    <footer class="footer">
+        <p>Terms of Service</p>
+        <p>©Copyright</p>
+        <p>Privacy</p>
+    </footer>
+
+    <script>
+        function toggleDropdown(event) {
+            event.preventDefault(); // Prevent default link behavior
+            var dropdown = document.getElementById('dropdown-content');
+            // Toggle visibility
+            dropdown.style.display = (dropdown.style.display === 'block') ? 'none' : 'block';
+        }
+
+        // Close dropdown if clicked outside
+        window.onclick = function(event) {
+            if (!event.target.matches('.dropbtn') && !event.target.closest('.dropdown-content')) {
+                var dropdowns = document.getElementsByClassName("dropdown-content");
+                for (var i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.style.display === 'block') {
+                        openDropdown.style.display = 'none';
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>

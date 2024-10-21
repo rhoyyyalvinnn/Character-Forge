@@ -1,0 +1,3 @@
+C:\Users\dontm\OneDrive\Desktop\Character Forge\venv\Lib\site-packages\django\contrib\admin\templates
+
+location of my templates for Django project

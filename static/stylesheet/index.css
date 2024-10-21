@@ -1,0 +1,208 @@
+/* Ensure the html and body take up the full viewport height */
+html, body {
+    height: 100vh; /* Make sure they take up 100% of the viewport height */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Include padding/border in height calculations */
+    overflow-x: hidden; /* Prevent horizontal scrollbar */
+}
+
+/* Body Styling */
+body {
+    font-family: 'Handjet', sans-serif;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    min-height: 100%; /* Ensure the body stretches the full viewport height */
+    max-height: 100%;
+    background-color: rgba(0, 0, 0, 0.9); /* Darkened background */
+    
+}
+
+/* Background image before the content */
+body::before {
+    content: "";
+    background-image: url('../assets/bg-image.jpg'); /* Corrected path */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.5; /* Set the opacity of the image to 50% */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Send the image to the background */
+}
+
+/* Header styling */
+header {        
+    font-size: 30px;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #602525; /* Light gray background color */
+    border-top-left-radius: 15px;  /* Adjust the radius as needed */
+    border-top-right-radius: 15px; /* Adjust the radius as needed */
+}
+
+.head, .logButtons {
+    display: flex;
+    align-items: center;
+}
+
+.nav-left ul, .nav-right ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.nav-left img{
+    height: 40px;
+    width: auto;
+}
+
+.nav-left li, .nav-right li {
+    margin-right: 20px;
+}
+
+.nav-left a, .nav-right a {
+    text-decoration: none;
+    color: #dbd6d6; /* Dark gray color for text */
+}
+
+.nav-left a:hover, .nav-right a:hover {
+    text-decoration: underline; /* Underline on hover */
+}
+
+/* Dropdown container */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown content */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 250px; /* Adjust width */
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    right: 0; /* Align to the right */
+    padding: 10px;
+    border-radius: 5px; /* Rounded corners */
+}
+
+.dropdown-content button {
+    font-family: 'Handjet', sans-serif;
+    font-weight: bold;
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 4px;
+    background-color: #602525;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.dropbtn {
+    cursor: pointer;
+    text-decoration: none;
+    color: #000;
+}
+
+/* Input fields style */
+.dropdown-content input[type="text"],
+.dropdown-content input[type="password"] {
+    font-family: 'Handjet', sans-serif;
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+/* Links style */
+.dropdown-content a {
+    color: #007bff;
+    text-decoration: none;
+    display: block;
+    padding: 8px 0;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+.forgot-password {
+    font-size: 15px;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.forgot-password:hover {
+    background-color: transparent; /* Ensures no background color on hover */
+}
+
+/* Main content styling */
+
+.main-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #fff;
+    flex-grow: 1;
+    justify-content: center;
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+.main-content h1 {
+    font-family: 'Cinzel', serif;
+    font-size: 60px;
+}
+
+.cont {
+    display: flex;
+    flex-direction: row;
+    font-size: 36px;
+}
+
+.cont img {
+    display: block;  /* Change to block to eliminate the bottom space */
+    width: auto;     /* Adjust width as needed */
+    height: 400px;    /* Maintain aspect ratio */
+    margin: 0;       /* Remove any margins */
+    padding: 0;      /* Remove any padding */
+}
+
+.footer {
+    background-color: #212020;
+    font-family: 'Handjet', sans-serif;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-top: auto; /* Ensure the footer stays at the bottom */
+    height: 1%;
+    width: 100%; /* Ensure footer spans the full width of the viewport */
+    position: relative; /* Enable z-index */
+    z-index: 999; /* Bring footer to the top if needed */
+}
+.footer p {
+    font-size: 12px;
+    margin-left: 10px;
+    margin-right: 10px;
+}

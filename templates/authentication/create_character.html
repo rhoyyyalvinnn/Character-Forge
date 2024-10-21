@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+{% load static %}   
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Character Forge</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'stylesheet/index.css' %}">
+    <link rel="icon" href="{% static 'assets/logo.ico' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Handjet:wght@100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <hr>
+    <p style="color: #FFF">Hi {{ fname }}!</p> <!-- Displaying the user's first name here -->
+    <hr>
+</body>
+</html>
