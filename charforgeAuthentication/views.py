@@ -4,8 +4,8 @@ from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.auth import authenticate, login
 
-def home(request):
-    return render(request, "authentication/index.html")
+def index(request):
+    return render(request, "index.html")
 
 def signup(request):
     if request.method == "POST":
@@ -44,23 +44,23 @@ def signin(request):
             return redirect('create_character')  # Redirect to create_character
         else:
             messages.error(request, "Wrong Credentials")
-            return redirect('home')
+            return redirect('index')
 
     return render(request, "authentication/signin.html")
 
 def create_character(request):
     fname = request.user.first_name  # Get the first name of the logged-in user
-    return render(request, "authentication/create_character.html", {'fname': fname})
+    return render(request, "create_character.html", {'fname': fname})
 
 def signout(request):
     pass
 
 
 def gamerules(request):
-    return render(request, "authentication/gamerules.html")
+    return render(request, "gamerules.html")
 
 def community(request):
-    return render(request, "authentication/community.html")
+    return render(request, "community.html")
 
 def forum(request):
-    return render(request, "authentication/forum.html")
+    return render(request, "forum.html")

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Character Forge</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'stylesheet/community.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'stylesheet/index.css' %}">
     <link rel="icon" href="{% static 'assets/logo.ico' %}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,7 +17,7 @@
         <div class="head">
             <nav class="nav-left">
                 <ul>
-                    <li><a href="{% url 'home' %}"><img src="{% static 'assets/logo.png' %}"></a></li>
+                    <li><a href="{% url 'index' %}"><img src="{% static 'assets/logo.png' %}"></a></li>
                     <li><a href="{% url 'gamerules' %}">GAME RULES</a></li>
                     <li><a href="{% url 'community' %}">COMMUNITY</a></li>
                     <li><a href="{% url 'forum' %}">FORUM</a></li>
@@ -48,47 +48,23 @@
             </nav>
         </div>
     </header>
-
-
-<!-- MAIN CONTENT HERE -->
-
-<div class="container">
-    <img src="{% static 'assets/drag.png' %}", class="dragimg">
-    <div class="community">
-        <p>Follow our adventures online!</p>
-        <div class="social-meds">
-            <div class="ikinamada">
-                <a href="https://discord.com">
-                    <img src="{% static 'assets/discord.png' %}">
-                    <p>Discord</p>
-                </a>
-            </div>
-
-            <div class="ikinamada">
-                <a href="https://twitter.com">
-                    <img src="{% static 'assets/x_logo.png' %}">
-                    <p>Twitter</p>
-                </a>
-            </div>
-
-            <div class="ikinamada">
-                <a href="https://instagram.com">
-                    <img src="{% static 'assets/ig_logo.png' %}">
-                    <p>Instagram</p>
-                </a>
-            </div>
-            <div class="ikinamada">
-                <a href="https://facebook.com">
-                    <img src="{% static 'assets/fb_logo.png' %}">
-                    <p>Facebook</p>
-                </a>
-                    
-            </div>
+    <!--Main content here-->
+    <div class="main-content">
+        <h1 class="hid">DUNGEONS & DRAGONS</h1>
+        <div class="cont">
+            <img src="{% static 'assets/index_1.png' %}" alt="an image of a man with instrument" class="man_instrument">
+            <p>
+                Welcome to Dungeons & Dragons Character Forge! 
+                Create and customize your unique characters, 
+                explore various races and classes, and bring 
+                your imagination to life in the world of 
+                Dungeons & Dragons. Whether you're a seasoned 
+                player or new to the game, our tools will help 
+                you craft unforgettable adventures. Let's embark 
+                son this epic journey together!
+            </p>
         </div>
     </div>
-</div>
-<!-- END OF MAIN CONTENT -->
-
     <footer class="footer">
         <p>Terms of Service</p>
         <p>©Copyright</p>
