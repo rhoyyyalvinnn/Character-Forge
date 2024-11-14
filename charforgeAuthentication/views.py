@@ -1,8 +1,10 @@
+from urllib.parse import urlencode
 from django.shortcuts import redirect, render
 from django.http import HttpResponse
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.auth import authenticate, login
+from django.urls import reverse
 
 def index(request):
     return render(request, "index.html")
@@ -32,7 +34,7 @@ def signup(request):
     return render(request, "authentication/signup.html")
 
 
-def signin(request):
+def signin(request): 
     if request.method == "POST":
         username = request.POST.get('username')
         password = request.POST.get('password')
@@ -40,17 +42,16 @@ def signin(request):
         user = authenticate(username=username, password=password)
 
         if user is not None:
-            login(request, user)
-            return redirect('create_character')  # Redirect to create_character
+            login(request, user)  # Log the user in first
+            # context_data = {'key': user.username}  # You can use first_name or username
+            # query_string = urlencode(context_data)
+            # return redirect(f"{reverse('home')}?{query_string}")  # Construct the URL correctly
+            return redirect('home')  # Construct the URL correctly
         else:
             messages.error(request, "Wrong Credentials")
             return redirect('index')
 
     return render(request, "authentication/signin.html")
-
-def create_character(request):
-    fname = request.user.first_name  # Get the first name of the logged-in user
-    return render(request, "create_character.html", {'fname': fname})
 
 def signout(request):
     pass

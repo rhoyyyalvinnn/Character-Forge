@@ -10,6 +10,5 @@ urlpatterns = [
     path('signin', views.signin, name='signin'),
     path('signout', views.signout, name='signout'),
     path('community', views.community, name='community'),
-    path('create_character', views.create_character, name='create_character'),
     path('forum', views.forum, name='forum'),
 ]

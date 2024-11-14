@@ -4,6 +4,10 @@ from . import views
 
 
 urlpatterns = [
-    path('', views.home, name="home"),
-
+    path('home/', views.home, name='home'),
+    path('signout/', views.signout, name='signout'),
+    path('profile/', views.profile, name='profile'),
+    path('actcommunity/', views.actcommunity, name='actcommunity'),
+    path('actforum/', views.actforum, name='actforum'),
+    path('actgamerules/', views.actgamerules, name='actgamerules'),
 ]
