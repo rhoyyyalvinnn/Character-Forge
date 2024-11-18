@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sorcerer Spell List</title>
+    {% load static %}
+    {% comment %} <link rel="stylesheet" href="{% static 'css/style.css' %}"> {% endcomment %}
+    <link rel="stylesheet" href="{% static 'stylesheet/compendium/spells.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Handjet&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-image: url("{% static 'images/bg-image_1.png' %}"); /* Use Django's static tag */
+            background-size: cover;
+            background-position: center;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #000; /* Fallback color if the image doesn't load */
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="centered-div">
+        <div class="text-area"> 
+            <p><h1>Character Forge</h1>
+            community wiki</p>
+        </div>
+        <h2><a href="{% url 'actcompendium' %}">Home</a></li></h2>
+        <div class="table-area">
+            <table><h1>Sorcerer Spell List</h1>
+                <thead>
+                    <tr>
+                        <th>Spell Name</th>
+                        <th>School</th>
+                        <th>Casting Time</th>
+                        <th>Range</th>
+                        <th>Duration</th>
+                        <th>Components</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Acid Splash</td><td>Conjuration</td><td>1 Action</td><td>60 Feet</td><td>Instantaneous</td><td>V, S</td></tr>
+                    <tr><td>Blade Ward</td><td>Abjuration</td><td>1 Action</td><td>Self</td><td>1 round</td><td>V, S</td></tr>
+                    <tr><td>Booming Blade</td><td>Evocation</td><td>1 Action</td><td>Self (5-foot radius)</td><td>1 round</td><td>S, M</td></tr>
+                    <tr><td>Chill Touch</td><td>Necromancy</td><td>1 Action</td><td>120 feet</td><td>1 round</td><td>V, S</td></tr>
+                    <tr><td>Control Flames</td><td>Transmutation</td><td>1 Action</td><td>60 Feet</td><td>Instantaneous or 1 hour</td><td>S</td></tr>
+                    <tr><td>Create Bonfire</td><td>Conjuration</td><td>1 Action</td><td>60 Feet</td><td>Concentration, up to 1 minute</td><td>V, S</td></tr>
+                    <tr><td>Dancing Lights</td><td>Evocation</td><td>1 Action</td><td>120 feet</td><td>Concentration up to 1 minute</td><td>V, S, M</td></tr>
+                    <tr><td>Fire Bolt</td><td>Evocation</td><td>1 Action</td><td>120 feet</td><td>Instantaneous</td><td>V, S</td></tr>
+                    <tr><td>Friends</td><td>Enchantment</td><td>1 Action</td><td>Self</td><td>Concentration, up to 1 minute</td><td>S, M</td></tr>
+                    <tr><td>Frostbite</td><td>Evocation</td><td>1 Action</td><td>60 feet</td><td>Instantaneous</td><td>V, S</td></tr>
+                    <tr><td>Green-Flame Blade</td><td>Evocation</td><td>1 Action</td><td>Self (5-foot radius)</td><td>Instantaneous</td><td>S, M</td></tr>
+                    <tr><td>Gust</td><td>Transmutation</td><td>1 Action</td><td>30 feet</td><td>Instantaneous</td><td>V, S</td></tr>
+                    <tr><td>Infestation</td><td>Conjuration</td><td>1 Action</td><td>30 feet</td><td>Instantaneous</td><td>V, S, M</td></tr>
+                    <tr><td>Light</td><td>Evocation</td><td>1 Action</td><td>Touch</td><td>1 hour</td><td>V, M</td></tr>
+                    <tr><td>Lightning Lure</td><td>Evocation</td><td>1 Action</td><td>Self (15-foot radius)</td><td>Instantaneous</td><td>V</td></tr>
+                    <tr><td>Mage Hand</td><td>Conjuration</td><td>1 Action</td><td>30 feet</td><td>1 minute</td><td>V, S</td></tr>
+                    <tr><td>Mending</td><td>Transmutation</td><td>1 Minute</td><td>Touch</td><td>Instantaneous</td><td>V, S, M</td></tr>
+                    <tr><td>Message</td><td>Transmutation</td><td>1 Action</td><td>120 feet</td><td>1 round</td><td>V, S, M</td></tr>
+                    <tr><td>Mind Sliver</td><td>Enchantment</td><td>1 Action</td><td>60 feet</td><td>1 round</td><td>V</td></tr>
+                    <tr><td>Minor Illusion</td><td>Illusion</td><td>1 Action</td><td>30 feet</td><td>1 minute</td><td>S, M</td></tr>
+                    <tr><td>Mold Earth</td><td>Transmutation</td><td>1 Action</td><td>30 feet</td><td>Instantaneous or 1 hour</td><td>S</td></tr>
+                    <tr><td>On/Off (UA)</td><td>Transmutation T</td><td>1 Action</td><td>60 feet</td><td>Instantaneous</td><td>V, S</td></tr>
+                    <tr><td>Poison Spray</td><td>Conjuration</td><td>1 Action</td><td>10 feet</td><td>Instantaneous</td><td>V, S</td></tr>
+                    <tr><td>Prestidigitation</td><td>Transmutation</td><td>1 Action</td><td>10 feet</td><td>Up to 1 hour</td><td>V, S</td></tr>
+                    <tr><td>Ray of Frost</td><td>Evocation</td><td>1 Action</td><td>60 feet</td><td>Instantaneous</td><td>V, S</td></tr>
+                    <tr><td>Shape Water</td><td>Transmutation</td><td>1 Action</td><td>30 feet</td><td>Instantaneous or 1 hour</td><td>S</td></tr>
+                    <tr><td>Shocking Grasp</td><td>Evocation</td><td>1 Action</td><td>Touch</td><td>Instantaneous</td><td>V, S</td></tr>
+                    <tr><td>Sword Burst</td><td>Conjuration</td><td>1 Action</td><td>Self (5-foot radius)</td><td>Instantaneous</td><td>V</td></tr>
+                    <tr><td>Thunderclap</td><td>Evocation</td><td>1 Action</td><td>Self (5-foot radius)</td><td>Instantaneous</td><td>S</td></tr>
+                    <tr><td>True Strike</td><td>Divination</td><td>1 Action</td><td>30 feet</td><td>Concentration up to 1 round</td><td>S</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

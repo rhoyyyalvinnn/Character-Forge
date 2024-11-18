@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cleric Spell List</title>
+    {% load static %}
+    {% comment %} <link rel="stylesheet" href="{% static 'css/style.css' %}"> {% endcomment %}
+    <link rel="stylesheet" href="{% static 'stylesheet/compendium/spells.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Handjet&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-image: url("{% static 'images/bg-image_1.png' %}"); /* Use Django's static tag */
+            background-size: cover;
+            background-position: center;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #000; /* Fallback color if the image doesn't load */
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="centered-div">
+        <div class="text-area"> 
+            <p><h1>Character Forge</h1>
+            community wiki</p>
+        </div>
+        <h2><a href="{% url 'actcompendium' %}">Home</a></li></h2>
+        <div class="table-area">
+            <table>
+                <h1>Cleric Spell List</h1>
+                <thead>
+                    <tr>
+                        <th>Spell Name</th>
+                        <th>School</th>
+                        <th>Casting Time</th>
+                        <th>Range</th>
+                        <th>Duration</th>
+                        <th>Components</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Decompose (HB)</td><td>Necromancy</td><td>1 Action</td><td>Touch</td><td>1 minute</td><td>V, S</td></tr>
+                    <tr><td>Guidance</td><td>Divination</td><td>1 Action</td><td>Touch</td><td>Concentration up to 1 minute</td><td>V, S</td></tr>
+                    <tr><td>Hand of Radiance (UA)</td><td>Evocation</td><td>1 Action</td><td>5 feet</td><td>Instantaneous</td><td>V, S</td></tr>
+                    <tr><td>Light</td><td>Evocation</td><td>1 Action</td><td>Touch</td><td>1 hour</td><td>V, M</td></tr>
+                    <tr><td>Mending</td><td>Transmutation</td><td>1 Minute</td><td>Touch</td><td>Instantaneous</td><td>V, S, M</td></tr>
+                    <tr><td>Resistance</td><td>Abjuration</td><td>1 Action</td><td>Touch</td><td>Concentration up to 1 minute</td><td>V, S, M</td></tr>
+                    <tr><td>Sacred Flame</td><td>Evocation</td><td>1 Action</td><td>60 feet</td><td>Instantaneous</td><td>V, S</td></tr>
+                    <tr><td>Spare the Dying</td><td>Necromancy</td><td>1 Action</td><td>Touch</td><td>Instantaneous</td><td>V, S</td></tr>
+                    <tr><td>Thaumaturgy</td><td>Transmutation</td><td>1 Action</td><td>30 feet</td><td>Up to 1 minute</td><td>V</td></tr>
+                    <tr><td>Toll the Dead</td><td>Necromancy</td><td>1 Action</td><td>60 feet</td><td>Instantaneous</td><td>V, S</td></tr>
+                    <tr><td>Virtue (UA)</td><td>Abjuration</td><td>1 Action</td><td>Touch</td><td>1 round</td><td>V, S</td></tr>
+                    <tr><td>Word of Radiance</td><td>Evocation</td><td>1 Action</td><td>5 feet</td><td>Instantaneous</td><td>V, M</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

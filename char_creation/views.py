@@ -48,4 +48,33 @@ def actforum(request):
 # chatgpt code for creating pdf using html
 # https://chatgpt.com/c/67356442-f244-800f-b2aa-3ac658a6e4fb
 
+def actcompendium(request):
+    return render(request, 'session/actcompendium/actcompendium.html')
+
+def actwiki_spells_artificer(request):
+    return render(request, 'session/actcompendium/actspells/actartificer_spell.html')
+
+def actwiki_spells_bard(request):
+    return render(request, 'session/actcompendium/actspells/actbard_spell.html')
+
+def actwiki_spells_cleric(request):
+    return render(request, 'session/actcompendium/actspells/actcleric_spell.html')
+
+def actwiki_spells_druid(request):
+    return render(request, 'session/actcompendium/actspells/actdruid_spell.html')
+
+def actwiki_spells_paladin(request):
+    return render(request, 'session/actcompendium/actspells/actpaladin_spell.html')
+
+def actwiki_spells_ranger(request):
+    return render(request, 'session/actcompendium/actspells/actranger_spell.html')
+
+def actwiki_spells_sorcerer(request):
+    return render(request, 'session/actcompendium/actspells/actsorcerer_spell.html')
+
+def actwiki_spells_warlock(request):
+    return render(request, 'session/actcompendium/actspells/actwarlock_spell.html')
+
+def actwiki_spells_wizard(request):
+    return render(request, 'session/actcompendium/actspells/actwizard_spell.html')
 

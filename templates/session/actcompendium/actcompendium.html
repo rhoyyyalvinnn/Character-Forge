@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Rules</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'stylesheet/compendium/compendium.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'stylesheet/index.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Handjet&display=swap" rel="stylesheet">
+</head>
+<body>
+    {% comment %} Main content here {% endcomment %}
+    <div class="about_container2">
+        <div class="text-area_header">
+            <p><h1><a style="color: black;" href="{% url 'home' %}">DND Character Forge</a></h1><i>community wiki</i><br><br>
+            
+                <h3>Welcome to this Dungeons & Dragons wiki.</h3>
+                This wiki hosts DND content that is setting-specific, play-test content, or unofficial 'homebrew' content. 
+                Some content found on this page may not be suitable 
+                for play at your table.
+                </p>
+        </div>
+    </div>
+    <div class="about_container">
+        <div class="column">
+            <div class="image-card">
+                <img src="{% static 'images/spell.png' %}" alt="Spell image for all spells">
+            </div>
+        </div>
+        <div class="column">
+            <div class="text-card">
+                <h1>All Spells</h1>
+                <p>
+                    • <a href="{% url 'actwiki_spells_artificer' %}">Artificer Spells</a><br>
+                    • <a href="{% url 'actwiki_spells_bard' %}">Bard Spells</a><br>
+                    • <a href="{% url 'actwiki_spells_cleric' %}">Cleric Spells</a><br>
+                    • <a href="{% url 'actwiki_spells_druid' %}">Druid Spells</a><br>
+                    • <a href="{% url 'actwiki_spells_paladin' %}">Paladin Spells</a><br>
+                    • <a href="{% url 'actwiki_spells_ranger' %}">Ranger Spells</a><br>
+                    • <a href="{% url 'actwiki_spells_sorcerer' %}">Sorcerer Spells</a><br>
+                    • <a href="{% url 'actwiki_spells_warlock' %}">Warlock Spells</a><br>
+                    • <a href="{% url 'actwiki_spells_wizard' %}">Wizard Spells</a><br>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="about_container2">
+        <div class="column">
+            <div class="image-card">
+                <img src="{% static 'images/lineage.png' %}" alt="Lineage image for all lineages">
+            </div>
+        </div>
+        <div class="column">
+            <div class="text-card">
+                <h1>All Lineages</h1>
+                <p>
+                    • <a href="#">Dragonborn</a><br>
+                    • <a href="#">Dwarf</a><br>
+                    • <a href="#">Elf</a><br>
+                    • <a href="#">Gnome</a><br>
+                    • <a href="#">Half-Elf</a><br>
+                    • <a href="#">Half-Orc</a><br>
+                    • <a href="#">Halfling</a><br>
+                    • <a href="#">Human</a><br>
+                    • <a href="#">Tiefling</a><br>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="about_container">
+        <div class="column">
+            <div class="image-card">
+                <img src="{% static 'images/commonbackground.png' %}" alt="Common background image for all backgrounds">
+            </div>
+        </div>
+        <div class="column">
+            <div class="text-card">
+                <h1>All Backgrounds</h1>
+                <p>
+                    • <a href="#">Acolyte</a><br>
+                    • <a href="#">Anthropologist</a><br>
+                    • <a href="#">Archaeologist</a><br>
+                    • <a href="#">Athlete</a><br>
+                    • <a href="#">Charlatan</a><br>
+                    • <a href="#">City Watch</a><br>
+                    • <a href="#">Clan Crafter</a><br>
+                    • <a href="#">Cloistered Scholar</a><br>
+                    • <a href="#">Courtier</a><br>
+                    • <a href="#">Criminal</a><br>
+                    • <a href="#">Entertainer</a><br>
+                    • <a href="#">Faceless</a><br>
+                    • <a href="#">Faction Agent</a><br>
+                    • <a href="#">Far Traveler</a><br>
+                    • <a href="#">Feylost</a><br>
+                    • <a href="#">Fisher</a><br>
+                    • <a href="#">Folk Hero</a><br>
+                    • <a href="#">Giant Foundling</a><br>
+                    • <a href="#">Gladiator</a><br>
+                    • <a href="#">Guild Artisan</a><br>
+                    • <a href="#">Guild Merchant</a><br>
+                    • <a href="#">Haunted One</a><br>
+                    • <a href="#">Hermit</a><br>
+                    • <a href="#">House Agent</a><br>
+                    • <a href="#">Inheritor</a><br>
+                    • <a href="#">Investigator (SCAG)</a><br>
+                    • <a href="#">Investigator (VRGR)</a><br>
+                    • <a href="#">Knight</a><br>
+                    • <a href="#">Knight of the Order</a><br>
+                    • <a href="#">Marine</a><br>
+                    • <a href="#">Mercenary Veteran</a><br>
+                    • <a href="#">Noble</a><br>
+                    • <a href="#">Outlander</a><br>
+                    • <a href="#">Pirate</a><br>
+                    • <a href="#">Rewarded</a><br>
+                    • <a href="#">Ruined</a><br>
+                    • <a href="#">Rune Carver</a><br>
+                    • <a href="#">Sage</a><br>
+                    • <a href="#">Sailor</a><br>
+                    • <a href="#">Shipwright</a><br>
+                    • <a href="#">Smuggler</a><br>
+                    • <a href="#">Soldier</a><br>
+                    • <a href="#">Spy</a><br>
+                </p>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>

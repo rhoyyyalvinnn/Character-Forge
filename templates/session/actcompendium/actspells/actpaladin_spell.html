@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paladin Spell List</title>
+    {% load static %}
+    {% comment %} <link rel="stylesheet" href="{% static 'css/style.css' %}"> {% endcomment %}
+    <link rel="stylesheet" href="{% static 'stylesheet/compendium/spells.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Handjet&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-image: url("{% static 'images/bg-image_1.png' %}"); /* Use Django's static tag */
+            background-size: cover;
+            background-position: center;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #000; /* Fallback color if the image doesn't load */
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="centered-div">
+        <div class="text-area"> 
+            <p><h1>Character Forge</h1>
+            community wiki</p>
+        </div>
+        <h2><a href="{% url 'actcompendium' %}">Home</a></li></h2>
+        <div class="table-area">
+            <table><h1>Paladin Spell List</h1>
+                <thead>
+                    <tr>
+                        <th>Spell Name</th>
+                        <th>School</th>
+                        <th>Casting Time</th>
+                        <th>Range</th>
+                        <th>Duration</th>
+                        <th>Components</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Bless</td><td>Enchantment</td><td>1 Action</td><td>30 feet</td><td>Concentration, up to 1 minute</td><td>V, S, M</td></tr>
+                    <tr><td>Ceremony</td><td>Evocation</td><td>1 Action R</td><td>Touch</td><td>Instantaneous</td><td>V, S, M</td></tr>
+                    <tr><td>Command</td><td>Enchantment</td><td>1 Action</td><td>60 feet</td><td>1 round</td><td>V</td></tr>
+                    <tr><td>Compelled Duel</td><td>Enchantment</td><td>1 Bonus Action</td><td>30 feet</td><td>Concentration, up to 1 minute</td><td>V</td></tr>
+                    <tr><td>Cure Wounds</td><td>Evocation</td><td>1 Action</td><td>Touch</td><td>Instantaneous</td><td>V, S</td></tr>
+                    <tr><td>Detect Evil and Good</td><td>Divination</td><td>1 Action</td><td>Self</td><td>Concentration, up to 10 minutes</td><td>V, S</td></tr>
+                    <tr><td>Detect Magic</td><td>Divination</td><td>1 Action R</td><td>Self</td><td>Concentration, up to 10 minutes</td><td>V, S</td></tr>
+                    <tr><td>Detect Poison and Disease</td><td>Divination</td><td>1 Action R</td><td>Self</td><td>Concentration, up to 10 minutes</td><td>V, S, M</td></tr>
+                    <tr><td>Divine Favor</td><td>Evocation</td><td>1 Bonus Action</td><td>Self</td><td>Concentration, up to 1 minute</td><td>V, S</td></tr>
+                    <tr><td>Heroism</td><td>Enchantment</td><td>1 Action</td><td>Touch</td><td>Concentration, up to 1 minute</td><td>V, S</td></tr>
+                    <tr><td>Protection from Evil and Good</td><td>Abjuration</td><td>1 Action</td><td>Touch</td><td>Concentration, up to 10 minutes</td><td>V, S, M</td></tr>
+                    <tr><td>Purify Food and Drink</td><td>Transmutation</td><td>1 Action R</td><td>10 feet</td><td>Instantaneous</td><td>V, S</td></tr>
+                    <tr><td>Searing Smite</td><td>Evocation</td><td>1 Bonus Action</td><td>Self</td><td>Concentration, up to 1 minute</td><td>V</td></tr>
+                    <tr><td>Shield of Faith</td><td>Abjuration</td><td>1 Bonus Action</td><td>60 feet</td><td>Concentration, up to 10 minutes</td><td>V, S, M</td></tr>
+                    <tr><td>Thunderous Smite</td><td>Evocation</td><td>1 Bonus Action</td><td>Self</td><td>Concentration, up to 1 minute</td><td>V</td></tr>
+                    <tr><td>Wrathful Smite</td><td>Evocation</td><td>1 Bonus Action</td><td>Self</td><td>Concentration, up to 1 minute</td><td>V</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
