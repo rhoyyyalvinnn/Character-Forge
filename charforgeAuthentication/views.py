@@ -65,3 +65,33 @@ def community(request):
 
 def forum(request):
     return render(request, "forum.html")
+
+def compendium(request):
+    return render(request, 'compendium/compendium.html')
+
+def wiki_spells_artificer(request):
+    return render(request, 'compendium/spells/artificer_spell.html')
+
+def wiki_spells_bard(request):
+    return render(request, 'compendium/spells/bard_spell.html')
+
+def wiki_spells_cleric(request):
+    return render(request, 'compendium/spells/cleric_spell.html')
+
+def wiki_spells_druid(request):
+    return render(request, 'compendium/spells/druid_spell.html')
+
+def wiki_spells_paladin(request):
+    return render(request, 'compendium/spells/paladin_spell.html')
+
+def wiki_spells_ranger(request):
+    return render(request, 'compendium/spells/ranger_spell.html')
+
+def wiki_spells_sorcerer(request):
+    return render(request, 'compendium/spells/sorcerer_spell.html')
+
+def wiki_spells_warlock(request):
+    return render(request, 'compendium/spells/warlock_spell.html')
+
+def wiki_spells_wizard(request):
+    return render(request, 'compendium/spells/wizard_spell.html')

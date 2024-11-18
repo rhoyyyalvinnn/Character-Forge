@@ -1,0 +1,128 @@
+
+.text-area_header {
+    background-color: transparent; /* Keep the background transparent */
+    padding: 10px; /* Padding inside the text area */
+    border: none;
+    font-family: 'Handjet', cursive;
+    font-size: 200%;
+    text-align: left;
+    color: black; 
+    margin:0;
+    
+}
+.text-area_header h1{
+    color: #333333;
+    /* background: #FFFFFF; */
+    text-shadow: 2px 2px 0px #FFFFFF, 5px 4px 0px rgba(0,0,0,0.15);
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    margin: 0%;
+}
+
+
+
+.text-area_header h2,
+.text-area_header h3,
+.text-area_header p {
+    margin: 0; /* Remove any margin */
+    padding: 0; /* Remove any padding */
+    line-height: 1.2; /* Optional: Adjust to control spacing between elements */
+}
+
+.about_container2{
+    background-color: rgb(124, 0, 0);
+    width: 100%;
+    height: auto; /* Allow height to be dynamic */
+    border-radius: 15px;
+    box-sizing: border-box;
+    display: flex;
+    padding: 20px;
+    box-shadow: 0px 0px 15px 5px rgba(0, 0, 0, 0.22);
+    flex-wrap: wrap; /* Enable wrapping */
+}
+
+
+
+.about_container {
+    background-color: rgb(255, 67, 67);
+    width: 100%;
+    height: auto; /* Allow height to be dynamic */
+    border-radius: 15px;
+    box-sizing: border-box;
+    display: flex;
+    padding: 20px;
+    box-shadow: 0px 0px 15px 5px rgba(0, 0, 0, 0.22);
+    flex-wrap: wrap; /* Enable wrapping */
+}
+
+.about_container2 a,
+.about_container a {
+    text-decoration: none;
+    font-family: 'Handjet', cursive;
+    font-size: 150%;
+    color: #FFD700; /* Gold for readability on a red background */
+    transition: color 0.3s ease, font-size 0.3s ease; /* Smooth transition */
+}
+
+.about_container a:hover, 
+.about_container2 a:hover {
+    color: white;
+    font-size: 200%;
+}
+
+.text-area_header a{
+    text-decoration: none;
+}
+.column {
+    flex: 1 1 50%; /* Allow the column to grow and shrink, taking up to 50% of the container */
+    max-width: 50%; /* Prevent columns from exceeding 50% width */
+    display: flex;
+    flex-direction: column; /* Stack content vertically */
+    align-items: center; /* Center content horizontally */
+    justify-content: flex-start; /* Align items to the top */
+    max-height: 500px; /* Maximum height for each column */
+    overflow-y: auto; /* Scroll if content exceeds max height */
+    box-sizing: border-box; /* Include padding and border in width/height */
+}
+
+.image-card {
+    width: 25%;
+    padding-top: 25%;
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.image-card img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+.text-card {
+    color: white;
+    border-radius: 10px;
+    font-family: Arial, sans-serif;
+    width: 100%;
+}
+.text-card h1{
+    font-family: 'Handjet', cursive;
+    color: Black;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
+    text-shadow: 0px 3px 3px rgba(255,255,255,0.5);
+    font-size: 300%;
+}
+
+/* Media query for responsiveness */
+@media (max-height: 500px) {
+    .column {
+        flex: 1 1 100%; /* Stack columns on smaller screens */
+        max-width: 100%; /* Prevent horizontal overflow */
+    }
+}
