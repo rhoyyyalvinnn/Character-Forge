@@ -23,12 +23,24 @@ def signup(request):
             messages.error(request, "Passwords do not match.")
             return redirect('signup')  # Redirect back to the signup page
 
+
+        # Check if username is already taken
+        if User.objects.filter(username=username).exists():
+            messages.error(request, "Username is already taken.")
+            return redirect('signup')
+
+        # Check if email is already taken
+        if User.objects.filter(email=email).exists():
+            messages.error(request, "Email is already registered.")
+            return redirect('signup')
+
+
+
         # Create the user
         myuser = User.objects.create_user(username, email, password)
         myuser.first_name = fname
         myuser.last_name = lname
         myuser.save()
-        messages.success(request, "Your account has been successfully created.")
         return redirect('signin')
 
     return render(request, "authentication/signup.html")
@@ -43,9 +55,6 @@ def signin(request):
 
         if user is not None:
             login(request, user)  # Log the user in first
-            # context_data = {'key': user.username}  # You can use first_name or username
-            # query_string = urlencode(context_data)
-            # return redirect(f"{reverse('home')}?{query_string}")  # Construct the URL correctly
             return redirect('home')  # Construct the URL correctly
         else:
             messages.error(request, "Wrong Credentials")
