@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Character Creation</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'stylesheet/index.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'stylesheet/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'stylesheet/general.css' %}">
+    <link rel="icon" href="{% static 'assets/logo.ico' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Handjet:wght@100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <header>
+        <div class="head">
+            <nav class="nav-left">
+                <ul>
+                    <li><a href="{% url 'home' %}"><img src="{% static 'assets/logo.png' %}"></a></li>
+                    <li><a href="{% url 'actgamerules' %}">GAME RULES</a></li>
+                    <li><a href="{% url 'actcommunity' %}">COMMUNITY</a></li>
+                    <li><a href="{% url 'actforum' %}">FORUM</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropbtn" onclick="toggleToolsDropdown(event)">TOOLS</a>
+                        <div class="tools-dropdown-content" id="tools-dropdown-content">
+                            <div class="tools-container">
+                                <div class="tools-column">
+                                    <div class="tool-item">
+                                        <a href="{% url 'character_menu' %}">Characters</a>
+                                    </div>
+                                    <div class="tool-item">
+                                        <a href="{% url 'actcompendium' %}">Compendium</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>   
+                </ul>
+            </nav>
+        </div>
+        <div class="logButtons">
+            <nav class="nav-right">
+                <ul>
+                    <li><a href="{% url 'profile' %}">Profile</a></li>
+                    <li><a href="{% url 'signout' %}">Logout</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+
+    <nav class="steps-navbar">
+        <ul>
+            <li class="step"><a href="#">Start</a></li>
+            <li class="step"><a href="#">Race</a></li>
+            <li class="step"><a href="#">Class</a></li>
+            <li class="step"><a href="#">Abilities</a></li>
+            <li class="step"><a href="#">Background</a></li>
+            <li class="step"><a href="#">Equipment</a></li>
+            <li class="step"><a href="#">Spells</a></li>
+            <li class="step"><a href="#">Feats</a></li>
+            <li class="step"><a href="#">Bio</a></li>
+            <li class="step"><a href="#">Review</a></li>
+            <li class="step cancel"><a href="{% url 'character_menu' %}">Cancel</a></li>
+        </ul>
+    </nav>
+
+
+    <div class="main-content">
+        <img src="{% static 'images/D&D_image.png' %}" alt="D&D Iconic Image">
+    </div>
+    <div class="content">
+            <h1><b>Welcome to the Character Forge!</b></h1> &nbsp;
+            <p>The Character Forge is a step-by-step process that makes building a character simple and streamlined. Changes are saved as you progress, but the character sheet is only updated once the Character has been completed.</p>
+    </div>
+
+    <footer class="footer">
+        <p>Terms of Service</p>
+        <p>©Copyright</p>
+        <p>Privacy</p>
+    </footer>
+</body>
+</html>

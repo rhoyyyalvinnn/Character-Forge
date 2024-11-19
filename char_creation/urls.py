@@ -20,4 +20,6 @@ urlpatterns = [
     path('actcompendium/sorcerer/', views.actwiki_spells_sorcerer, name="actwiki_spells_sorcerer"),
     path('actcompendium/warlock/', views.actwiki_spells_warlock, name="actwiki_spells_warlock"),
     path('actcompendium/wizard/', views.actwiki_spells_wizard, name="actwiki_spells_wizard"),
+    path('menu/', views.character_menu, name="character_menu"),
+    path('character_creation',views.character_creation, name='character_creation'),
 ]

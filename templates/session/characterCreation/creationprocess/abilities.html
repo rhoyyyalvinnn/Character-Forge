@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ability Scores</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Handjet&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <nav class="main-navbar">
+        <ul>
+            <li><a href="#">Game Rules</a></li>
+            <li><a href="#">Community</a></li>
+            <li><a href="#">Forum</a></li>
+            <li class="dropdown">
+                <a href="#">Tools</a>
+                <div class="dropdown-content">
+                    <a href="{% url 'character_menu' %}">Characters</a>
+                    <a href="#">Compendium</a>
+                </div>
+            </li>
+            <li><a href="#">Sign In</a></li>
+            <li><a href="#">Sign Up</a></li>
+        </ul>
+    </nav>
+
+    <nav class="steps-navbar">
+        <ul>
+            <li class="step active"><a href="{% url 'character_creation_page' %}">Start</a></li>
+            <li class="step"><a href="{% url 'character_race' %}">Race</a></li>
+            <li class="step"><a href="{% url 'character_class' %}">Class</a></li>
+            <li class="step"><a href="{% url 'abilities' %}">Abilities</a></li>
+            <li class="step"><a href="{% url 'backgrounds' %}">Background</a></li>
+            <li class="step"><a href="{% url 'equipments' %}">Equipment</a></li>
+            <li class="step"><a href="{% url 'spells' %}">Spells</a></li>
+            <li class="step"><a href="{% url 'feats' %}">Feats</a></li>
+            <li class="step"><a href="{% url 'bio' %}">Bio</a></li>
+            <li class="step"><a href="#">Review</a></li>
+            <li class="step cancel"><a href="{% url 'character_menu' %}">Cancel</a></li>
+        </ul>
+    </nav>
+
+    <div class="main-content">
+        <img src="{% static 'images/D&D_image.png' %}" alt="D&D Iconic Image">
+    </div>
+
+     <div class="main-content">
+        <div class="race-selection">
+            <label for="raceSelect">Ability Scores:</label>
+            <select id="raceSelect">
+                <option>Custom</option>
+            </select>
+            <p class="required-note" style="color: red;">*REQUIRED</p>
+
+            <div class="ability-scores">
+                <label for="str">Strength</label>
+                <input type="number" id="str" placeholder="0">
+
+                <label for="dex">Dexterity</label>
+                <input type="number" id="dex" placeholder="0">
+
+                <label for="con">Constitution</label>
+                <input type="number" id="con" placeholder="0">
+
+                <label for="int">Intelligence</label>
+                <input type="number" id="int" placeholder="0">
+
+                <label for="wis">Wisdom</label>
+                <input type="number" id="wis" placeholder="0">
+
+                <label for="cha">Charisma</label>
+                <input type="number" id="cha" placeholder="0">
+            </div>
+        </div>
+
+        <div class="text-area">
+            <h2>Ability Scores</h2>
+            <p>These D&D 5e rules provide a foundation for your character's capabilities...</p>
+            <ul>
+                <li><strong>Strength:</strong> Physical power.</li>
+                <li><strong>Dexterity:</strong> Agility and reflexes.</li>
+                <li><strong>Constitution:</strong> Stamina and health.</li>
+                <li><strong>Intelligence:</strong> Reasoning and memory.</li>
+                <li><strong>Wisdom:</strong> Perception and insight.</li>
+                <li><strong>Charisma:</strong> Leadership and charm.</li>
+            </ul>
+        </div>
+    </div>
+
+    <footer>
+        <p>Terms of Service | &copy;Copyright | Privacy</p>
+    </footer>
+</body>
+</html>

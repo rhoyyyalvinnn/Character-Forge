@@ -21,6 +21,11 @@
             <div class="container">
                 <img src="{% static 'assets/logo.ico' %}" alt="logo image" class="dice-logo">
                 <h3>Sign In to Your Account</h3>
+                {% if messages %}
+                    {% for message in messages %}       
+                        <div class="alert">{{ message }}</div>              
+                    {% endfor %}
+                {% endif %}
                 <form action="{% url 'signin' %}" method="post">
                     {% csrf_token %}
                     <input  type="text"     name="username"     placeholder="Enter your username"      required>

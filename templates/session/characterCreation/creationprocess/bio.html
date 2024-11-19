@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Character Bio</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Handjet&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Main Navigation Bar -->
+    <nav class="main-navbar">
+        <ul>
+            <li><a href="#">Game Rules</a></li>
+            <li><a href="#">Community</a></li>
+            <li><a href="#">Forum</a></li>
+            <li class="dropdown">
+                <a href="#">Tools</a>
+                <div class="dropdown-content">
+                    <a href="{% url 'character_menu' %}">Characters</a>
+                    <a href="#">Compendium</a>
+                </div>
+            </li>
+            <li><a href="#">Sign In</a></li>
+            <li><a href="#">Sign Up</a></li>
+        </ul>
+    </nav>
+
+    <!-- Steps Navigation Bar -->
+    <nav class="steps-navbar">
+        <ul>
+            <li class="step"><a href="{% url 'character_creation_page' %}">Start</a></li>
+            <li class="step"><a href="{% url 'character_race' %}">Race</a></li>
+            <li class="step"><a href="{% url 'character_class' %}">Class</a></li>
+            <li class="step"><a href="{% url 'abilities' %}">Abilities</a></li>
+            <li class="step"><a href="{% url 'backgrounds' %}">Background</a></li>
+            <li class="step"><a href="{% url 'equipments' %}">Equipment</a></li>
+            <li class="step"><a href="#">Spells</a></li>
+            <li class="step"><a href="{% url 'feats' %}">Feats</a></li>
+            <li class="step active"><a href="{% url 'bio' %}">Bio</a></li>
+            <li class="step"><a href="#">Review</a></li>
+            <li class="step cancel"><a href="{% url 'character_menu' %}">Cancel</a></li>
+        </ul>
+    </nav>
+
+    <div class="main-content">
+        <img src="{% static 'images/D&D_image.png' %}" alt="D&D Iconic Image">
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <h2>Character Bio</h2>
+
+        <!-- Bio Section -->
+        <div class="race-selection">
+            <h3>Character Details</h3>
+
+            <!-- Name Input -->
+            <div class="input-group">
+                <label for="characterName">Character Name:</label>
+                <input type="text" id="characterName" name="characterName" placeholder="Enter your character's name">
+            </div>
+
+            <!-- Age Input -->
+            <div class="input-group">
+                <label for="characterAge">Character Age:</label>
+                <input type="number" id="characterAge" name="characterAge" placeholder="Enter age">
+            </div>
+
+            <!-- Backstory -->
+            <div class="input-group">
+                <label for="characterBackstory">Backstory:</label>
+                <textarea id="characterBackstory" name="characterBackstory" rows="5" placeholder="Write about your character's origins, experiences, and motivations."></textarea>
+            </div>
+
+            <!-- Personality Traits -->
+            <div class="input-group">
+                <label for="characterPersonality">Personality Traits:</label>
+                <textarea id="characterPersonality" name="characterPersonality" rows="3" placeholder="Describe your character's personality, quirks, and demeanor."></textarea>
+            </div>
+
+            <!-- Ideals -->
+            <div class="input-group">
+                <label for="characterIdeals">Ideals:</label>
+                <textarea id="characterIdeals" name="characterIdeals" rows="3" placeholder="What values and principles does your character hold dear?"></textarea>
+            </div>
+
+            <!-- Flaws -->
+            <div class="input-group">
+                <label for="characterFlaws">Flaws:</label>
+                <textarea id="characterFlaws" name="characterFlaws" rows="3" placeholder="What weaknesses or struggles does your character face?"></textarea>
+            </div>
+
+            <!-- Save Button -->
+            <button class="add-character">Save Bio</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>Terms of Service | &copy; Copyright | Privacy</p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // JavaScript to handle bio input save functionality
+        document.querySelector('.add-character').addEventListener('click', function () {
+            const name = document.getElementById('characterName').value;
+            const age = document.getElementById('characterAge').value;
+            const backstory = document.getElementById('characterBackstory').value;
+            const personality = document.getElementById('characterPersonality').value;
+            const ideals = document.getElementById('characterIdeals').value;
+            const flaws = document.getElementById('characterFlaws').value;
+
+            if (name && backstory) {
+                alert(`Character Bio Saved!\n\nName: ${name}\nAge: ${age || 'N/A'}\nBackstory: ${backstory}\nPersonality: ${personality || 'N/A'}\nIdeals: ${ideals || 'N/A'}\nFlaws: ${flaws || 'N/A'}`);
+            } else {
+                alert('Please complete the required fields (Name and Backstory)!');
+            }
+        });
+    </script>
+</body>
+</html>

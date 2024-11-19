@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Race</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Handjet&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <nav class="main-navbar">
+        <ul>
+            <li><a href="#">Game Rules</a></li>
+            <li><a href="#">Community</a></li>
+            <li><a href="#">Forum</a></li>
+            <li class="dropdown">
+                <a href="#">Tools</a>
+                <div class="dropdown-content">
+                    <a href="{% url 'character_menu' %}">Characters</a>
+                    <a href="#">Compendium</a>
+                </div>
+            </li>
+            <li><a href="#">Sign In</a></li>
+            <li><a href="#">Sign Up</a></li>
+        </ul>
+    </nav>
+
+    <nav class="steps-navbar">
+        <ul>
+            <li class="step active"><a href="{% url 'character_creation_page' %}">Start</a></li>
+            <li class="step"><a href="{% url 'character_race' %}">Race</a></li>
+            <li class="step"><a href="{% url 'character_class' %}">Class</a></li>
+            <li class="step"><a href="{% url 'abilities' %}">Abilities</a></li>
+            <li class="step"><a href="{% url 'backgrounds' %}">Background</a></li>
+            <li class="step"><a href="{% url 'equipments' %}">Equipment</a></li>
+            <li class="step"><a href="{% url 'spells' %}">Spells</a></li>
+            <li class="step"><a href="{% url 'feats' %}">Feats</a></li>
+            <li class="step"><a href="{% url 'bio' %}">Bio</a></li>
+            <li class="step"><a href="#">Review</a></li>
+            <li class="step cancel"><a href="{% url 'character_menu' %}">Cancel</a></li>
+        </ul>
+    </nav>
+
+
+    <div class="main-content">
+        <img src="{% static 'images/D&D_image.png' %}" alt="D&D Iconic Image">
+    </div>
+
+    <form method="POST" action="{% url 'save_race' %}">
+        {% csrf_token %}
+        <div class="race-selection">
+        <label for="raceSelect">Choose a Race:</label>
+        <select id="raceSelect" onchange="updateRaceInfo()">
+            <option value="">Choose</option>
+            <option value="dragonborn">Dragonborn</option>
+            <option value="dwarf">Dwarf</option>
+            <option value="elf">Elf</option>
+            <option value="gnome">Gnome</option>
+            <option value="half-elf">Half-Elf</option>
+            <option value="half-orc">Half-Orc</option>
+            <option value="halfling">Halfling</option>
+            <option value="human">Human</option>
+            <option value="tiefling">Tiefling</option>
+        </select>
+
+    </div>
+
+    <div class="subrace-selection" id="subraceContainer" style="display: none;">
+        <label for="subraceSelect">Choose a Subrace:</label>
+        <select id="subraceSelect">
+            <option value="">Choose</option>
+            <option value="wood_elf">Wood Elf</option>
+            <option value="high_elf">High Elf</option>
+            <option value="dark_elf">Dark Elf (Drow)</option>
+            <option value="hill_dwarf">Hill Dwarf</option>
+            <option value="mountain_dwarf">Mountain Dwarf</option>
+            <option value="lightfoot_halfling">Lightfoot Halfling</option>
+            <option value="stout_halfling">Stout Halfling</option>
+            <option value="chromatic_dragonborn">Chromatic Dragonborn</option>
+            <option value="metallic_dragonborn">Metallic Dragonborn</option>
+            <option value="forest_gnome">Forest Gnome</option>
+            <option value="rock_gnome">Rock Gnome</option>
+        </select>
+    </div>
+
+    <div class="alignment-selection" id="alignmentContainer" style="display: none;">
+        <label for="alignmentSelect">Choose an Alignment:</label>
+        <select id="alignmentSelect">
+            <option value="">Choose</option>
+            <option value="lawful_good">Lawful Good</option>
+            <option value="neutral_good">Neutral Good</option>
+            <option value="chaotic_good">Chaotic Good</option>
+            <option value="lawful_neutral">Lawful Neutral</option>
+            <option value="true_neutral">True Neutral</option>
+            <option value="chaotic_neutral">Chaotic Neutral</option>
+            <option value="lawful_evil">Lawful Evil</option>
+            <option value="neutral_evil">Neutral Evil</option>
+            <option value="chaotic_evil">Chaotic Evil</option>
+        </select>
+
+
+    </div>
+    <button type="submit">Save Selection</button>
+
+    <div class="parent-container">
+       <div id="raceInfo" class="text-area"></div>
+    </div>
+    </form>
+
+
+
+
+
+<script>
+function updateRaceInfo() {
+    const raceSelect = document.getElementById("raceSelect");
+    const raceInfo = document.getElementById("raceInfo");
+    const alignmentContainer = document.getElementById("alignmentContainer");
+    const alignmentSelect = document.getElementById("alignmentSelect");
+    const subraceContainer = document.getElementById("subraceContainer");
+    const subraceSelect = document.getElementById("subraceSelect");
+
+
+    raceInfo.innerHTML = "";
+    subraceSelect.innerHTML = `<option value="">Choose</option>`;
+
+    switch (raceSelect.value) {
+        case "human":
+            raceInfo.innerHTML = `
+                <strong>Human Traits:</strong><br>
+                <strong>Ability Score Increase:</strong> Your ability scores each increase by 1.<br>
+                <strong>Age:</strong> Humans reach adulthood in their late teens and live less than a century.<br>
+                <strong>Alignment:</strong> Humans tend to be more flexible in their moral and ethical
+                alignments. They can be any alignment.<br>
+                <strong>Size:</strong> Humans are about the same size as elves and dwarves, ranging from 5 to
+                over 6 feet tall. They are Medium creatures.<br>
+                <strong>Speed:</strong> Your base walking speed is 30 feet.<br>
+                <strong>Languages:</strong> You can speak, read, and write Common and one extra language of
+                your choice.<br>
+            `;
+            subraceContainer.style.display = "none";
+            break;
+        // You can add cases for other races here
+        case "elf":
+            raceInfo.innerHTML = `
+                <strong>Elf Traits:</strong><br>
+                <strong>Ability Score Increase:</strong> Your Dexterity score increases by 2, and your Intelligence
+                score increases by 1.<br>
+                <strong>Age:</strong> Elves reach adulthood at around 100 years and can live for over 700 years.<br>
+                <strong>Alignment:</strong> Elves tend to be more chaotic and good than humans. They value
+                personal freedom and creativity.<br>
+                <strong>Size:</strong> Elves are about the same size as humans, ranging from 5 to 6 feet tall. They
+                are Medium creatures.<br>
+                <strong>Speed:</strong> Your base walking speed is 30 feet.<br>
+                <strong>Darkvision:</strong> You can see in dim light as if it were bright light, and in darkness as if
+                it were dim light.<br>
+                <strong>Languages:</strong> You can speak, read, and write Common and Elvish.<br>
+            `;
+            subraceContainer.style.display = "block"; // Show subrace selection
+            subraceSelect.innerHTML += `
+                <option value="wood_elf">Wood Elf</option>
+                <option value="high_elf">High Elf</option>
+                <option value="dark_elf">Dark Elf (Drow)</option>
+            `;
+            break;
+        case "dwarf":
+            raceInfo.innerHTML = `
+                <strong>Dwarf Traits:</strong><br>
+                <strong>Ability Score Increase:</strong> Your Constitution score increases by 2, and your Wisdom
+                score increases by 1.<br>
+                <strong>Age:</strong> Dwarves reach adulthood at around 50 years and can live to be over 350
+                years old.<br>
+                <strong>Alignment:</strong> Most dwarves are lawful, valuing tradition and honor, though some
+                may be chaotic.<br>
+                <strong>Size:</strong> Dwarves stand between 4 and 5 feet tall and are Medium creatures.<br>
+                <strong>Speed:</strong> Your base walking speed is 25 feet. Your speed is not reduced by wearing
+                heavy armor.<br>
+                <strong>Darkvision:</strong> You can see in dim light as if it were bright light, and in darkness as if
+                it were dim light.<br>
+                <strong>Languages:</strong> You can speak, read, and write Common and Dwarvish.<br>
+                <strong>Stonecunning:</strong> You have advantage on History checks related to the origin of
+                stonework.<br>
+                <strong>Dwarven Resilience:</strong> You have advantage on saving throws against poison, and you
+                have resistance against poison damage.<br>
+            `;
+            subraceContainer.style.display = "block"; // Show subrace selection
+            subraceSelect.innerHTML += `
+                <option value="hill_dwarf">Hill Dwarf</option>
+                <option value="mountain_dwarf">Mountain Dwarf</option>
+            `;
+            break;
+        case "halfling":
+            raceInfo.innerHTML = `
+                <strong>Halfling Traits:</strong><br>
+                <strong>Ability Score Increase:</strong> Your Dexterity score increases by 2, and your Charisma
+                score increases by 1.<br>
+                <strong>Age:</strong> Halflings reach adulthood at around 20 years and live to be about 150 years
+                old.<br>
+                <strong>Alignment:</strong> Most halflings are good-hearted and tend toward lawful alignments.<br>
+                <strong>Size:</strong> Halflings are about 3 to 4 feet tall and are Small creatures.<br>
+                <strong>Speed:</strong> Your base walking speed is 25 feet.<br>
+                <strong>Lucky:</strong> When you roll a 1 on an attack roll, ability check, or saving throw, you can
+                reroll the die and must use the new roll.<br>
+                <strong>Brave:</strong> You have advantage on saving throws against being frightened.<br>
+                <strong>Halfling Nimbleness:</strong> You can move through the space of any creature that is of a
+                size larger than yours.<br>
+                <strong>Languages:</strong> You can speak, read, and write Common and Halfling.<br>
+            `;
+            subraceContainer.style.display = "block"; // Show subrace selection
+            subraceSelect.innerHTML += `
+                <option value="lightfoot_halfling">Lightfoot Halfling</option>
+                <option value="stout_halfling">Stout Halfling</option>
+            `;
+            break;
+        case "dragonborn":
+            raceInfo.innerHTML = `
+                <strong>Dragonborn Traits:</strong><br>
+                <strong>Ability Score Increase:</strong> Your Strength score increases by 2, and your Charisma
+                score increases by 1.<br>
+                <strong>Age:</strong> Dragonborn reach adulthood in their late teens and can live to be around 80
+                years old.<br>
+                <strong>Alignment:</strong> Dragonborn tend to be ambitious and proud, often following a code of
+                honor. Their alignments vary widely, but many are lawful.<br>
+                <strong>Size:</strong> Dragonborn are taller and heavier than humans, standing between 6 and 7
+                feet tall. They are Medium creatures.<br>
+                <strong>Speed:</strong> Your base walking speed is 30 feet.<br>
+                <strong>Draconic Ancestry:</strong> You have a dragon ancestor, granting you a damage type and
+                a breath weapon based on that ancestry.<br>
+                <strong>Breath Weapon:</strong> As an action, you can exhale destructive energy in a 15-foot cone
+                or a 5-foot line (30 feet long). The type of damage depends on your draconic
+                ancestry. You must succeed on a saving throw against your Constitution.<br>
+                <strong>Damage Resistance:</strong> You have resistance to the damage type associated with
+                your draconic ancestry.<br>
+                <strong>Languages:</strong> You can speak, read, and write Common and Draconic.<br>
+            `;
+            subraceContainer.style.display = "block"; // Show subrace selection
+            subraceSelect.innerHTML += `
+                <option value="brass_dragonborn">Brass Dragonborn</option>
+                <option value="gold_dragonborn">Gold Dragonborn</option>
+                <option value="red_dragonborn">Red Dragonborn</option>
+                <option value="silver_dragonborn">Silver Dragonborn</option>
+                <option value="white_dragonborn">White Dragonborn</option>
+                <option value="blue_dragonborn">Blue Dragonborn</option>
+                <option value="bronze_dragonborn">Bronze Dragonborn</option>
+                <option value="black_dragonborn">Black Dragonborn</option>
+                <option value="copper_dragonborn">Copper Dragonborn</option>
+                <option value="green_dragonborn">Green Dragonborn</option>
+            `;
+            break;
+        case "gnome":
+            raceInfo.innerHTML = `
+                <strong>Gnome Traits:</strong><br>
+                <strong>Ability Score Increase:</strong> Your Intelligence score increases by 2, and your Dexterity
+                score increases by 1.<br>
+                <strong>Age:</strong> Gnomes reach adulthood around 40 years old and can live to be over 350
+                years old.<br>
+                <strong>Alignment:</strong> Gnomes tend to be good-hearted and prefer to follow a chaotic
+                alignment, valuing personal freedom and creativity.<br>
+                <strong>Size:</strong> Gnomes are between 3 to 4 feet tall. They are Small creatures.<br>
+                <strong>Speed:</strong> Your base walking speed is 25 feet.<br>
+                <strong>Darkvision:</strong> You can see in dim light as if it were bright light, and in darkness as if
+                it were dim light. You can't discern color in darkness, only shades of gray.<br>
+                <strong>Gnome Cunning:</strong> You have advantage on all Intelligence, Wisdom, and Charisma
+                saving throws against magic.<br>
+                <strong>Languages:</strong> You can speak, read, and write Common and Gnomish.<br>
+            `;
+            subraceContainer.style.display = "block"; // Show subrace selection
+            subraceSelect.innerHTML += `
+                <option value="forest_gnome">Forest Gnome</option>
+                <option value="rock_gnome">Rock Gnome</option>
+            `;
+            break;
+        case "half-elf":
+            raceInfo.innerHTML = `
+                <strong>Half-Elf Traits:</strong><br>
+                <strong>Ability Score Increase:</strong> Your Charisma score increases by 2, and two other ability
+                scores of your choice each increase by 1.<br>
+                <strong>Age:</strong> Half-elves reach adulthood at about the same age as humans, but they can
+                live to be over 180 years old.<br>
+                <strong>Alignment:</strong> Half-elves tend to be more adaptable than their elven ancestors, often
+                leaning toward chaotic alignments.<br>
+                <strong>Size:</strong> Half-elves are about the same size as humans, ranging from 5 to over 6 feet
+                tall. They are Medium creatures.<br>
+                <strong>Speed:</strong> Your base walking speed is 30 feet.<br>
+                <strong>Darkvision:</strong> You can see in dim light as if
+                it were bright light, and in darkness as if it were dim light. You can't discern color
+                in darkness, only shades of gray.<br>
+                <strong>Fey Ancestry:</strong> You have advantage on saving throws against being charmed, and
+                magic can't put you to sleep.<br>
+                <strong>Skill Versatility:</strong> You gain proficiency in two skills of your choice.<br>
+                <strong>Languages:</strong> You can speak, read, and write Common, Elvish, and one extra
+                language of your choice.<br>
+            `;
+            subraceContainer.style.display = "none";
+            break;
+        case "half-orc":
+            raceInfo.innerHTML = `
+                <strong>Half-Orc Traits:</strong><br>
+                <strong>Ability Score Increase:</strong> Your Strength score increases by 2, and your Constitution
+                score increases by 1.<br>
+                <strong>Age:</strong> Half-orcs reach adulthood in their late teens and typically live less than a
+                century.<br>
+                <strong>Alignment:</strong> Half-orcs are often chaotic, valuing freedom and individualism.<br>
+                <strong>Size:</strong> Half-orcs are about the same size as humans, ranging from 5 to over 6 feet
+                tall. They are Medium creatures.<br>
+                <strong>Speed:</strong> Your base walking speed is 30 feet.<br>
+                <strong>Darkvision:</strong> You can see in dim light as if it were bright light, and in darkness as
+                if it were dim light. You can't discern color in darkness, only shades of gray.<br>
+                <strong>Menacing:</strong> You gain proficiency in the Intimidation skill.<br>
+                <strong>Relentless Endurance:</strong> When you are reduced to 0 hit points but not killed
+                outright, you can drop to 1 hit point instead. You can't use this feature again until
+                you finish a long rest.<br>
+                <strong>Savage Attacks:</strong> When you score a critical hit with a melee weapon attack, you can
+                roll one additional damage die.<br>
+                <strong>Languages:</strong> You can speak, read, and write Common and Orc.<br>
+            `;
+            subraceContainer.style.display = "none";
+            break;
+        case "tiefling":
+            raceInfo.innerHTML = `
+                <strong>Tiefling Traits:</strong><br>
+                <strong>Ability Score Increase:</strong> Your Charisma score increases by 2, and your Intelligence
+                score increases by 1.<br>
+                <strong>Age:</strong> Tieflings reach adulthood in their late teens and can live to be around 100
+                years old.<br>
+                <strong>Alignment:</strong> Tieflings tend to be chaotic and often have a rebellious streak, valuing
+                their freedom.<br>
+                <strong>Size:</strong> Tieflings are about the same size as humans, ranging from 5 to over 6 feet
+                tall. They are Medium creatures.<br>
+                <strong>Speed:</strong> Your base walking speed is 30 feet.<br>
+                <strong>Darkvision:</strong> You can see in dim light as if it were bright light, and in darkness as if
+                it were dim light. You can't discern color in darkness, only shades of gray.<br>
+                <strong>Hellish Resistance:</strong> You have resistance to fire damage.<br>
+                <strong>Infernal Legacy:</strong> You know the thaumaturgy cantrip. When you reach 3rd level, you
+                can cast the hellish rebuke spell once with this trait and regain the ability to do so
+                when you finish a long rest. When you reach 5th level, you can cast the darkness
+                spell once with this trait and regain the ability to do so when you finish a long
+                rest.<br>
+                <strong>Languages:</strong> You can speak, read, and write Common and Infernal.<br>
+            `;
+            subraceContainer.style.display = "none";
+            break;
+        default:
+            raceInfo.innerHTML = "";
+            alignmentContainer.style.display = "none";
+            subraceContainer.style.display = "none";
+    }
+
+    // Show the info box if a race is selected
+     if (raceSelect.value) {
+        subraceContainer.style.display = "block"; // Show subrace dropdown
+        alignmentContainer.style.display = "block"; // Show alignment dropdown
+    } else {
+        subraceContainer.style.display = "none"; // Hide subrace dropdown
+        alignmentContainer.style.display = "none"; // Hide alignment dropdown
+        raceInfo.style.display = "none"; // Hide race info if no race is selected
+    }
+
+    // Show the info box if a race is selected
+    if (raceSelect.value) {
+        raceInfo.style.display = "block";
+    }
+}
+</script>
+
+    <footer>
+        <p>Terms of Service | &copy;Copyright | Privacy</p>
+    </footer>
+</body>
+</html>
+

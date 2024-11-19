@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feats</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Handjet&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Main Navigation Bar -->
+    <nav class="main-navbar">
+        <ul>
+            <li><a href="#">Game Rules</a></li>
+            <li><a href="#">Community</a></li>
+            <li><a href="#">Forum</a></li>
+            <li class="dropdown">
+                <a href="#">Tools</a>
+                <div class="dropdown-content">
+                    <a href="{% url 'character_menu' %}">Characters</a>
+                    <a href="#">Compendium</a>
+                </div>
+            </li>
+            <li><a href="#">Sign In</a></li>
+            <li><a href="#">Sign Up</a></li>
+        </ul>
+    </nav>
+
+    <!-- Steps Navigation Bar -->
+    <nav class="steps-navbar">
+        <ul>
+            <li class="step"><a href="{% url 'character_creation_page' %}">Start</a></li>
+            <li class="step"><a href="{% url 'character_race' %}">Race</a></li>
+            <li class="step"><a href="{% url 'character_class' %}">Class</a></li>
+            <li class="step"><a href="{% url 'abilities' %}">Abilities</a></li>
+            <li class="step"><a href="{% url 'backgrounds' %}">Background</a></li>
+            <li class="step"><a href="{% url 'equipments' %}">Equipment</a></li>
+            <li class="step"><a href="{% url 'spells' %}">Spells</a></li>
+            <li class="step active"><a href="{% url 'feats' %}">Feats</a></li>
+            <li class="step"><a href="{% url 'bio' %}">Bio</a></li>
+            <li class="step"><a href="#">Review</a></li>
+            <li class="step cancel"><a href="{% url 'character_menu' %}">Cancel</a></li>
+        </ul>
+    </nav>
+
+    <div class="main-content">
+        <img src="{% static 'images/D&D_image.png' %}" alt="D&D Iconic Image">
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <h2>Choose Your Feats</h2>
+
+        <!-- Feats Section -->
+        <div class="race-selection">
+            <h3>Available Feats</h3>
+            <p>Select the feats your character will use in their adventure. Each feat provides unique abilities and enhancements.</p>
+
+            <!-- Feat Options -->
+            <div class="feat-option">
+                <label><input type="checkbox" value="Alert"> <strong>Alert</strong> - Always be on guard to gain a +5 bonus to initiative.</label>
+            </div>
+            <div class="feat-option">
+                <label><input type="checkbox" value="Athlete"> <strong>Athlete</strong> - Enhance your physical abilities with improved climbing and jumping.</label>
+            </div>
+            <div class="feat-option">
+                <label><input type="checkbox" value="Actor"> <strong>Actor</strong> - Master mimicry and acting skills.</label>
+            </div>
+            <div class="feat-option">
+                <label><input type="checkbox" value="Lucky"> <strong>Lucky</strong> - Gain luck points to reroll crucial rolls.</label>
+            </div>
+            <!-- Add more feats as needed -->
+        </div>
+
+        <!-- Selected Feats Summary -->
+        <div class="selected-items race-selection">
+            <h3>Selected Feats</h3>
+            <ul id="selected-feats-list"></ul>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>Terms of Service | &copy; Copyright | Privacy</p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // JavaScript to handle feats selection
+        document.querySelectorAll('input[type="checkbox"]').forEach(item => {
+            item.addEventListener('change', function() {
+                const selectedFeatsList = document.getElementById('selected-feats-list');
+                if (this.checked) {
+                    const li = document.createElement('li');
+                    li.textContent = this.value;
+                    li.setAttribute('data-value', this.value);
+                    selectedFeatsList.appendChild(li);
+                } else {
+                    const liToRemove = selectedFeatsList.querySelector(`li[data-value="${this.value}"]`);
+                    if (liToRemove) {
+                        selectedFeatsList.removeChild(liToRemove);
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

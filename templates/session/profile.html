@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Character Forge</title>
     <link rel="stylesheet" type="text/css" href="{% static 'stylesheet/profile.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'stylesheet/general.css' %}">
     <link rel="icon" href="{% static 'assets/logo.ico' %}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,7 +21,21 @@
                     <li><a href="{% url 'actgamerules' %}">GAME RULES</a></li>
                     <li><a href="{% url 'actcommunity' %}">COMMUNITY</a></li>
                     <li><a href="{% url 'actforum' %}">FORUM</a></li>
-                    <li><a href="#">TOOLS</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropbtn" onclick="toggleToolsDropdown(event)">TOOLS</a>
+                        <div class="tools-dropdown-content" id="tools-dropdown-content">
+                            <div class="tools-container">
+                                <div class="tools-column">
+                                    <div class="tool-item">
+                                        <a href="#">Characters</a>
+                                    </div>
+                                    <div class="tool-item">
+                                        <a href="{% url 'actcompendium' %}">Compendium</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li> 
                 </ul>
             </nav>
         </div>
@@ -53,7 +68,14 @@
     
     <div class="main-content">
         <div id="profile" class="content-section">
-            <h2>Hello {{ username }}</h2>
+            <h2>Hello {{ username }}!</h2>
+            <h3>ACCOUNT INFORMATION</h3>
+            <ul>
+                <li>Email: {{email}}</li>
+                <li>First Name:{{ first_name }}</li>
+                <li>Last Name: {{ last_name }}</li>
+                <li>Username: {{ username }}</li>
+            </ul>
 
         </div>
         <div id="characters" class="content-section" style="display: none;">

@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Handjet&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <nav class="main-navbar">
+        <ul>
+            <li><a href="#">Game Rules</a></li>
+            <li><a href="#">Community</a></li>
+            <li><a href="#">Forum</a></li>
+            <li class="dropdown">
+                <a href="#">Tools</a>
+                <div class="dropdown-content">
+                    <a href="{% url 'character_menu' %}">Characters</a>
+                    <a href="#">Compendium</a>
+                </div>
+            </li>
+            <li><a href="#">Sign In</a></li>
+            <li><a href="#">Sign Up</a></li>
+        </ul>
+    </nav>
+
+    <nav class="steps-navbar">
+        <ul>
+            <li class="step active"><a href="{% url 'character_creation_page' %}">Start</a></li>
+            <li class="step"><a href="{% url 'character_race' %}">Race</a></li>
+            <li class="step"><a href="{% url 'character_class' %}">Class</a></li>
+            <li class="step"><a href="{% url 'abilities' %}">Abilities</a></li>
+            <li class="step"><a href="{% url 'backgrounds' %}">Background</a></li>
+            <li class="step"><a href="{% url 'equipments' %}">Equipment</a></li>
+            <li class="step"><a href="{% url 'spells' %}">Spells</a></li>
+            <li class="step"><a href="{% url 'feats' %}">Feats</a></li>
+            <li class="step"><a href="{% url 'bio' %}">Bio</a></li>
+            <li class="step"><a href="#">Review</a></li>
+            <li class="step cancel"><a href="{% url 'character_menu' %}">Cancel</a></li>
+        </ul>
+    </nav>
+
+
+    <div class="main-content">
+        <img src="{% static 'images/D&D_image.png' %}" alt="D&D Iconic Image">
+    </div>
+
+    <div class="class-selection">
+        <label for="classSelect">Choose a Class:</label>
+        <select id="classSelect" onchange="updateSubclassOptions()">
+            <option value="">Choose</option>
+            <option value="#">Artificer</option>
+            <option value="#">Barbarian</option>
+            <option value="#">Bard</option>
+            <option value="#">Blood Hunter</option>
+            <option value="#">Cleric</option>
+            <option value="#">Druid</option>
+            <option value="#">Fighter</option>
+            <option value="#">Monk</option>
+            <option value="#">Paladin</option>
+            <option value="#">Ranger</option>
+            <option value="#">Rogue</option>
+            <option value="#">Sorcerer</option>
+            <option value="#">Warlock</option>
+            <option value="#">Wizard</option>
+        </select>
+
+    </div>
+
+    <div class="subclass-selection" id="subclassContainer" style="display: none;">
+        <label for="subclassSelect">Choose a Sublcass:</label>
+        <select id="subclassSelect">
+            <option value="">Choose</option>
+            <option value="Alchemist" data-class="Artificer">Alchemist</option>
+            <option value="Armorer" data-class="Artificer">Armorer</option>
+            <option value="Artillerist" data-class="Artificer">Artillerist</option>
+            <option value="Battle Smith" data-class="Artificer">Battle Smith</option>
+            <option value="#">Path of the Ancestral Guardian</option>
+            <option value="#">Path of the Battlerager</option>
+            <option value="#">Path of the Beast</option>
+            <option value="#">Path of the Berserker</option>
+            <option value="#">Path of the Giant</option>
+            <option value="#">Path of the Storm Herald</option>
+            <option value="#">Path of the Totem Warrior</option>
+            <option value="#">Path of the Wild Magic</option>
+            <option value="#">Path of the Zeolot</option>
+            <option value="#">College of Creation</option>
+            <option value="#">College of Eloquence</option>
+            <option value="#">College of Glamour</option>
+            <option value="#">College of Lore</option>
+            <option value="#">College of Spirits</option>
+            <option value="#">College of Swords</option>
+            <option value="#">College of Valor</option>
+            <option value="#">College of Whispers</option>
+            <option value="#">Order of the Ghostslayer</option>
+            <option value="#">Order of the Lycan</option>
+            <option value="#">Order of the Mutant</option>
+            <option value="#">Order of the Protane Soul</option>
+            <option value="#">Aracana Domain</option>
+            <option value="#">Death Domain</option>
+            <option value="#">Forge Domain</option>
+            <option value="#">Grave Domain</option>
+            <option value="#">Knowledge Domain</option>
+            <option value="#">Life Domain</option>
+            <option value="#">Light Domain</option>
+            <option value="#">Nature Domain</option>
+            <option value="#">Order Domain</option>
+            <option value="#">Peace Domain</option>
+            <option value="#">Tempest Domain</option>
+            <option value="#">Trickery Domain</option>
+            <option value="#">Twilight Domain</option>
+            <option value="#">War Domain</option>
+            <option value="#">Circle of Dreams</option>
+            <option value="#">Circle of the Land</option>
+            <option value="#">Circle of the Moon</option>
+            <option value="#">Circle of the Shepherd</option>
+            <option value="#">Circle of Spores</option>
+            <option value="#">Circle of Stars</option>
+            <option value="#">Circle of Wildfire</option>
+            <option value="#">Arcane Archer</option>
+            <option value="#">Banneret</option>
+            <option value="#">Battle Master</option>
+            <option value="#">Cavalier</option>
+            <option value="#">Champion</option>
+            <option value="#">Echo Knight</option>
+            <option value="#">Eldritch Knight</option>
+            <option value="#">Psi Warrior</option>
+            <option value="#">Rune Knight</option>
+            <option value="#">Samurai</option>
+            <option value="#">Way of Mercy</option>
+            <option value="#">Way of the Ascendant Dragon</option>
+            <option value="#">Way of the Astral Self</option>
+            <option value="#">Way of the Drunken Master</option>
+            <option value="#">Way of the Four Elements</option>
+            <option value="#">Way of the Kensei</option>
+            <option value="#">Way of the Long Death</option>
+            <option value="#">Way of the Open Hand</option>
+            <option value="#">Way of Shadow</option>
+            <option value="#">Way of the Sun Soul</option>
+            <option value="#">Oath of the Ancients</option>
+            <option value="#">Oath of the Conquest</option>
+            <option value="#">Oath of the Crown</option>
+            <option value="#">Oath of Devotion</option>
+            <option value="#">Oath of Glory</option>
+            <option value="#">Oath of Redemption</option>
+            <option value="#">Oath of Vengeance</option>
+            <option value="#">Oath of the Watchers</option>
+            <option value="#">Oathbreaker</option>
+            <option value="#">Beast Master</option>
+            <option value="#">Drakewarden</option>
+            <option value="#">Fey Wanderer</option>
+            <option value="#">Gloom Stalker</option>
+            <option value="#">Horizon Walker</option>
+            <option value="#">Hunter</option>
+            <option value="#">Monster Slayer</option>
+            <option value="#">Swampkeeper</option>
+            <option value="#">Arcane Trickster</option>
+            <option value="#">Assassin</option>
+            <option value="#">Inquisitive</option>
+            <option value="#">Mastermind</option>
+            <option value="#">Phantom</option>
+            <option value="#">Scout</option>
+            <option value="#">Soulknife</option>
+            <option value="#">Swashbuckler</option>
+            <option value="#">Thief</option>
+            <option value="#">Abberant Mind</option>
+            <option value="#">Clockwork Soul</option>
+            <option value="#">Draconic Bloodline</option>
+            <option value="#">Divine Soul</option>
+            <option value="#">Lunar Sorcery</option>
+            <option value="#">Shadow Magic</option>
+            <option value="#">Storm Sorcery</option>
+            <option value="#">Wild Magic</option>
+            <option value="#">Archfey</option>
+            <option value="#">Celestial</option>
+            <option value="#">Fathomless</option>
+            <option value="#">Fiend</option>
+            <option value="#">The Genie</option>
+            <option value="#">Great Old One</option>
+            <option value="#">Hexblade</option>
+            <option value="#">Undead</option>
+            <option value="#">Undying</option>
+        </select>
+    </div>
+
+    <div class="parent-container">
+       <div id="raceInfo" class="text-area"></div>
+    </div>
+
+    <footer>
+        <p>Terms of Service | &copy;Copyright | Privacy</p>
+    </footer>
+
+
+    <script>
+        function updateSubclassOptions() {
+    
+    const selectedClass = document.getElementById("classSelect").value;
+    const subclassContainer = document.getElementById("subclassContainer");
+    const subclassSelect = document.getElementById("subclassSelect");
+
+
+    subclassContainer.style.display = selectedClass ? "block" : "none";
+
+
+    Array.from(subclassSelect.options).forEach(option => {
+        if (option.value === "" || option.getAttribute("data-class") === selectedClass) {
+            option.style.display = "block";
+        } else {
+            option.style.display = "none";
+        }
+    });
+
+
+    subclassSelect.value = "";
+}
+
+    </script>
+</body>
+</html>
+

@@ -7,6 +7,19 @@ from django.contrib.auth import authenticate, login
 from django.urls import reverse
 
 def index(request):
+    if request.method == "POST":
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+
+        user = authenticate(username=username, password=password)
+
+        if user is not None:
+            login(request, user)  # Log the user in first
+            return redirect('home')  # Construct the URL correctly
+        else:
+            messages.error(request, "Wrong Credentials")
+            return redirect('signin')
+
     return render(request, "index.html")
 
 def signup(request):
@@ -44,6 +57,7 @@ def signup(request):
         return redirect('signin')
 
     return render(request, "authentication/signup.html")
+
 
 
 def signin(request): 

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Character Creation</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'stylesheet/homepage.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'stylesheet/char_menu.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'stylesheet/general.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Handjet&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <header>
+        <div class="head">
+            <nav class="nav-left">
+                <ul>
+                    <li><a href="{% url 'home' %}"><img src="{% static 'assets/logo.png' %}"></a></li>
+                    <li><a href="{% url 'actgamerules' %}">GAME RULES</a></li>
+                    <li><a href="{% url 'actcommunity' %}">COMMUNITY</a></li>
+                    <li><a href="{% url 'actforum' %}">FORUM</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropbtn" onclick="toggleToolsDropdown(event)">TOOLS</a>
+                        <div class="tools-dropdown-content" id="tools-dropdown-content">
+                            <div class="tools-container">
+                                <div class="tools-column">
+                                    <div class="tool-item">
+                                        <a href="{% url 'character_menu' %}">Characters</a>
+                                    </div>
+                                    <div class="tool-item">
+                                        <a href="{% url 'actcompendium' %}">Compendium</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>   
+                </ul>
+            </nav>
+        </div>
+        <div class="logButtons">
+            <nav class="nav-right">
+                <ul>
+                    <li><a href="{% url 'profile' %}">Profile</a></li>
+                    <li><a href="{% url 'signout' %}">Logout</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="character-creation">
+            <div class="character-card">
+                <button class="add-character">
+                    CREATE NEW CHARACTER
+                    <span class="plus-icon">+</span>
+                </button>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>Terms of Service</p>
+        <p>©Copyright</p>
+        <p>Privacy</p>
+    </footer>
+</body>
+</html>
+
+<script>
+    const buttons = document.querySelectorAll('.add-character');
+    buttons.forEach(button => {
+        button.addEventListener('click', () => {
+            window.location.href = "{% url 'character_creation' %}";
+        });
+    });
+</script>

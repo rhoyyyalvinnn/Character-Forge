@@ -78,3 +78,8 @@ def actwiki_spells_warlock(request):
 def actwiki_spells_wizard(request):
     return render(request, 'session/actcompendium/actspells/actwizard_spell.html')
 
+def character_menu(request):
+    return render(request, 'session/characterCreation/character_menu.html')
+
+def character_creation(request):
+    return render(request, 'session/characterCreation/character_creation.html')
