@@ -22,4 +22,13 @@ urlpatterns = [
     path('actcompendium/wizard/', views.actwiki_spells_wizard, name="actwiki_spells_wizard"),
     path('menu/', views.character_menu, name="character_menu"),
     path('character_creation',views.character_creation, name='character_creation'),
+    path('race/', views.character_race, name="character_race"),
+    path('class/', views.character_class, name="character_class"),
+    path('abilities/', views.character_abilities, name="character_abilities"),
+    path('backgrounds/', views.character_background, name="character_background"),
+    path('equipments/', views.character_equipment, name="character_equipment"),
+    path('spells/', views.character_spell, name="character_spell"),
+    path('feats/', views.character_feats, name="character_feats"),
+    path('bio/', views.character_bio, name="character_bio"),
+    # path('save_race/', views.save_race, name='save_race'),
 ]
