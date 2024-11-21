@@ -55,15 +55,15 @@
 
     <nav class="steps-navbar">
         <ul>
-            <li class="step"><a href="#">Start</a></li>
-            <li class="step"><a href="#">Race</a></li>
-            <li class="step"><a href="#">Class</a></li>
-            <li class="step"><a href="#">Abilities</a></li>
-            <li class="step"><a href="#">Background</a></li>
-            <li class="step"><a href="#">Equipment</a></li>
-            <li class="step"><a href="#">Spells</a></li>
-            <li class="step"><a href="#">Feats</a></li>
-            <li class="step"><a href="#">Bio</a></li>
+            <li class="step active"><a href="{% url 'character_creation' %}">Start</a></li>
+            <li class="step"><a href="{% url 'character_race' %}">Race</a></li>
+            <li class="step"><a href="{% url 'character_class' %}">Class</a></li>
+            <li class="step"><a href="{% url 'character_abilities' %}">Abilities</a></li>
+            <li class="step"><a href="{% url 'character_background' %}">Background</a></li>
+            <li class="step"><a href="{% url 'character_equipment' %}">Equipment</a></li>
+            <li class="step"><a href="{% url 'character_spell' %}">Spells</a></li>
+            <li class="step"><a href="{% url 'character_feats' %}">Feats</a></li>
+            <li class="step"><a href="{% url 'character_bio' %}">Bio</a></li>
             <li class="step"><a href="#">Review</a></li>
             <li class="step cancel"><a href="{% url 'character_menu' %}">Cancel</a></li>
         </ul>

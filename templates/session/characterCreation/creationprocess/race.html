@@ -5,39 +5,65 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Race</title>
     {% load static %}
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <link href="https://fonts.googleapis.com/css2?family=Handjet&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'stylesheet/index.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'stylesheet/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'stylesheet/general.css' %}">
+    <link rel="icon" href="{% static 'assets/logo.ico' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Handjet:wght@100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap" rel="stylesheet">
 
 </head>
 <body>
-    <nav class="main-navbar">
-        <ul>
-            <li><a href="#">Game Rules</a></li>
-            <li><a href="#">Community</a></li>
-            <li><a href="#">Forum</a></li>
-            <li class="dropdown">
-                <a href="#">Tools</a>
-                <div class="dropdown-content">
-                    <a href="{% url 'character_menu' %}">Characters</a>
-                    <a href="#">Compendium</a>
-                </div>
-            </li>
-            <li><a href="#">Sign In</a></li>
-            <li><a href="#">Sign Up</a></li>
-        </ul>
-    </nav>
+    <header>
+        <div class="head">
+            <nav class="nav-left">
+                <ul>
+                    <li><a href="{% url 'home' %}"><img src="{% static 'assets/logo.png' %}"></a></li>
+                    <li><a href="{% url 'actgamerules' %}">GAME RULES</a></li>
+                    <li><a href="{% url 'actcommunity' %}">COMMUNITY</a></li>
+                    <li><a href="{% url 'actforum' %}">FORUM</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropbtn" onclick="toggleToolsDropdown(event)">TOOLS</a>
+                        <div class="tools-dropdown-content" id="tools-dropdown-content">
+                            <div class="tools-container">
+                                <div class="tools-column">
+                                    <div class="tool-item">
+                                        <a href="{% url 'character_menu' %}">Characters</a>
+                                    </div>
+                                    <div class="tool-item">
+                                        <a href="{% url 'actcompendium' %}">Compendium</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>   
+                </ul>
+            </nav>
+        </div>
+        <div class="logButtons">
+            <nav class="nav-right">
+                <ul>
+                    <li><a href="{% url 'profile' %}">Profile</a></li>
+                    <li><a href="{% url 'signout' %}">Logout</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
 
     <nav class="steps-navbar">
         <ul>
-            <li class="step active"><a href="{% url 'character_creation_page' %}">Start</a></li>
-            <li class="step"><a href="{% url 'character_race' %}">Race</a></li>
+            <li class="step"><a href="{% url 'character_creation' %}">Start</a></li>
+            <li class="step active"><a href="{% url 'character_race' %}">Race</a></li>
             <li class="step"><a href="{% url 'character_class' %}">Class</a></li>
-            <li class="step"><a href="{% url 'abilities' %}">Abilities</a></li>
-            <li class="step"><a href="{% url 'backgrounds' %}">Background</a></li>
-            <li class="step"><a href="{% url 'equipments' %}">Equipment</a></li>
-            <li class="step"><a href="{% url 'spells' %}">Spells</a></li>
-            <li class="step"><a href="{% url 'feats' %}">Feats</a></li>
-            <li class="step"><a href="{% url 'bio' %}">Bio</a></li>
+            <li class="step"><a href="{% url 'character_abilities' %}">Abilities</a></li>
+            <li class="step"><a href="{% url 'character_background' %}">Background</a></li>
+            <li class="step"><a href="{% url 'character_equipment' %}">Equipment</a></li>
+            <li class="step"><a href="{% url 'character_spell' %}">Spells</a></li>
+            <li class="step"><a href="{% url 'character_feats' %}">Feats</a></li>
+            <li class="step"><a href="{% url 'character_bio' %}">Bio</a></li>
             <li class="step"><a href="#">Review</a></li>
             <li class="step cancel"><a href="{% url 'character_menu' %}">Cancel</a></li>
         </ul>
@@ -46,70 +72,75 @@
 
     <div class="main-content">
         <img src="{% static 'images/D&D_image.png' %}" alt="D&D Iconic Image">
-    </div>
-
-    <form method="POST" action="{% url 'save_race' %}">
-        {% csrf_token %}
-        <div class="race-selection">
-        <label for="raceSelect">Choose a Race:</label>
-        <select id="raceSelect" onchange="updateRaceInfo()">
-            <option value="">Choose</option>
-            <option value="dragonborn">Dragonborn</option>
-            <option value="dwarf">Dwarf</option>
-            <option value="elf">Elf</option>
-            <option value="gnome">Gnome</option>
-            <option value="half-elf">Half-Elf</option>
-            <option value="half-orc">Half-Orc</option>
-            <option value="halfling">Halfling</option>
-            <option value="human">Human</option>
-            <option value="tiefling">Tiefling</option>
-        </select>
-
-    </div>
-
-    <div class="subrace-selection" id="subraceContainer" style="display: none;">
-        <label for="subraceSelect">Choose a Subrace:</label>
-        <select id="subraceSelect">
-            <option value="">Choose</option>
-            <option value="wood_elf">Wood Elf</option>
-            <option value="high_elf">High Elf</option>
-            <option value="dark_elf">Dark Elf (Drow)</option>
-            <option value="hill_dwarf">Hill Dwarf</option>
-            <option value="mountain_dwarf">Mountain Dwarf</option>
-            <option value="lightfoot_halfling">Lightfoot Halfling</option>
-            <option value="stout_halfling">Stout Halfling</option>
-            <option value="chromatic_dragonborn">Chromatic Dragonborn</option>
-            <option value="metallic_dragonborn">Metallic Dragonborn</option>
-            <option value="forest_gnome">Forest Gnome</option>
-            <option value="rock_gnome">Rock Gnome</option>
-        </select>
-    </div>
-
-    <div class="alignment-selection" id="alignmentContainer" style="display: none;">
-        <label for="alignmentSelect">Choose an Alignment:</label>
-        <select id="alignmentSelect">
-            <option value="">Choose</option>
-            <option value="lawful_good">Lawful Good</option>
-            <option value="neutral_good">Neutral Good</option>
-            <option value="chaotic_good">Chaotic Good</option>
-            <option value="lawful_neutral">Lawful Neutral</option>
-            <option value="true_neutral">True Neutral</option>
-            <option value="chaotic_neutral">Chaotic Neutral</option>
-            <option value="lawful_evil">Lawful Evil</option>
-            <option value="neutral_evil">Neutral Evil</option>
-            <option value="chaotic_evil">Chaotic Evil</option>
-        </select>
 
 
-    </div>
-    <button type="submit">Save Selection</button>
+        <form method="POST" action="#">
+            {% csrf_token %}
+            <div class="race-selection">
+            <label for="raceSelect">Choose a Race:</label>
+            <select id="raceSelect" onchange="updateRaceInfo()">
+                <option value="">Choose</option>
+                <option value="dragonborn">Dragonborn</option>
+                <option value="dwarf">Dwarf</option>
+                <option value="elf">Elf</option>
+                <option value="gnome">Gnome</option>
+                <option value="half-elf">Half-Elf</option>
+                <option value="half-orc">Half-Orc</option>
+                <option value="halfling">Halfling</option>
+                <option value="human">Human</option>
+                <option value="tiefling">Tiefling</option>
+            </select>
 
-    <div class="parent-container">
-       <div id="raceInfo" class="text-area"></div>
-    </div>
+        </div>
+
+        <div class="subrace-selection" id="subraceContainer" style="display: none;">
+            <label for="subraceSelect">Choose a Subrace:</label>
+            <select id="subraceSelect">
+                <option value="">Choose</option>
+                <option value="wood_elf">Wood Elf</option>
+                <option value="high_elf">High Elf</option>
+                <option value="dark_elf">Dark Elf (Drow)</option>
+                <option value="hill_dwarf">Hill Dwarf</option>
+                <option value="mountain_dwarf">Mountain Dwarf</option>
+                <option value="lightfoot_halfling">Lightfoot Halfling</option>
+                <option value="stout_halfling">Stout Halfling</option>
+                <option value="chromatic_dragonborn">Chromatic Dragonborn</option>
+                <option value="metallic_dragonborn">Metallic Dragonborn</option>
+                <option value="forest_gnome">Forest Gnome</option>
+                <option value="rock_gnome">Rock Gnome</option>
+            </select>
+        </div>
+
+        <div class="alignment-selection" id="alignmentContainer" style="display: none;">
+            <label for="alignmentSelect">Choose an Alignment:</label>
+            <select id="alignmentSelect">
+                <option value="">Choose</option>
+                <option value="lawful_good">Lawful Good</option>
+                <option value="neutral_good">Neutral Good</option>
+                <option value="chaotic_good">Chaotic Good</option>
+                <option value="lawful_neutral">Lawful Neutral</option>
+                <option value="true_neutral">True Neutral</option>
+                <option value="chaotic_neutral">Chaotic Neutral</option>
+                <option value="lawful_evil">Lawful Evil</option>
+                <option value="neutral_evil">Neutral Evil</option>
+                <option value="chaotic_evil">Chaotic Evil</option>
+            </select>
+
+
+        </div>
+        <button type="submit">Save Selection</button>
+
+        <div class="parent-container">
+        <div id="raceInfo" class="text-area"></div>
+        </div>
     </form>
+    </div>
 
-
+    <footer class="footer">
+        <p>Terms of Service</p>
+        <p>©Copyright</p>
+        <p>Privacy</p>
+    </footer>
 
 
 
@@ -364,10 +395,6 @@ function updateRaceInfo() {
     }
 }
 </script>
-
-    <footer>
-        <p>Terms of Service | &copy;Copyright | Privacy</p>
-    </footer>
 </body>
 </html>
 

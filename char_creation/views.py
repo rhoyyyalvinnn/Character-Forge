@@ -83,3 +83,27 @@ def character_menu(request):
 
 def character_creation(request):
     return render(request, 'session/characterCreation/character_creation.html')
+
+def character_race(request):
+    return render(request, 'session/characterCreation/creationProcess/race.html')
+
+def character_class(request):
+    return render(request, 'session/characterCreation/creationProcess/class.html')
+
+def character_abilities(request):
+    return render(request, 'session/characterCreation/creationProcess/abilities.html')
+
+def character_background(request):
+    return render(request, 'session/characterCreation/creationProcess/backgrounds.html')
+# equipment, spell, feats, bio
+def character_equipment(request):
+    return render(request, 'session/characterCreation/creationProcess/equipments.html')
+
+def character_spell(request):
+    return render(request, 'session/characterCreation/creationProcess/spells.html')
+
+def character_feats(request):
+    return render(request, 'session/characterCreation/creationProcess/feats.html')
+
+def character_bio(request):
+    return render(request, 'session/characterCreation/creationProcess/bio.html')
