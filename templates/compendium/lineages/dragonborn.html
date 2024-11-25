@@ -1,0 +1,158 @@
+{% extends 'compendium/lineages/general_lineages.html' %}
+
+{%load static%}
+
+<body>
+{%block content%}
+    <div class="centered-div">
+        <p class="text-right"> <a href="{% url 'compendium' %}">HOME</a></p>
+        <h1>DRAGONBORN</h1>
+        <h2>Player's Handbook</h2>
+        <p>
+            <i><b>Born of dragons, as their name proclaims, the dragonborn walk proudly through a world that greets them with fearful incomprehension. Shaped by draconic gods or the dragons themselves, dragonborn originally hatched from dragon eggs as a unique race, combining the best attributes of dragons and humanoids. 
+            Some dragonborn are faithful servants to true dragons, others form the ranks of soldiers in great wars, and still others find themselves adrift, with no clear calling in life.
+            </i></b>
+        </p>
+        <h3>Traits</h3>
+        <ul>
+            <li><strong>Ability Score Increase:</strong> Your Strength score increases by 2, and your Charisma score increases by 1.</li>
+            <li><strong>Age:</strong> Young dragonborn grow quickly. They walk hours after hatching, attain the size and development of a 10-year-old human child by the age of 3, and reach adulthood by 15. They live to be around 80.</li>
+            <li><strong>Alignment:</strong> Dragonborn tend towards extremes, making a conscious choice for one side or the other between Good and Evil (represented by Bahamut and Tiamat, respectively). More side with Bahamut than Tiamat (whose non-dragon followers are mostly kobolds), but villainous dragonborn can be quite terrible indeed. Some rare few choose to devote themselves to lesser dragon deities, such as Chronepsis (Neutral), and fewer still choose to worship Io, the Ninefold Dragon, who is all alignments at once.</li>
+            <li><strong>Size:</strong> Dragonborn are taller and heavier than humans, standing well over 6 feet tall and averaging almost 250 pounds. Your size is Medium.</li>
+            <li><strong>Speed:</strong> Your base walking speed is 30 feet.</li>
+            <li><strong>Draconic Ancestry:</strong> You are distantly related to a particular kind of dragon. Choose a type of dragon from the below list; this determines the damage and area of your breath weapon, and the type of resistance you gain.</li>
+        </ul>
+        <div class="table-area">
+            <table>
+            <thead>
+                <tr>
+                <th>Dragon Color</th>
+                <th>Damage Type</th>
+                <th>Breath Weapon</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                <td>Black</td>
+                <td>Acid</td>
+                <td>5 by 30 ft. line (DEX save)</td>
+                </tr>
+                <tr>
+                <td>Blue</td>
+                <td>Lightning</td>
+                <td>5 by 30 ft. line (DEX save)</td>
+                </tr>
+                <tr>
+                <td>Brass</td>
+                <td>Fire</td>
+                <td>5 by 30 ft. line (DEX save)</td>
+                </tr>
+                <tr>
+                <td>Bronze</td>
+                <td>Lightning</td>
+                <td>5 by 30 ft. line (DEX save)</td>
+                </tr>
+                <tr>
+                <td>Copper</td>
+                <td>Acid</td>
+                <td>5 by 30 ft. line (DEX save)</td>
+                </tr>
+                <tr>
+                <td>Gold</td>
+                <td>Fire</td>
+                <td>15 ft. cone (DEX save)</td>
+                </tr>
+                <tr>
+                <td>Green</td>
+                <td>Poison</td>
+                <td>15 ft. cone (CON save)</td>
+                </tr>
+                <tr>
+                <td>Red</td>
+                <td>Fire</td>
+                <td>15 ft. cone (DEX save)</td>
+                </tr>
+                <tr>
+                <td>Silver</td>
+                <td>Cold</td>
+                <td>15 ft. cone (CON save)</td>
+                </tr>
+                <tr>
+                <td>White</td>
+                <td>Cold</td>
+                <td>15 ft. cone (CON save)</td>
+                </tr>
+            </tbody>
+            </table>
+        </div>
+        <h4>Breath Weapon</h4>
+        <p>
+          You can use your action to exhale destructive energy, dealing damage based on your ancestry. All creatures in the area must make a saving throw, determined by your ancestry:
+        </p>
+        <ul>
+          <li>Save DC = 8 + Constitution modifier + proficiency bonus</li>
+          <li>Damage starts at 2d6 (increasing to 3d6 at 6th level, 4d6 at 11th level, and 5d6 at 16th level)</li>
+        </ul>
+        <p>After using this feature, you must complete a short or long rest to regain it.</p>
+      
+        <h4>Draconblood</h4>
+        <p>Draconbloods are adept at social manipulation and retain traits of ancient conquerors.</p>
+        <ul>
+          <li><b>Ability Score Increase:</b> Intelligence +2, Charisma +1</li>
+          <li><b>Darkvision:</b> 60 feet</li>
+          <li><b>Forceful Presence:</b> Gain advantage on Persuasion or Intimidation checks once per long rest</li>
+        </ul>
+      
+        <h4>Ravenite</h4>
+        <p>Ravenites have a hearty physique and retain memories of overthrowing their draconblood masters.</p>
+        <ul>
+          <li><b>Ability Score Increase:</b> Strength +2, Constitution +1</li>
+          <li><b>Darkvision:</b> 60 feet</li>
+          <li><b>Vengeful Assault:</b> React to taking damage by attacking the source once per short or long rest</li>
+        </ul>
+      
+        <h4>Chromatic Dragonborn</h4>
+        <div class="table-area">
+            <table>
+            <thead>
+                <tr>
+                <th>Dragon</th>
+                <th>Damage Type</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                <td>Black</td>
+                <td>Acid</td>
+                </tr>
+                <tr>
+                <td>Blue</td>
+                <td>Lightning</td>
+                </tr>
+                <tr>
+                <td>Green</td>
+                <td>Poison</td>
+                </tr>
+                <tr>
+                <td>Red</td>
+                <td>Fire</td>
+                </tr>
+                <tr>
+                <td>White</td>
+                <td>Cold</td>
+                </tr>
+            </tbody>
+            </table>
+        </div>
+        <h4>Gem Dragonborn</h4>
+        <p>Gem dragonborn are tied to Sardior, the Ruby Dragon, representing colors and powers of amethyst, crystal, emerald, sapphire, and topaz.</p>
+        <ul>
+          <li><b>Ability Score Increase:</b> Choose one score (+2) and another (+1) or three (+1 each)</li>
+          <li><b>Speed:</b> 30 feet</li>
+          <li><b>Draconic Resistance:</b> Based on ancestry</li>
+          <li><b>Psionic Mind:</b> Telepathic communication within 30 feet</li>
+        </ul>
+
+    </div>
+{% endblock content%}
+</body>

@@ -1,3 +1,4 @@
+{% extends 'compendium/spells/general_spells.html' %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,12 +23,13 @@
     </style>
 </head>
 <body>
+    {% block content %}
     <div class="centered-div">
         <div class="text-area"> 
             <p><h1>Character Forge</h1>
-            community wiki</p>
+                <h2 >community wiki</h2></p>
         </div>
-        <h2><a href="{% url 'compendium' %}">Home</a></li></h2>
+        <h2 class = "text-right" ><a href="{% url 'compendium' %}">Home</a></li></h2>
         <div class="table-area">
             <table><h1>Sorcerer Spell List</h1>
                 <thead>
@@ -75,5 +77,13 @@
             </table>
         </div>
     </div>
+    {% endblock content %}
 </body>
+
+<footer class="footer">
+    <p>Terms of Service</p>
+    <p>©Copyright</p>
+    <p>Privacy</p>
+</footer>
+
 </html>

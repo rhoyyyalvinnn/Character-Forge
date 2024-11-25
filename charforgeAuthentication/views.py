@@ -118,3 +118,30 @@ def wiki_spells_warlock(request):
 
 def wiki_spells_wizard(request):
     return render(request, 'compendium/spells/wizard_spell.html')
+
+def wiki_lineages_dragonborn(request):
+    return render(request, 'compendium/lineages/dragonborn.html')
+
+def wiki_lineages_dwarf(request):
+    return render(request, 'compendium/lineages/dwarf.html')
+
+def wiki_lineages_elf(request):
+    return render(request, 'compendium/lineages/elf.html')
+
+def wiki_lineages_gnome(request):
+    return render(request, 'compendium/lineages/gnome.html')
+
+def wiki_lineages_halfelf(request):
+    return render(request, 'compendium/lineages/halfelf.html')
+
+def wiki_lineages_halforc(request):
+    return render(request, 'compendium/lineages/halforc.html')
+
+def wiki_lineages_halfling(request):
+    return render(request, 'compendium/lineages/halfling.html')
+
+def wiki_lineages_human(request):
+    return render(request, 'compendium/lineages/human.html')
+
+def wiki_lineages_tiefling(request):
+    return render(request, 'compendium/lineages/tiefling.html')

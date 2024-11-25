@@ -1,0 +1,75 @@
+{% extends 'compendium/lineages/general_lineages.html' %}
+
+{% load static %}
+
+<body>
+{% block content %}
+
+<div class="centered-div">
+    <p class="text-right"><a href="{% url 'compendium' %}">HOME</a></p>
+    <h1>HALF-ORCS</h1>
+    <h2>Player's Handbook</h2>
+    <p>
+        <i><b>
+        When alliances between humans and orcs are sealed by marriages, half-orcs are born. Some half-orcs rise to become proud chiefs of orc tribes, while others venture into the world to prove their worth among humans and other civilized races. Many of these become adventurers, achieving greatness for their mighty deeds and notoriety for their barbaric customs and savage fury.
+        </i></b>
+    </p>
+
+    <h2>Main Traits</h2>
+    <ul>
+        <li><strong>Ability Score Increase:</strong> Your Strength score increases by 2, and your Constitution score increases by 1.</li>
+        <li><strong>Age:</strong> Half-orcs mature a little faster than humans, reaching adulthood around age 14 and rarely living longer than 75 years.</li>
+        <li><strong>Alignment:</strong> Half-orcs inherit a tendency toward chaos from their orc parents and are not strongly inclined toward good.</li>
+        <li><strong>Size:</strong> Half-orcs are somewhat larger and bulkier than humans, ranging from 5 to well over 6 feet tall. Your size is Medium.</li>
+        <li><strong>Speed:</strong> Your base walking speed is 30 feet.</li>
+        <li><strong>Darkvision:</strong> You can see in dim light within 60 feet as if it were bright light, and in darkness as if it were dim light.</li>
+        <li><strong>Menacing:</strong> You gain proficiency in the Intimidation skill.</li>
+        <li><strong>Relentless Endurance:</strong> When reduced to 0 hit points but not killed outright, you can drop to 1 hit point instead. You can't use this feature again until you finish a long rest.</li>
+        <li><strong>Savage Attacks:</strong> When you score a critical hit with a melee weapon attack, you can roll one of the weapon's damage dice one additional time and add it to the extra damage of the critical hit.</li>
+        <li><strong>Languages:</strong> You can speak, read, and write Common and Orc.</li>
+    </ul>
+
+    <h3>Eberron: Rising from the Last War</h3>
+
+    <h3>Mark of Finding</h3>
+    <p>If your Half-Orc has the Mark of Finding, replace all Racial Traits found in the Player's Handbook with these, except for Age, Alignment, Size, and Speed.</p>
+    <ul>
+        <li><strong>Ability Score Increase:</strong> Your Wisdom score increases by 2, and your Constitution score increases by 1.</li>
+        <li><strong>Darkvision:</strong> You can see in dim light within 60 feet as if it were bright light, and in darkness as if it were dim light.</li>
+        <li><strong>Hunter's Intuition:</strong> Roll a d4 and add it to Wisdom (Perception) or Wisdom (Survival) checks.</li>
+        <li><strong>Finder's Magic:</strong> You can cast the Hunter's Mark spell, and starting at 3rd level, you can also cast the Locate Object spell.</li>
+    </ul>
+    <h4>Mark of Finding Spells</h4>
+    <div class="table-area">
+        <table>
+            <tr>
+                <th>Spell Level</th>
+                <th>Spell</th>
+            </tr>
+            <tr>
+                <td>1st</td>
+                <td>Faerie Fire, Longstrider</td>
+            </tr>
+            <tr>
+                <td>2nd</td>
+                <td>Locate Animals or Plants, Locate Object</td>
+            </tr>
+            <tr>
+                <td>3rd</td>
+                <td>Clairvoyance, Speak With Plants</td>
+            </tr>
+            <tr>
+                <td>4th</td>
+                <td>Divination, Locate Creature</td>
+            </tr>
+            <tr>
+                <td>5th</td>
+                <td>Commune With Nature</td>
+            </tr>
+        </table>
+    </div>
+
+</div>
+
+ {% endblock content %}
+</body>

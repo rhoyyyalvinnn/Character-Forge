@@ -7,6 +7,35 @@
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Optional: add shadow for depth */
     border-radius: 5px;  /* Optional: round the corners */
 }
+.centered-div a{
+    text-decoration: none;
+    font-family: 'Handjet', cursive;
+    font-size: 150%;
+    color: #ffffff; /* Gold for readability on a red background */
+    transition: color 0.3s ease, font-size 0.3s ease; /* Smooth transition */
+    font-weight: 100px;
+    text-shadow: #000000 0px 0px 5px;
+    text-transform: uppercase;
+    /* background-color: black;
+    border-radius: 10px;
+    padding-left: 5px;
+    padding-right: 5px */
+}
+
+.text-right{
+    text-align: right;
+}
+
+.centered-div a:hover {
+    color: rgb(255, 238, 0);
+    text-decoration: underline solid rgb(255, 255, 255);
+    border: 10px;
+    font-size: 200%;
+    /* background-color: black;
+    border-radius: 10px;
+    padding-left: 5px;
+    padding-right: 5px */
+}
 
 .text-area_header {
     background-color: transparent; /* Keep the background transparent */
@@ -20,7 +49,31 @@
 }
 
 /* Reset margins for headings and paragraphs within the text area */
-.text-area h1,
+.text-area h1{
+    margin-top: 0px;
+    font-size: 500%;
+    text-shadow: #474747 3px 5px 2px;
+    color: #000000;
+    text-decoration: underline solid rgb(68, 68, 68);
+    font-weight: 1000;
+    letter-spacing: 2px;
+    font-variant: small-caps;
+    margin-bottom: 0%;
+}
+
+.text-area h2{
+    margin-top: 0px;
+    font-size: 200%;
+    text-shadow: #474747 3px 5px 2px;
+    color: #ffffff;
+    text-transform: uppercase;
+    /* text-decoration: underline solid rgb(68, 68, 68); */
+    /* font-weight: 1000; */
+    /* letter-spacing: 2px; */
+    /* font-variant: small-caps; */
+    margin-bottom: 0%;
+}
+
 .text-area p {
     margin: 0; /* Remove any margin */
     padding: 0; /* Remove any padding */
@@ -38,8 +91,8 @@
     text-align: left;
     color: black;
     min-height: 100px;
-    
 }
+
 .table-area h1{
     margin:0;
     padding:0; 

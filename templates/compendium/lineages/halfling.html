@@ -1,0 +1,149 @@
+{% extends 'compendium/lineages/general_lineages.html' %}
+
+{% load static %}
+
+<body>
+{% block content %}
+
+<div class="centered-div">
+    <p class="text-right"><a href="{% url 'compendium' %}">HOME</a></p>
+    <h1>HALFLINGS</h1>
+    <h2>Player's Handbook</h2>
+    <p>
+        <i><b>
+        The comforts of home are the goals of most halflings' lives: a place to settle in peace and quiet, far from marauding monsters and clashing armies. Others form nomadic bands that travel constantly, lured by the open road and the wide horizon to discover the wonders of new lands and peoples. Halflings work readily with others, and they are loyal to their friends, whether halfling or otherwise. They can display remarkable ferocity when their friends, families, or communities are threatened.
+        </i></b>
+    </p>
+
+    <h2>Main Traits</h2>
+    <ul>
+        <li><strong>Ability Score Increase:</strong> Your Dexterity score increases by 2.</li>
+        <li><strong>Age:</strong> A halfling reaches adulthood at the age of 20 and generally lives into the middle of their second century.</li>
+        <li><strong>Alignment:</strong> Most halflings are lawful good, good-hearted and kind, with no tolerance for oppression.</li>
+        <li><strong>Size:</strong> Halflings average about 3 feet tall and weigh about 40 pounds. Your size is Small.</li>
+        <li><strong>Speed:</strong> Your base walking speed is 25 feet.</li>
+        <li><strong>Lucky:</strong> When you roll a 1 on an attack roll, ability check, or saving throw, you can reroll the die.</li>
+        <li><strong>Brave:</strong> You have advantage on saving throws against being frightened.</li>
+        <li><strong>Nimble:</strong> You can move through the space of any creature that is of a size larger than yours.</li>
+        <li><strong>Languages:</strong> You can speak, read, and write Common and Halfling.</li>
+    </ul>
+
+    <h3>Subraces</h3>
+
+    <h4>Lightfoot</h4>
+    <p>
+        As a lightfoot halfling, you can easily hide from notice, even using other people as cover. You're inclined to be affable and get along well with others.
+    </p>
+    <ul>
+        <li><strong>Ability Score Increase:</strong> Your Charisma score increases by 1.</li>
+        <li><strong>Naturally Stealthy:</strong> You can attempt to hide even when you are only obscured by a creature that is at least one size larger than you.</li>
+    </ul>
+
+    <h4>Stout</h4>
+    <p>
+        As a stout halfling, you're hardier than average and have some resistance to poison.
+    </p>
+    <ul>
+        <li><strong>Ability Score Increase:</strong> Your Constitution score increases by 1.</li>
+        <li><strong>Stout Resilience:</strong> You have advantage on saving throws against poison, and you have resistance to poison damage.</li>
+    </ul>
+
+    <h4>Ghostwise</h4>
+    <p>
+        Ghostwise halflings are the rarest of the hin, found only in isolated forests, clustered in tight-knit clans.
+    </p>
+    <ul>
+        <li><strong>Ability Score Increase:</strong> Your Wisdom score increases by 1.</li>
+        <li><strong>Silent Speech:</strong> You can speak telepathically to any creature within 30 feet of you.</li>
+    </ul>
+
+    <h4>Lotusden</h4>
+    <p>
+        These halflings have adapted to live synergistically with the chaotic laws of the wilds.
+    </p>
+    <ul>
+        <li><strong>Ability Score Increase:</strong> Your Wisdom score increases by 1.</li>
+        <li><strong>Children of the Woods:</strong> You know the Druidcraft cantrip and can cast Entangle and Spike Growth spells once per long rest.</li>
+        <li><strong>Timberwalk:</strong> Ability checks made to track you are at disadvantage.</li>
+    </ul>
+
+    <h3>Eberron: Rising from the Last War</h3>
+
+    <h3>Mark of Hospitality</h3>
+    <p>If you're a hal fling with the Mark of Hospitality, you have this subrace, with the following traits.</p>
+    <ul>
+        <li><strong>Ability Score Increase:</strong> Your Charisma score increases by 1.</li>
+        <li><strong>Ever Hospitable:</strong> Whenever you roll a Charisma (Persuasion) check or an ability check involving Brewer's Tools or Cook's Utensils, roll a d4 and add the number rolled to the total ability check.</li>
+        <li><strong>Innkeeper's Magic:</strong> You know the Prestidigitation cantrip and can also cast Purify Food and Drink and Unseen Servant with this trait.</li>
+    </ul>
+    <h4>Mark of Hospitality Spells</h4>
+    <div class="table-area">
+        <table>
+            <tr>
+                <th>Spell Level</th>
+                <th>Spell</th>
+            </tr>
+            <tr>
+                <td>1st</td>
+                <td>Goodberry, Sleep</td>
+            </tr>
+            <tr>
+                <td>2nd</td>
+                <td>Aid, Calm Emotions</td>
+            </tr>
+            <tr>
+                <td>3rd</td>
+                <td>Create Food and Water, Leomund's Tiny Hut</td>
+            </tr>
+            <tr>
+                <td>4th</td>
+                <td>Aura of Purity, Mordenkainen's Private Sanctum</td>
+            </tr>
+            <tr>
+                <td>5th</td>
+                <td>Hallow</td>
+            </tr>
+        </table>
+    </div>
+
+    <h3>Mark of Healing</h3>
+    <p>If you're a halfling with the Mark of Healing, you have this subrace, with the following traits.</p>
+    <ul>
+        <li><strong>Ability Score Increase:</strong> Your Wisdom score increases by 1.</li>
+        <li><strong>Medical Intuition:</strong> Whenever you roll a Wisdom (Medicine) check or an ability check involving an Herbalism Kit, roll a d4 and add the number rolled to the total ability check.</li>
+        <li><strong>Healing Touch:</strong> You can cast the Cure Wounds spell with this trait, and starting at 3rd level, you can also cast the Lesser Restoration spell.</li>
+    </ul>
+    <h4>Mark of Healing Spells</h4>
+    <div class="table-area">
+        <table>
+            <tr>
+                <th>Spell Level</th>
+                <th>Spell</th>
+            </tr>
+            <tr>
+                <td>1st</td>
+                <td>Cure Wounds, Healing Word</td>
+            </tr>
+            <tr>
+                <td>2nd</td>
+                <td>Lesser Restoration, Prayer of Healing</td>
+            </tr>
+            <tr>
+                <td>3rd</td>
+                <td>Aura of Vitality, Mass Healing Word</td>
+            </tr>
+            <tr>
+                <td>4th</td>
+                <td>Aura of Purity, Aura of Life</td>
+            </tr>
+            <tr>
+                <td>5th</td>
+                <td>Greater Restoration</td>
+            </tr>
+        </table>
+    </div>
+
+</div>
+
+{% endblock content %}
+</body>

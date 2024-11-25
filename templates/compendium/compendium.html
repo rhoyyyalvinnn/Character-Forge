@@ -10,41 +10,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Handjet&display=swap" rel="stylesheet">
 </head>
 <body>
-    {% comment %} <nav class="main-navbar">
-        <ul>
-            <li><a href="#">Game Rules</a></li>
-            <li><a href="#">Community</a></li>
-            <li><a href="#">Forum</a></li>
-            <li class="dropdown">
-                <a href="#">Tools</a>
-                <div class="dropdown-content">
-                    <a href="#">Characters</a>
-                    <a href="#">Compendium</a>
-                </div>
-            </li>
-            <li><a href="#">Sign In</a></li>
-            <li><a href="#">Sign Up</a></li>
-        </ul>
-    </nav>
-
-    <nav class="steps-navbar">
-        <ul>
-            <li class="step"><a href="#">Start</a></li>
-            <li class="step"><a href="#">Race</a></li>
-            <li class="step"><a href="#">Class</a></li>
-            <li class="step"><a href="#">Abilities</a></li>
-            <li class="step"><a href="#">Background</a></li>
-            <li class="step"><a href="#">Equipment</a></li>
-            <li class="step"><a href="#">Spells</a></li>
-            <li class="step"><a href="#">Feats</a></li>
-            <li class="step"><a href="#">Bio</a></li>
-            <li class="step"><a href="#">Review</a></li>
-            <li class="step active"><a href="#">Wiki</a></li>
-            <li class="step cancel"><a href="#">Cancel</a></li>
-        </ul>
-    </nav> {% endcomment %}
-
-    {% comment %} Main content here {% endcomment %}
     <div class="about_container2">
         <div class="text-area_header">
             <p><h1><a style="color: black;" href="{% url 'index' %}">DND Character Forge</a></h1><i>community wiki</i><br><br>
@@ -90,15 +55,15 @@
             <div class="text-card">
                 <h1>All Lineages</h1>
                 <p>
-                    • <a href="#">Dragonborn</a><br>
-                    • <a href="#">Dwarf</a><br>
-                    • <a href="#">Elf</a><br>
-                    • <a href="#">Gnome</a><br>
-                    • <a href="#">Half-Elf</a><br>
-                    • <a href="#">Half-Orc</a><br>
-                    • <a href="#">Halfling</a><br>
-                    • <a href="#">Human</a><br>
-                    • <a href="#">Tiefling</a><br>
+                    • <a href="{% url 'wiki_lineages_dragonborn' %}">Dragonborn</a><br>
+                    • <a href="{% url 'wiki_lineages_dwarf' %}">Dwarf</a><br>
+                    • <a href="{% url 'wiki_lineages_elf' %}">Elf</a><br>
+                    • <a href="{% url 'wiki_lineages_gnome' %}">Gnome</a><br>
+                    • <a href="{% url 'wiki_lineages_halfelf' %}">Half-Elf</a><br>
+                    • <a href="{% url 'wiki_lineages_halforc' %}">Half-Orc</a><br>
+                    • <a href="{% url 'wiki_lineages_halfling' %}">Halfling</a><br>
+                    • <a href="{% url 'wiki_lineages_human' %}">Human</a><br>
+                    • <a href="{% url 'wiki_lineages_tiefling' %}">Tiefling</a><br>
                 </p>
             </div>
         </div>
@@ -163,4 +128,10 @@
     </div>
     
 </body>
+
+<footer class="footer">
+    <p>Terms of Service</p>
+    <p>©Copyright</p>
+    <p>Privacy</p>
+</footer>
 </html>

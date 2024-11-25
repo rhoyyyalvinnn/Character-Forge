@@ -1,3 +1,4 @@
+{% extends 'compendium/spells/general_spells.html' %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Paladin Spell List</title>
     {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'stylesheet/community.css' %}">
     {% comment %} <link rel="stylesheet" href="{% static 'css/style.css' %}"> {% endcomment %}
     <link rel="stylesheet" href="{% static 'stylesheet/compendium/spells.css' %}">
     <link href="https://fonts.googleapis.com/css2?family=Handjet&display=swap" rel="stylesheet">
@@ -22,12 +24,13 @@
     </style>
 </head>
 <body>
+    {% block content %}
     <div class="centered-div">
         <div class="text-area"> 
             <p><h1>Character Forge</h1>
-            community wiki</p>
+                <h2 >community wiki</h2></p>
         </div>
-        <h2><a href="{% url 'compendium' %}">Home</a></li></h2>
+        <h2 class = "text-right" ><a href="{% url 'compendium' %}">Home</a></li></h2>
         <div class="table-area">
             <table><h1>Paladin Spell List</h1>
                 <thead>
@@ -61,5 +64,13 @@
             </table>
         </div>
     </div>
+    {% endblock content %}
 </body>
+
+<footer class="footer">
+    <p>Terms of Service</p>
+    <p>©Copyright</p>
+    <p>Privacy</p>
+</footer>
+
 </html>

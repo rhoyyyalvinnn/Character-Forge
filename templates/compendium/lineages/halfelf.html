@@ -1,0 +1,121 @@
+{% extends 'compendium/lineages/general_lineages.html' %}
+
+{% load static %}
+
+<body>
+{% block content %}
+
+<div class="centered-div">
+    <p class="text-right"><a href="{% url 'compendium' %}">HOME</a></p>
+    <h1>HALF-ELVES</h1>
+    <h2>Player's Handbook</h2>
+    <p>
+        <i><b>
+        Walking in two worlds but truly belonging to neither, half-elves combine what some say are the best qualities of their elf and human parents: human curiosity, inventiveness, and ambition tempered by the refined senses, love of nature, and artistic tastes of the elves.
+        </i></b>
+    </p>
+
+    <h2>Main Traits</h2>
+    <ul>
+        <li><strong>Ability Score Increase:</strong> Your Charisma score increases by 2, and two other ability scores of your choice each increase by 1.</li>
+        <li><strong>Age:</strong> Half-elves reach adulthood at the age of 20 and can live much longer than humans, often exceeding 180 years.</li>
+        <li><strong>Alignment:</strong> Half-elves share the chaotic bent of their elven heritage, valuing personal freedom and creative expression.</li>
+        <li><strong>Size:</strong> Half-elves are similar in size to humans, ranging from 5 to 6 feet tall. Your size is Medium.</li>
+        <li><strong>Speed:</strong> Your base walking speed is 30 feet.</li>
+        <li><strong>Darkvision:</strong> You can see in dim light within 60 feet as if it were bright light, and in darkness as if it were dim light.</li>
+        <li><strong>Fey Ancestry:</strong> You have advantage on saving throws against being charmed, and magic can't put you to sleep.</li>
+        <li><strong>Languages:</strong> You can read, speak, and write Common, Elven, and one language of your choice.</li>
+    </ul>
+
+    <h2>Half-Elf Versatility</h2>
+    <p>Choose one of the following traits:</p>
+    <ul>
+        <li><strong>Skill Versatility (General):</strong> You gain proficiency in two skills of your choice.</li>
+        <li><strong>Elf Weapon Training (High or Wood Elf Heritage):</strong> You have proficiency with the longsword, shortsword, shortbow, and longbow.</li>
+        <li><strong>Cantrip (High Elf Heritage):</strong> You know one cantrip of your choice from the wizard spell list. Intelligence is your spellcasting ability for it.</li>
+        <li><strong>Fleet of Foot (Wood Elf Heritage):</strong> Your base walking speed increases to 35 feet.</li>
+        <li><strong>Mask of the Wild (Wood Elf Heritage):</strong> You can attempt to hide even when you are only lightly obscured.</li>
+        <li><strong>Drow Magic (Dark Elf Heritage):</strong> You know the Dancing Lights cantrip and can cast Faerie Fire and Darkness at higher levels.</li>
+        <li><strong>Swim Speed (Aquatic Elf Heritage):</strong> You have a swimming speed of 30 feet.</li>
+    </ul>
+
+    <h3>Eberron: Rising from the Last War</h3>
+
+    <h3>Mark of Detection</h3>
+    <p>If your Half-Elf has the Mark of Detection, these features replace the Ability Score Increase and the Half-Elf Versatility traits in the Player's Handbook.</p>
+    <ul>
+        <li><strong>Ability Score Increase:</strong> Your Wisdom score increases by 2, and one other Ability Score of your choice increases by 1.</li>
+        <li><strong>Deductive Intuition:</strong> Roll a d4 and add it to Intelligence (Investigation) or Wisdom (Insight) checks.</li>
+        <li><strong>Magical Detection:</strong> You can cast Detect Magic and Detect Poison and Disease spells. Starting at 3rd level, you can also cast See Invisibility.</li>
+    </ul>
+    <h4>Mark of Detection Spells</h4>
+    <div class = "table-area">
+    <table>
+        <tr>
+            <th>Spell Level</th>
+            <th>Spell</th>
+        </tr>
+        <tr>
+            <td>1st</td>
+            <td>Detect Magic, Detect Poison and Disease</td>
+        </tr>
+        <tr>
+            <td>2nd</td>
+            <td >Detect Thoughts, Find Traps</td>
+        </tr>
+        <tr>
+            <td>3rd</td>
+            <td>Clairvoyance, Nondetection</td>
+        </tr>
+        <tr>
+            <td>4th</td>
+            <td>Arcane Eye, Divination</td>
+        </tr>
+        <tr>
+            <td>5th</td>
+            <td>Legend Lore</td>
+        </tr>
+    </table>
+</div>
+    <h3>Mark of Storm</h3>
+    <p>If your Half-Elf has the Mark of Storm, these features replace the Ability Score Increase and the Half-Elf Versatility traits in the Player's Handbook.</p>
+    <ul>
+        <li><strong>Ability Score Increase:</strong> Your Charisma score increases by 2, and your Dexterity score increases by 1.</li>
+        <li><strong>Windwright's Intuition:</strong> Roll a d4 and add it to Dexterity (Acrobatics) checks or any Ability Check involving Navigator's Tools.</li>
+        <li><strong>Storm's Boon:</strong> You have resistance to Lightning damage.</li>
+        <li><strong>Headwinds:</strong> You know the Gust cantrip and can cast Gust of Wind at higher levels.</li>
+    </ul>
+    <h4>Mark of Storm Spells</h4>
+    <div class = "table-area">
+    <table>
+        <tr>
+            <th>Spell Level</th>
+            <th>Spell</th>
+        </tr>
+        <tr>
+            <td>1st</td>
+            <td>Feather Fall, Fog Cloud</td>
+        </tr>
+        <tr>
+            <td>2nd</td>
+            <td>Gust of Wind, Levitate</td>
+        </tr>
+        <tr>
+            <td>3rd</td>
+            <td>Sleet Storm, Wind Wall</td>
+        </tr>
+        <tr>
+            <td>4th</td>
+            <td>Conjure Minor Elementals, Control Water</td>
+        </tr>
+        <tr>
+            <td>5th</td>
+            <td>Conjure Elemental</td>
+        </tr>
+    </table>
+    </div>
+
+</div>
+
+{% endblock content %}
+</body>

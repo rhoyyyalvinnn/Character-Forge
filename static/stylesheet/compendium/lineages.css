@@ -1,0 +1,123 @@
+/* Ensure the html and body take up the full viewport height */
+
+
+.centered-div {
+    margin-top: 0%; /* Centers the div horizontally */
+    margin-left: 20%; /* Adds 20% margin on the left */
+    margin-right: 20%; /* Adds 20% margin on the right */
+    margin-bottom: 10%;
+    background-color: white; /* Sets background color to white */
+    padding: 20px; /* Optional padding for content inside */
+    border: 1px solid #ccc; /* Optional border for visibility */
+    margin-top: 5%;
+    border-radius: 10px;
+    height: auto;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.text-right{
+    text-align: right;
+}
+
+.text-right a{
+    text-decoration: none;
+    font-family: 'Handjet', cursive;
+    font-size: 150%;
+    color: #ff0000; /* Gold for readability on a red background */
+    transition: color 0.3s ease, font-size 0.3s ease; /* Smooth transition */
+    font-weight: 100px;
+    /* background-color: black;
+    border-radius: 10px;
+    padding-left: 5px;
+    padding-right: 5px */
+}
+
+.text-right a:hover {
+    color: rgb(255, 255, 255);
+    font-size: 200%;
+    border: 10px;
+    background-color: black;
+    border-radius: 10px;
+    padding-left: 5px;
+    padding-right: 5px
+}
+
+.centered-div h1{
+    margin-top: 0px;
+    font-size: 400%;
+    text-shadow: #474747 3px 5px 2px;
+    color: #ff0000;
+    text-decoration: underline solid rgb(68, 68, 68);
+    font-weight: 1000;
+    letter-spacing: 2px;
+    font-variant: small-caps;
+}
+
+.centered-div h2{
+    margin-top: 0px;
+    font-size: 225%;
+    margin-bottom: 0%;
+}
+
+.centered-div h3{
+    margin-top: 0px;
+    font-size: 160%;
+    margin-bottom: 0px;
+}
+.centered-div h4{
+    margin-top: 0px;
+    font-size: 140%;
+    margin-bottom: 0%;
+}
+
+.centered-div p{
+    margin-top: 0px;
+    font-size: 130%;
+}
+
+.centered-div ul{
+    margin-top: 0px;
+    font-size: 130%;
+}
+
+.table-area{
+    background-color: white; /* Keep the background transparent */
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    font-family: 'Handjet', cursive;
+    overflow-y: auto;
+    text-align: left;
+    color: black;
+    min-height: 100px;
+    
+}
+.table-area h1{
+    margin:0;
+    padding:0; 
+    font-size: 300%;
+}
+
+.table-area table {
+    width: 100%; /* Full width of the .table-area */
+    border-collapse: collapse;
+}
+
+.table-area th, .table-area td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.table-area th {
+    background-color: #333;
+    color: white;
+}
+
+.table-area tr:nth-child(even) {
+    background-color: #f2f2f2; /* Light gray background for alternating rows */
+}
+
+.table-area tr:hover {
+    background-color: #ddd; /* Highlight row on hover */
+}
