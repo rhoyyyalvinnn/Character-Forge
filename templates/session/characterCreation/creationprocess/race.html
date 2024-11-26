@@ -74,11 +74,11 @@
         <img src="{% static 'images/D&D_image.png' %}" alt="D&D Iconic Image">
 
 
-        <form method="POST" action="#">
+        <form method="POST" action="{% url 'save_character' %}">
             {% csrf_token %}
             <div class="race-selection">
             <label for="raceSelect">Choose a Race:</label>
-            <select id="raceSelect" onchange="updateRaceInfo()">
+            <select id="raceSelect" name="race" onchange="updateRaceInfo()">
                 <option value="">Choose</option>
                 <option value="dragonborn">Dragonborn</option>
                 <option value="dwarf">Dwarf</option>
@@ -95,7 +95,7 @@
 
         <div class="subrace-selection" id="subraceContainer" style="display: none;">
             <label for="subraceSelect">Choose a Subrace:</label>
-            <select id="subraceSelect">
+            <select id="subraceSelect" name="subrace">
                 <option value="">Choose</option>
                 <option value="wood_elf">Wood Elf</option>
                 <option value="high_elf">High Elf</option>
@@ -113,7 +113,7 @@
 
         <div class="alignment-selection" id="alignmentContainer" style="display: none;">
             <label for="alignmentSelect">Choose an Alignment:</label>
-            <select id="alignmentSelect">
+            <select id="alignmentSelect" name="alignment">
                 <option value="">Choose</option>
                 <option value="lawful_good">Lawful Good</option>
                 <option value="neutral_good">Neutral Good</option>

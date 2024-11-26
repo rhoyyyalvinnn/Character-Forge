@@ -71,7 +71,7 @@
     const buttons = document.querySelectorAll('.add-character');
     buttons.forEach(button => {
         button.addEventListener('click', () => {
-            window.location.href = "{% url 'character_creation' %}";
+            window.location.href = "{% url 'create_character' %}";
         });
     });
 </script>

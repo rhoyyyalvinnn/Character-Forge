@@ -30,17 +30,38 @@ urlpatterns = [
     path('actcompendium/tiefling', views.actwiki_lineages_tiefling, name="actwiki_lineages_tiefling"),
     path('actcompendium/dwarf', views.actwiki_lineages_dwarf, name="actwiki_lineages_dwarf"),
     # other compedium stuffs
+
     path('menu/', views.character_menu, name="character_menu"),
-    path('character_creation',views.character_creation, name='character_creation'),
-    path('race/', views.character_race, name="character_race"),
-    path('class/', views.character_class, name="character_class"),
-    path('abilities/', views.character_abilities, name="character_abilities"),
-    path('backgrounds/', views.character_background, name="character_background"),
-    path('equipments/', views.character_equipment, name="character_equipment"),
-    path('spells/', views.character_spell, name="character_spell"),
-    path('feats/', views.character_feats, name="character_feats"),
-    path('bio/', views.character_bio, name="character_bio"),
+    path('create/', views.create_character, name='create_character'),
+    path('character/customize/<int:character_id>/', views.customize_character, name='customize_character')
+    # path('customize/<int:character_id>/', views.customize_character, name='customize_character'),
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    # path('character_creation',views.character_creation, name='character_creation'),
+    # path('race/', views.character_race, name="character_race"),
+    # path('class/', views.character_class, name="character_class"),
+    # path('abilities/', views.character_abilities, name="character_abilities"),
+    # path('backgrounds/', views.character_background, name="character_background"),
+    # path('equipments/', views.character_equipment, name="character_equipment"),
+    # path('spells/', views.character_spell, name="character_spell"),
+    # path('feats/', views.character_feats, name="character_feats"),
+    # path('bio/', views.character_bio, name="character_bio"),
     # path('save_race/', views.save_race, name='save_race'),
+    # path for charactercreationthings
+    # path('save_character/', views.save_character, name='save_character'),
 ]
 
 

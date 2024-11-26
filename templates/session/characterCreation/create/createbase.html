@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+{% load static %}   
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{% static 'assets/logo.ico' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'stylesheet/homepage.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Handjet:wght@100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header>
+        <div class="head">
+            <nav class="nav-left">
+                <ul>
+                    <li><a href="{% url 'character_menu' %}">Cancel Creation</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+        {% block content %}
+        <!-- Content of each page goes here -->
+        {% endblock %}
+    </main>
+
+    <footer class="footer">
+        <p>Terms of Service</p>
+        <p>©Copyright</p>
+        <p>Privacy</p>
+    </footer>
+
+</body>
+</html>

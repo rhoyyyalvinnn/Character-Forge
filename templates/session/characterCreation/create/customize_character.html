@@ -1,0 +1,173 @@
+<!-- templates/customize_character.html -->
+
+{% extends 'session/characterCreation/create/createbase.html' %}
+
+{% block content %}
+<html>
+    <head>
+        <title>Character Customization</title>
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'stylesheet/customize_character.css' %}"
+    </head>
+    <body>
+        <form method="POST" id="customization-form">
+            {% csrf_token %}
+            <h1>Customize Character: {{ character.name }}</h1>
+            {% if messages %}
+                <ul>
+                    {% for message in messages %}
+                        <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+            <div>
+              <h2>Select Spells</h2>
+              <div>
+                <h3>Level 4 Spell (1 required)</h3>
+                {% for spell in spells %}
+                  {% if spell.level == 4 %}
+                    <label>
+                      <input type="checkbox" name="spells" value="{{ spell.id }}" data-level="{{ spell.level }}" onclick="updateSidebar()">
+                      {{ spell.name }}: {{ spell.description }}
+                    </label><br>
+                  {% endif %}
+                {% endfor %}
+              </div>
+        
+              <div>
+                <h3>Level 3 Spell (1 required)</h3>
+                {% for spell in spells %}
+                  {% if spell.level == 3 %}
+                    <label>
+                      <input type="checkbox" name="spells" value="{{ spell.id }}" data-level="{{ spell.level }}" onclick="updateSidebar()">
+                      {{ spell.name }}: {{ spell.description }}
+                    </label><br>
+                  {% endif %}
+                {% endfor %}
+              </div>
+        
+              <div>
+                <h3>Level 2 Spells (2 required)</h3>
+                {% for spell in spells %}
+                  {% if spell.level == 2 %}
+                    <label>
+                      <input type="checkbox" name="spells" value="{{ spell.id }}" data-level="{{ spell.level }}" onclick="updateSidebar()">
+                      {{ spell.name }}: {{ spell.description }}
+                    </label><br>
+                  {% endif %}
+                {% endfor %}
+              </div>
+        
+              <div>
+                <h3>Level 1 Spells (2 required)</h3>
+                {% for spell in spells %}
+                  {% if spell.level == 1 %}
+                    <label>
+                      <input type="checkbox" name="spells" value="{{ spell.id }}" data-level="{{ spell.level }}" onclick="updateSidebar()">
+                      {{ spell.name }}: {{ spell.description }}
+                    </label><br>
+                  {% endif %}
+                {% endfor %}
+              </div>
+            </div>
+        
+            <div>
+              <h2>Select Weapons</h2>
+              <div>
+                <label>Primary Weapon</label>
+                {% for weapon in weapons %}
+                  <label>
+                    <input type="radio" name="primary_weapon" value="{{ weapon.id }}" onclick="updateSidebar()">
+                    {{ weapon.name }}: {{ weapon.description }}
+                  </label><br>
+                {% endfor %}
+              </div>
+        
+              <div>
+                <label>Secondary Weapon</label>
+                {% for weapon in weapons %}
+                  <label>
+                    <input type="radio" name="secondary_weapon" value="{{ weapon.id }}" onclick="updateSidebar()">
+                    {{ weapon.name }}: {{ weapon.description }}
+                  </label><br>
+                {% endfor %}
+              </div>
+            </div>
+        
+            <div>
+              <h2>Select Equipment</h2>
+              {% for equipment in equipments %}
+                <label>
+                  <input type="checkbox" name="equipments" value="{{ equipment.id }}" class="equipment-checkbox" onclick="updateSidebar()">
+                  {{ equipment.name }}: {{ equipment.description }}
+                </label><br>
+              {% endfor %}
+            </div>
+
+            <button type="submit">Save Customization</button>
+        </form>
+        
+          <!-- Sidebar to show selected items -->
+          <div id="sidebar" class="sidebar">
+            <span class="close-btn" onclick="closeSidebar()">×</span>
+            <h3>Selected Items</h3>
+            <div id="selected-items">
+              <h4>Spells:</h4>
+              <ul id="selected-spells"></ul>
+              <h4>Weapons</h4>
+              <ul id="selected-weapons"></ul>
+              <h4>Equipment:</h4>
+              <ul id="selected-equipment"></ul>
+            </div>
+          </div>
+          <script>
+            // Open the sidebar
+            function openSidebar() {
+              document.getElementById('sidebar').style.display = 'block';
+            }
+        
+            // Close the sidebar
+            function closeSidebar() {
+              document.getElementById('sidebar').style.display = 'none';
+            }
+        
+            // Update the sidebar with selected items
+            function updateSidebar() {
+              let selectedSpells = [];
+              let selectedWeapons = [];
+              let selectedEquipment = [];
+        
+              // Collect selected spells
+              document.querySelectorAll('input[name="spells"]:checked').forEach((checkbox) => {
+                let spellName = checkbox.parentElement.innerText.trim().split(':')[0];
+                selectedSpells.push(spellName);
+              });
+        
+              document.querySelectorAll('input[name="primary_weapon"]:checked, input[name="secondary_weapon"]:checked').forEach((radio) => {
+                let weaponName = radio.parentElement.innerText.trim().split(':')[0];
+                selectedWeapons.push(weaponName);
+            });
+        
+              // Collect selected equipment
+              document.querySelectorAll('input[name="equipments"]:checked').forEach((checkbox) => {
+                let equipmentName = checkbox.parentElement.innerText.trim().split(':')[0];
+                selectedEquipment.push(equipmentName);
+              });
+        
+              // Update sidebar
+              document.getElementById('selected-spells').innerHTML = selectedSpells.map(spell => `<li>${spell}</li>`).join('');
+              document.getElementById('selected-weapons').innerHTML = selectedWeapons.map(weapon => `<li>${weapon}</li>`).join('');
+              document.getElementById('selected-equipment').innerHTML = selectedEquipment.map(equipment => `<li>${equipment}</li>`).join('');
+        
+              // Show the sidebar if at least one item is selected
+              if (selectedSpells.length || selectedWeapons.length || selectedEquipment.length) {
+                openSidebar();
+              } else {
+                closeSidebar();
+              }
+            }
+          </script>
+        {% endblock %}
+    </body>
+</html>
+

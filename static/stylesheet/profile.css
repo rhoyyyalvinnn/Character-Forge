@@ -149,12 +149,12 @@ header {
 
 .main-content {
     font-family: 'Handjet', sans-serif;
-    margin: 15px;
+    margin: 63px;
     margin-left: 300px;
     padding: 20px;
     background-color: #F0EAD6;
     border-radius: 10px;
-    min-height: 500px; /* Optional: adjust as needed */
+    min-height: 500px;
 }
 
 .main-content h2{

@@ -1,15 +1,19 @@
 from django.contrib.auth.models import User
 from django.db import models
 
-# Create your models here.
 class Character(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='characters')
     name = models.CharField(max_length=255)
     race = models.CharField(max_length=255)
-    char_class = models.CharField(max_length=255)  # 'class' is a reserved keyword in Python
+    char_class = models.CharField(max_length=255) 
     background = models.CharField(max_length=255)
-    ability_score = models.IntegerField()
-
+    # Stats as individual fields
+    strength = models.IntegerField(default=10)
+    dexterity = models.IntegerField(default=10)
+    constitution = models.IntegerField(default=10)
+    intelligence = models.IntegerField(default=10)
+    wisdom = models.IntegerField(default=10)
+    charisma = models.IntegerField(default=10)
     def __str__(self):
         return self.name
     
@@ -38,17 +42,16 @@ class Equipment(models.Model):
     type = models.CharField(max_length=255)
     effect = models.CharField(max_length=255)
     description = models.TextField()
-
     def __str__(self):
         return self.name
 
 
 class Customization(models.Model):
-    character = models.ForeignKey(Character, on_delete=models.CASCADE)
-    spell = models.ForeignKey(Spell, on_delete=models.CASCADE, null=True, blank=True)
-    weapon = models.ForeignKey(Weapon, on_delete=models.CASCADE, null=True, blank=True)
-    equipment = models.ForeignKey(Equipment, on_delete=models.CASCADE, null=True, blank=True)
+    character = models.OneToOneField(Character, on_delete=models.CASCADE)
+    spells = models.ManyToManyField(Spell)  # Many-to-many relationship with Spell
+    weapons = models.ManyToManyField(Weapon)
+    equipments = models.ManyToManyField(Equipment)
+
 
     def __str__(self):
         return f"Customization for {self.character.name}"
-

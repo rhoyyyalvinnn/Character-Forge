@@ -159,22 +159,21 @@ header {
 
 .main-content h1 {
     font-family: 'Cinzel', serif;
-    font-size: 60px;
+    font-size: px;
     color:#000;
+    margin: 10px;
 }
 
 .cont {
     display: flex;
     flex-direction: row;
-    font-size: 36px;
+    font-size: 15px;
 }
 
 .cont img {
     display: block;  /* Change to block to eliminate the bottom space */
     width: auto;     /* Adjust width as needed */
-    height: 400px;    /* Maintain aspect ratio */
-    margin: 0;       /* Remove any margins */
-    padding: 0;      /* Remove any padding */
+    height: 300px;    /* Maintain aspect ratio */
 }
 
 .footer {

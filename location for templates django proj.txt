@@ -1,3 +1,123 @@
-C:\Users\dontm\OneDrive\Desktop\Character Forge\venv\Lib\site-packages\django\contrib\admin\templates
+<form method="POST" action="{% url 'create_character' %}"> 
+    {% csrf_token %} 
+    <h2>Create a New Character</h2> 
+    <!-- Character Name Field --> 
+    <label for="name">Character Name:</label> 
+    <input type="text" id="name" name="name" required> 
+    <br><br> 
+    <!-- Character Race Field --> 
+    <label for="raceSelect">Choose a Race:</label> 
+    <!-- onchange="updateRaceInfo()"" -->
+    <select id="raceSelect" name="race">
+        <option value="" disabled selected>Select Race</option>
+        <option value="dragonborn">Dragonborn</option>
+        <option value="dwarf">Dwarf</option>
+        <option value="elf">Elf</option>
+        <option value="gnome">Gnome</option>
+        <option value="half-elf">Half-Elf</option>
+        <option value="half-orc">Half-Orc</option>
+        <option value="halfling">Halfling</option>
+        <option value="human">Human</option>
+        <option value="tiefling">Tiefling</option>
+    </select>
 
-location of my templates for Django project
+    <br><br> 
+
+    <!-- Character Class Field --> 
+    <label for="char_class">Character Class:</label> 
+    <select id="classSelect" name="char_class">
+        <option value="" disabled selected>Select Class</option>
+        <option value="artificer">Artificer</option>
+        <option value="barbarian">Barbarian</option>
+        <option value="bard">Bard</option>
+        <option value="blood_hunter">Blood Hunter</option>
+        <option value="cleric">Cleric</option>
+        <option value="druid">Druid</option>
+        <option value="fighter">Fighter</option>
+        <option value="monk">Monk</option>
+        <option value="paladin">Paladin</option>
+        <option value="ranger">Ranger</option>
+        <option value="rogue">Rogue</option>
+        <option value="sorcerer">Sorcerer</option>
+        <option value="warlock">Warlock</option>
+        <option value="wizard">Wizard</option>
+    </select>
+
+    <br><br> 
+
+    <!-- Character Background Field --> 
+    <label for="background">Character Background:</label> 
+    <input type="text" id="background" name="background" required> 
+
+    <br><br> 
+    <div class="abilityscore">
+        <div>
+            <h3>Ability Scores (Standard Array)</h3>
+            <p>Choose the scores for each stat:</p>
+        </div>
+        <button type="button" id="reset-button">Reset</button>
+    </div>
+
+
+    <label for="strength">Strength</label>
+    <select class="stat-select" name="strength" id="strength" required>
+        <option value="15">15</option>
+        <option value="14">14</option>
+        <option value="13">13</option>
+        <option value="12">12</option>
+        <option value="10">10</option>
+        <option value="8">8</option>
+    </select>
+
+    <label for="dexterity">Dexterity</label>
+    <select class="stat-select" name="dexterity" id="dexterity" required>
+        <option value="15">15</option>
+        <option value="14">14</option>
+        <option value="13">13</option>
+        <option value="12">12</option>
+        <option value="10">10</option>
+        <option value="8">8</option>
+    </select>
+
+    <label for="constitution">Constitution</label>
+    <select class="stat-select" name="constitution" id="constitution" required>
+        <option value="15">15</option>
+        <option value="14">14</option>
+        <option value="13">13</option>
+        <option value="12">12</option>
+        <option value="10">10</option>
+        <option value="8">8</option>
+    </select>
+
+    <label for="intelligence">Intelligence</label>
+    <select class="stat-select" name="intelligence" id="intelligence" required>
+        <option value="15">15</option>
+        <option value="14">14</option>
+        <option value="13">13</option>
+        <option value="12">12</option>
+        <option value="10">10</option>
+        <option value="8">8</option>
+    </select>
+
+    <label for="wisdom">Wisdom</label>
+    <select class="stat-select" name="wisdom" id="wisdom" required>
+        <option value="15">15</option>
+        <option value="14">14</option>
+        <option value="13">13</option>
+        <option value="12">12</option>
+        <option value="10">10</option>
+        <option value="8">8</option>
+    </select>
+
+    <label for="charisma">Charisma</label>
+    <select class="stat-select" name="charisma" id="charisma" required>
+        <option value="15">15</option>
+        <option value="14">14</option>
+        <option value="13">13</option>
+        <option value="12">12</option>
+        <option value="10">10</option>
+        <option value="8">8</option>
+    </select>
+    <!-- Submit Button --> 
+    <button type="submit">Create Character</button> 
+</form> 

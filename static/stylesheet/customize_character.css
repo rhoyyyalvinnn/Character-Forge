@@ -1,0 +1,120 @@
+/* General body styles */
+body {
+    margin: 0;
+    padding: 0;
+}
+
+/* Container for the content */
+.content {
+    max-width: 1200px;
+    margin: 80px auto 20px auto; /* Add top margin to prevent collision with header */
+    padding: 20px;
+}
+
+/* Heading for the page */
+h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Styling for the form */
+form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 800px;
+    margin: 50px auto;
+}
+
+/* Heading for sections like Spells, Weapons, etc. */
+h2 {
+    color: #444;
+    font-size: 1.2em;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+/* Styling for the label and input fields */
+label {
+    display: block;
+    font-size: 1em;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+input[type="checkbox"] {
+    margin-right: 10px;
+    transform: scale(1.2);
+}
+
+/* Section for Spells, Weapons, and Equipment */
+div {
+    margin-bottom: 20px;
+}
+
+/* Submit button styles */
+button[type="submit"] {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    background-color: #401D1D;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #884b4b;
+}
+
+/* Sidebar Popup for Selected Items */
+.sidebar {
+    position: fixed;
+    top: 20%;
+    right: 0;
+    width: 300px;
+    height: 70%;
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    border-radius: 10px 0 0 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    display: none;
+    z-index: 100;
+    overflow-y: auto;
+}
+
+.sidebar h3 {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    padding: 5px;
+    border-bottom: 1px solid #ddd;
+}
+
+.sidebar ul li:last-child {
+    border-bottom: none;
+}
+
+/* Close Button for Sidebar */
+.sidebar .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 1.5em;
+    cursor: pointer;
+    color: #fff;
+}

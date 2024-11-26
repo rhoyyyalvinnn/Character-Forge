@@ -1,10 +1,10 @@
-from django.shortcuts import redirect, render
+from django.shortcuts import redirect, render, get_object_or_404
 from django.contrib.auth import logout
-
+from django.contrib import messages
+from .models import Character, Spell, Weapon, Equipment, Customization
 # Create your views here.
 def home(request):
-    # Access the logged-in user's details directly
-    user = request.user  # This is the authenticated user object
+    user = request.user
 
     context = {
         'username': user.username,
@@ -15,24 +15,19 @@ def home(request):
     return render(request, "session/homepage.html", context)
 
 def signout(request):
-    logout(request)  # Logs the user out
-    return redirect('index')  # Redirect to index or homepage after logging out
+    logout(request)
+    return redirect('index')
 
 
 def profile(request):
-        # Access the logged-in user's details directly
-    user = request.user  # This is the authenticated user object
-
+    user = request.user
     context = {
         'username': user.username,
         'first_name': user.first_name,
         'last_name': user.last_name,
         'email': user.email,
-        # Add more fields if needed
     }
     return render(request, "session/profile.html", context)
-
-
 
 def actgamerules(request):
     return render(request, "session/actgamerules.html")
@@ -42,11 +37,6 @@ def actcommunity(request):
 
 def actforum(request):
     return render(request, "session/actforum.html")
-
-
-
-# chatgpt code for creating pdf using html
-# https://chatgpt.com/c/67356442-f244-800f-b2aa-3ac658a6e4fb
 
 def actcompendium(request):
     return render(request, 'session/actcompendium/actcompendium.html')
@@ -105,51 +95,167 @@ def actwiki_lineages_human(request):
 def actwiki_lineages_tiefling(request):
     return render(request, 'session/actcompendium/lineages/tiefling.html')
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 def character_menu(request):
     return render(request, 'session/characterCreation/character_menu.html')
 
-def character_creation(request):
-    return render(request, 'session/characterCreation/character_creation.html')
+def create_character(request):
+    if request.method == 'POST':
+        # Extract data from the form
+        name = request.POST.get('name')
+        race = request.POST.get('race')
+        char_class = request.POST.get('char_class')
+        background = request.POST.get('background')
+        try:
+            strength = int(request.POST.get('strength'))
+            dexterity = int(request.POST.get('dexterity'))
+            constitution = int(request.POST.get('constitution'))
+            intelligence = int(request.POST.get('intelligence'))
+            wisdom = int(request.POST.get('wisdom'))
+            charisma = int(request.POST.get('charisma'))
+        except ValueError:
+            # Handle the case where conversion fails
+            messages.error(request, "All stats must be valid integers.")
+            return render(request, 'session/characterCreation/create/create_character.html')
 
-def character_race(request):
-    return render(request, 'session/characterCreation/creationProcess/race.html')
+        # Collect all the stats in a list
+        stats = [strength, dexterity, constitution, intelligence, wisdom, charisma]
 
-def character_class(request):
-    return render(request, 'session/characterCreation/creationProcess/class.html')
+        # Check if any stats have the same value
+        if len(stats) != len(set(stats)):
+            # If there are duplicates, show an error message
+            messages.error(request, "No two stats should have the same value!")
+            return render(request, 'session/characterCreation/create/create_character.html', {
+                'name': name,
+                'race': race,
+                'char_class': char_class,
+                'background': background,
+                'strength': strength,
+                'dexterity': dexterity,
+                'constitution': constitution,
+                'intelligence': intelligence,
+                'wisdom': wisdom,
+                'charisma': charisma,
+            })
 
-def character_abilities(request):
-    return render(request, 'session/characterCreation/creationProcess/abilities.html')
+        # Define race-based stat bonuses
+        race_stat_modifiers = {
+            "dragonborn": {"strength": 2, "charisma": 1},
+            "dwarf": {"constitution": 2},
+            "elf": {"dexterity": 2},
+            "gnome": {"intelligence": 2, "dexterity": 1},
+            "half-elf": {"charisma": 2, "intelligence": 1, "wisdom": 1},
+            "half-orc": {"strength": 2, "constitution": 1},
+            "halfling": {"dexterity": 2, "charisma": 1},
+            "human": {"strength": 1, "dexterity": 1, "constitution": 1, "intelligence": 1, "wisdom": 1, "charisma": 1},
+            "tiefling": {"charisma": 2, "intelligence": 1},
+        }
 
-def character_background(request):
-    return render(request, 'session/characterCreation/creationProcess/backgrounds.html')
-# equipment, spell, feats, bio
-def character_equipment(request):
-    return render(request, 'session/characterCreation/creationProcess/equipments.html')
+        # Apply race-based stat bonuses if race exists in the dictionary
+        if race.lower() in race_stat_modifiers:
+            modifiers = race_stat_modifiers[race.lower()]
+            strength += modifiers.get("strength", 0)
+            dexterity += modifiers.get("dexterity", 0)
+            constitution += modifiers.get("constitution", 0)
+            intelligence += modifiers.get("intelligence", 0)
+            wisdom += modifiers.get("wisdom", 0)
+            charisma += modifiers.get("charisma", 0)
 
-def character_spell(request):
-    return render(request, 'session/characterCreation/creationProcess/spells.html')
+        # If stats are unique, process the character creation logic
+        print(f"Name: {name}, Class: {char_class}, Race: {race}, Background: {background}")
+        print(f"Strength: {strength}, Dexterity: {dexterity}, Constitution: {constitution}, Intelligence: {intelligence}")
 
-def character_feats(request):
-    return render(request, 'session/characterCreation/creationProcess/feats.html')
+                # Create the character instance and save to the database
+        character = Character(
+            user=request.user,
+            name=name,
+            race=race,
+            char_class=char_class,
+            background=background,
+            strength=strength,
+            dexterity=dexterity,
+            constitution=constitution,
+            intelligence=intelligence,
+            wisdom=wisdom,
+            charisma=charisma
+        )
+        character.save()
 
-def character_bio(request):
-    return render(request, 'session/characterCreation/creationProcess/bio.html')
+        # Redirect to a page, such as the character customization page
+        return redirect('customize_character', character_id=character.id)
+
+    return render(request, 'session/characterCreation/create/create_character.html')
+
+def customize_character(request, character_id):
+    # Fetch the character object, ensuring it belongs to the logged-in user
+    character = get_object_or_404(Character, id=character_id, user=request.user)
+
+    # Get all available spells, weapons, and equipment
+    spells = Spell.objects.all()
+    weapons = Weapon.objects.all()
+    equipments = Equipment.objects.all()
+
+    if request.method == 'POST':
+        # Get selected spells, weapons, and equipment from the form
+        selected_spells = request.POST.getlist('spells')
+        primary_weapon = request.POST.get('primary_weapon')
+        secondary_weapon = request.POST.get('secondary_weapon')
+        selected_equipments = request.POST.getlist('equipments')
+
+
+        # Combine primary and secondary weapons into a list
+        selected_weapons = [primary_weapon, secondary_weapon]
+
+        # Validation for spells
+        spell_counts = {
+            'level_4': 0,
+            'level_3': 0,
+            'level_2': 0,
+            'level_1': 0,
+        }
+
+        # Count spells by level
+        for spell_id in selected_spells:
+            spell = Spell.objects.get(id=spell_id)
+            if spell.level == 4:
+                spell_counts['level_4'] += 1
+            elif spell.level == 3:
+                spell_counts['level_3'] += 1
+            elif spell.level == 2:
+                spell_counts['level_2'] += 1
+            elif spell.level == 1:
+                spell_counts['level_1'] += 1
+
+        # Validate spell selection
+        if (spell_counts['level_4'] != 1 or
+            spell_counts['level_3'] != 1 or
+            spell_counts['level_2'] != 2 or
+            spell_counts['level_1'] != 2):
+            messages.error(request, "You must select exactly 1 Level 4 spell, 1 Level 3 spell, 2 Level 2 spells, and 2 Level 1 spells.")
+            return redirect('customize_character', character_id=character.id)
+
+        # Validation for weapons (1 primary and 1 secondary)
+        if len(selected_weapons) != 2:
+            messages.error(request, "You must select exactly 2 weapons: 1 Primary and 1 Secondary.")
+            return redirect('customize_character', character_id=character.id)
+
+        # Validation for equipment (at least 7 items)
+        if len(selected_equipments) < 7:
+            messages.error(request, "You must select at least 7 pieces of equipment.")
+            return redirect('customize_character', character_id=character.id)
+
+        # Create or update the Customization for this character
+        customization, created = Customization.objects.get_or_create(character=character)
+        customization.spells.set(selected_spells)
+        customization.weapons.set(selected_weapons)
+        customization.equipments.set(selected_equipments)
+        customization.save()
+
+        # Redirect to a page to view the character or confirmation page
+        return redirect('character_menu')
+
+    return render(request, 'session/characterCreation/create/customize_character.html', {
+        'character': character,
+        'spells': spells,
+        'weapons': weapons,
+        'equipments': equipments,
+    })
