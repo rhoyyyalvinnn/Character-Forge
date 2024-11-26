@@ -20,6 +20,16 @@ urlpatterns = [
     path('actcompendium/sorcerer/', views.actwiki_spells_sorcerer, name="actwiki_spells_sorcerer"),
     path('actcompendium/warlock/', views.actwiki_spells_warlock, name="actwiki_spells_warlock"),
     path('actcompendium/wizard/', views.actwiki_spells_wizard, name="actwiki_spells_wizard"),
+    path('actcompendium/dragonborn', views.actwiki_lineages_dragonborn, name="actwiki_lineages_dragonborn"),
+    path('actcompendium/elf', views.actwiki_lineages_elf, name="actwiki_lineages_elf"),
+    path('actcompendium/gnome', views.actwiki_lineages_gnome, name="actwiki_lineages_gnome"),
+    path('actcompendium/halfelf', views.actwiki_lineages_halfelf, name="actwiki_lineages_halfelf"),
+    path('actcompendium/halforc', views.actwiki_lineages_halforc, name="actwiki_lineages_halforc"),
+    path('actcompendium/halfling', views.actwiki_lineages_halfling, name="actwiki_lineages_halfling"),
+    path('actcompendium/human', views.actwiki_lineages_human, name="actwiki_lineages_human"),
+    path('actcompendium/tiefling', views.actwiki_lineages_tiefling, name="actwiki_lineages_tiefling"),
+    path('actcompendium/dwarf', views.actwiki_lineages_dwarf, name="actwiki_lineages_dwarf"),
+    # other compedium stuffs
     path('menu/', views.character_menu, name="character_menu"),
     path('character_creation',views.character_creation, name='character_creation'),
     path('race/', views.character_race, name="character_race"),
@@ -32,3 +42,10 @@ urlpatterns = [
     path('bio/', views.character_bio, name="character_bio"),
     # path('save_race/', views.save_race, name='save_race'),
 ]
+
+
+
+
+
+
+

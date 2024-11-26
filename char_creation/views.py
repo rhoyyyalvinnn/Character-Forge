@@ -78,6 +78,52 @@ def actwiki_spells_warlock(request):
 def actwiki_spells_wizard(request):
     return render(request, 'session/actcompendium/actspells/actwizard_spell.html')
 
+def actwiki_lineages_dragonborn(request):
+    return render(request, 'session/actcompendium/lineages/dragonborn.html')
+
+def actwiki_lineages_dwarf(request):
+    return render(request, 'session/actcompendium/lineages/dwarf.html')
+
+def actwiki_lineages_elf(request):
+    return render(request, 'session/actcompendium/lineages/elf.html')
+
+def actwiki_lineages_gnome(request):
+    return render(request, 'session/actcompendium/lineages/gnome.html')
+
+def actwiki_lineages_halfelf(request):
+    return render(request, 'session/actcompendium/lineages/halfelf.html')
+
+def actwiki_lineages_halforc(request):
+    return render(request, 'session/actcompendium/lineages/halforc.html')
+
+def actwiki_lineages_halfling(request):
+    return render(request, 'session/actcompendium/lineages/halfling.html')
+
+def actwiki_lineages_human(request):
+    return render(request, 'session/actcompendium/lineages/human.html')
+
+def actwiki_lineages_tiefling(request):
+    return render(request, 'session/actcompendium/lineages/tiefling.html')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 def character_menu(request):
     return render(request, 'session/characterCreation/character_menu.html')
 

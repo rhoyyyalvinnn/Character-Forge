@@ -1,0 +1,119 @@
+{% extends 'compendium/lineages/general_lineages.html' %}
+
+{% load static %}
+
+<body>
+{% block content %}
+
+<div class="centered-div">
+    <p class="text-right"><a href="{% url 'actcompendium' %}">HOME</a></p>
+    <h1>GNOMES</h1>
+    <h2>Player's Handbook</h2>
+    <p>
+        <i><b>
+        A constant hum of busy activity pervades the warrens and neighborhoods where gnomes form their close-knit communities. Louder sounds punctuate the hum: a crunch of grinding gears here, a minor explosion there, a yelp of surprise or triumph, and especially bursts of laughter. Gnomes take delight in life, enjoying every moment of invention, exploration, investigation, creation, and play.
+        </i></b>
+    </p>
+
+    <h2>Main Traits</h2>
+    <ul>
+        <li><strong>Ability Score Increase:</strong> Your Intelligence score increases by 2.</li>
+        <li><strong>Age:</strong> Gnomes mature at the same rate as humans, settling into adult life around the age of 40. They can live to 350 years on average, but some reach 500 years of age.</li>
+        <li><strong>Alignment:</strong> Gnomes are generally Good, favoring harmless pranks over vicious schemes.</li>
+        <li><strong>Size:</strong> Gnomes are between 3 and 4 feet tall and weigh around 40 pounds. Your size is Small.</li>
+        <li><strong>Speed:</strong> Your base walking speed is 25 feet.</li>
+        <li><strong>Darkvision:</strong> You can see in dim light within 60 feet as if it were bright light, and in darkness as if it were dim light.</li>
+        <li><strong>Gnome Cunning:</strong> You have advantage on all Intelligence, Wisdom, and Charisma saves against magic.</li>
+        <li><strong>Languages:</strong> You can read, speak, and write Common and Gnomish.</li>
+    </ul>
+
+    <h2>Subraces</h2>
+
+    <h3>Forest Gnome</h3>
+    <p>
+        As a forest gnome, you have a natural knack for illusion and inherent quickness and stealth. 
+    </p>
+    <ul>
+        <li><strong>Ability Score Increase:</strong> Your Dexterity score increases by 1.</li>
+        <li><strong>Natural Illusionist:</strong> You know the Minor Illusion cantrip. Intelligence is your spellcasting modifier for it.</li>
+        <li><strong>Speak with Small Beasts:</strong> You may communicate simple ideas with Small or smaller beasts through sound and gestures.</li>
+    </ul>
+
+    <h3>Rock Gnome</h3>
+    <p>
+        As a rock gnome, you have a natural inventiveness and hardiness beyond that of other gnomes. 
+    </p>
+    <ul>
+        <li><strong>Ability Score Increase:</strong> Your Constitution score increases by 1.</li>
+        <li><strong>Artificer's Lore:</strong> Add twice your proficiency bonus to Intelligence (History) checks related to magical, alchemical, or technological items.</li>
+        <li><strong>Tinker:</strong> You have proficiency with tinker's tools and can create Tiny clockwork devices.</li>
+    </ul>
+    <h4>Clockwork Device Options</h4>
+    <div class="table-area">
+    <table>
+        <thead>
+            <tr>
+                <th>Device</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Clockwork Toy</td>
+                <td>A toy that moves randomly and makes appropriate noises.</td>
+            </tr>
+            <tr>
+                <td>Fire Starter</td>
+                <td>Produces a miniature flame to light candles or fires.</td>
+            </tr>
+            <tr>
+                <td>Music Box</td>
+                <td>Plays a single song at a moderate volume when opened.</td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+
+    <h3>Mark of Scribing</h3>
+    <p>
+        If you're a gnome with the Mark of Scribing, you have this subrace, with the following traits.
+    </p>
+    <ul>
+        <li><strong>Ability Score Increase:</strong> Your Charisma score increases by 1.</li>
+        <li><strong>Gifted Scribe:</strong> Roll a d4 and add it to Intelligence (History) or an Ability Check involving Calligrapher's Supplies.</li>
+        <li><strong>Scribe's Insight:</strong> You know the Message cantrip and can cast Comprehend Languages and Magic Mouth spells at higher levels.</li>
+    </ul>
+    <h4>Mark of Scribing Spells</h4>
+    <div class="table-area">
+    <table>
+        <tr>
+            <th>Spell Level</th>
+            <th>Spell</th>
+        </tr>
+        <tr>
+            <td>1st</td>
+            <td>Comprehend Languages, Illusory Script</td>
+        </tr>
+        <tr>
+            <td>2nd</td>
+            <td>Animal Messenger, Silence</td>
+        </tr>
+        <tr>
+            <td>3rd</td>
+            <td>Sending, Tongues</td>
+        </tr>
+        <tr>
+            <td>4th</td>
+            <td>Arcane Eye, Divination</td>
+        </tr>
+        <tr>
+            <td>5th</td>
+            <td>Dream</td>
+        </tr>
+    </table>
+    </div>
+
+</div>
+
+{% endblock content %}
+</body>

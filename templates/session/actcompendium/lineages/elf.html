@@ -1,0 +1,185 @@
+{% extends 'compendium/lineages/general_lineages.html' %}
+
+{% load static %}
+
+<body>
+{% block content %}
+
+<div class="centered-div">
+    <p class="text-right"><a href="{% url 'actcompendium' %}">HOME</a></p>
+    <h1>ELF</h1>
+    <h2>Player's Handbook</h2>
+    <p>
+        <i><b>
+        Elves are a magical people of otherworldly grace, living in places of ethereal beauty, in the midst of ancient forests or in silvery spires glittering with faerie light, where soft music drifts through the air and gentle fragrances waft on the breeze. Elves love nature and magic, art and artistry, music and poetry.
+        </i></b>
+    </p>
+
+    <h2>Main Traits</h2>
+    <ul>
+        <li><strong>Ability Score Increase:</strong> Your Dexterity score increases by 2.</li>
+        <li><strong>Age:</strong> Elves typically claim adulthood around the age of 100 and can live to be 750 years old.</li>
+        <li><strong>Alignment:</strong> Elves lean towards chaos and are generally good, with the exception of the Drow, who are often evil.</li>
+        <li><strong>Size:</strong> Elves range from under 5 to over 6 feet tall. Your size is Medium.</li>
+        <li><strong>Speed:</strong> Your base walking speed is 30 feet.</li>
+        <li><strong>Darkvision:</strong> You can see in dim light within 60 feet as if it were bright light, and in darkness as if it were dim light.</li>
+        <li><strong>Fey Ancestry:</strong> You have advantage on saving throws against being charmed, and magic can't put you to sleep.</li>
+        <li><strong>Trance:</strong> You meditate deeply for 4 hours a day instead of sleeping.</li>
+        <li><strong>Keen Senses:</strong> You have proficiency in the Perception skill.</li>
+        <li><strong>Languages:</strong> You can speak, read, and write Common and Elven.</li>
+    </ul>
+
+    <h2>Subraces</h2>
+
+    <h3>Dark Elf (Drow)</h3>
+    <p>
+        Descended from an earlier subrace of dark-skinned elves, the drow were banished from the surface world for following the goddess Lolth down the path to evil and corruption. 
+    </p>
+    <ul>
+        <li><strong>Ability Score Increase:</strong> Your Charisma score increases by 1.</li>
+        <li><strong>Superior Darkvision:</strong> Your darkvision has a range of 120 feet.</li>
+        <li><strong>Sunlight Sensitivity:</strong> You have disadvantage on attack rolls and Wisdom (Perception) checks in direct sunlight.</li>
+        <li><strong>Drow Magic:</strong> You know the Dancing Lights cantrip and can cast Faerie Fire and Darkness spells at higher levels.</li>
+        <li><strong>Drow Weapon Training:</strong> You have proficiency with rapiers, shortswords, and hand crossbows.</li>
+    </ul>
+
+    <h3>High Elf</h3>
+    <p>
+        High elves have a keen mind and a mastery of magic basics. They are often perceived as haughty or reclusive.
+    </p>
+    <ul>
+        <li><strong>Ability Score Increase:</strong> Your Intelligence score increases by 1.</li>
+        <li><strong>Cantrip:</strong> You know one cantrip of your choice from the Wizard spell list.</li>
+        <li><strong>Elf Weapon Training:</strong> You have proficiency with the longsword, shortsword, shortbow, and longbow.</li>
+        <li><strong>Extra Language:</strong> You can read, speak, and write one additional language of your choice.</li>
+    </ul>
+
+    <h3>Wood Elf</h3>
+    <p>
+        Wood elves are known for their keen senses and intuition, moving quickly and stealthily through forests.
+    </p>
+    <ul>
+        <li><strong>Ability Score Increase:</strong> Your Wisdom score increases by 1.</li>
+        <li><strong>Elf Weapon Training:</strong> You have proficiency with the longsword, shortsword, shortbow, and longbow.</li>
+        <li><strong>Fleet of Foot:</strong> Your base walking speed increases to 35 feet.</li>
+        <li><strong>Mask of the Wild :</strong> You can attempt to hide even when you are only lightly obscured by foliage, heavy rain, falling snow, mist, and other natural phenomena.</li>
+    </ul>
+
+    <h3>Pallid Elf</h3>
+    <p>
+        Pallid elves are mystical and insightful, emerging from the Pallid Grove with childlike curiosity.
+    </p>
+    <ul>
+        <li><strong>Ability Score Increase:</strong> Your Wisdom score increases by 1.</li>
+        <li><strong>Incisive Sense:</strong> You have advantage on Investigation and Insight checks.</li>
+        <li><strong>Blessing of the Moonweaver:</strong> You know the Light cantrip and can cast Sleep and Invisibility at higher levels.</li>
+    </ul>
+
+    <h3>Mark of Shadow</h3>
+    <p>
+        If you're an elf with the Mark of Shadow, you have this subrace, with the following traits.
+    </p>
+    <ul>
+        <li><strong>Ability Score Increase:</strong> Your Charisma score increases by 1.</li>
+        <li><strong>Cunning Intuition:</strong> Roll a d4 and add it to Dexterity (Stealth) or Charisma (Performance) checks.</li>
+        <li><strong>Shape Shadows:</strong> You know the Minor Illusion cantrip and can cast Invisibility at higher levels.</li>
+    </ul>
+    
+        <h3>Mark of Shadow Spells</h3>
+        <div class="table-area"> 
+    <table>
+        <tr>
+            <th>Spell Level</th>
+            <th>Spell</th>
+        </tr>
+        <tr>
+            <td>1st</td>
+            <td>Disguise Self, Silent Image</td>
+        </tr>
+        <tr>
+            <td>2nd</td>
+            <td>Darkness, Pass Without Trace</td>
+        </tr>
+        <tr>
+            <td>3rd</td>
+            <td>Clairvoyance, Major Image</td>
+        </tr>
+        <tr>
+            <td>4th</td>
+            <td>Greater Invisibility, Hallucinatory Terrain</td>
+        </tr>
+        <tr>
+            <td>5th</td>
+            <td>Mislead</td>
+        </tr>
+    </table>
+
+    </div>
+    <h3>Astral Elf</h3>
+    <p>
+        Astral elves have a spark of divine light and a unique perspective on time due to their origins in the Astral Plane.
+    </p>
+    <ul>
+        <li><strong>Ability Score Increase:</strong> Increase one ability score by 2, and increase a different one by 1, or increase three different scores by 1.</li>
+        <li><strong>Astral Fire:</strong> You know one of the following cantrips: Dancing Lights, Light, or Sacred Flame.</li>
+        <li><strong>Starlight Step:</strong> You can teleport up to 30 feet as a bonus action.</li>
+        <li><strong>Astral Trance:</strong> You can finish a long rest in 4 hours of meditation.</li>
+    </ul>
+
+    <h3>Bishtahar/Tirahar Elves</h3>
+    <p>
+        Bishtahar elves live in harmony with nature, while Tirahar elves reject technology and live in wilder areas.
+    </p>
+    <ul>
+        <li><strong>Ability Score Increase:</strong> Your Wisdom score increases by 1.</li>
+        <li><strong>Elf Weapon Training:</strong> You have proficiency with the longsword, shortsword, shortbow, and longbow.</li>
+        <li><strong>Fleet of Foot:</strong> Your base walking speed increases to 35 feet.</li>
+        <li><strong>Mask of the Wild:</strong> You can attempt to hide even when you are only lightly obscured.</li>
+    </ul>
+
+    <h3>Vahadar Elf</h3>
+    <p>
+        Vahadar elves are comfortable with technology and often work as planners and inventors in urban settings.
+    </p>
+    <ul>
+        <li><strong>Ability Score Increase:</strong> Your Wisdom score increases by 1.</li>
+        <li><strong>Elf Weapon Training:</strong> You have proficiency with the longsword, shortsword, shortbow, and longbow.</li>
+        <li><strong>Cantrip:</strong> You know one cantrip of your choice from the Druid spell list.</li>
+        <li><strong>Extra Language:</strong> You can speak, read, and write one extra language of your choice.</li>
+    </ul>
+
+    <h3>Tajuru</h3>
+    <p>
+        Tajuru elves are open to other races and new lifestyles, often living in clans across Zendikar.
+    </p>
+    <ul>
+        <li><strong>Ability Score Increase:</strong> Your Charisma score increases by 1.</li>
+        <li><strong>Skill Versatility:</strong> You gain proficiency in any combination of two skills or tools of your choice.</li>
+    </ul>
+
+    <h3>Juraga</h3>
+    <p>
+        The Joraga elves are imperious and view other races as weak, focusing solely on their own survival and traditions.
+    </p>
+    <ul>
+        <li><strong>Ability Score Increase:</strong> Your Dexterity score increases by 1.</li>
+        <li><strong>Elf Weapon Training:</strong> You have proficiency with the longsword, shortsword, shortbow, and longbow.</li>
+        <li><strong>Fleet of Foot:</strong> Your base walking speed increases to 35 feet.</li>
+        <li><strong>Mask of the Wild:</strong> You can attempt to hide even when you are only lightly obscured by foliage, heavy rain, falling snow, mist, and other natural phenomena.</li>
+    </ul>
+
+    <h3>Mul Daya</h3>
+    <p>
+        Mul Daya elves have a deep connection with the spirits of their ancestors and view death as a natural part of life.
+    </p>
+    <ul>
+        <li><strong>Ability Score Increase:</strong> Your Strength score increases by 1.</li>
+        <li><strong>Superior Darkvision:</strong> Your darkvision has a radius of 120 feet.</li>
+        <li><strong>Sunlight Sensitivity:</strong> You have disadvantage on attack rolls and Wisdom (Perception) checks in direct sunlight.</li>
+        <li><strong>Mul Daya Magic:</strong> You know the chill touch cantrip and can cast hex and darkness at higher levels.</li>
+        <li><strong>Elf Weapon Training:</strong> You have proficiency with the longsword, shortsword, shortbow, and longbow.</li>
+    </ul>
+</div>
+
+{% endblock content %}
+</body>
