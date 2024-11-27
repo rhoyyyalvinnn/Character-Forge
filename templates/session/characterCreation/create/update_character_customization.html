@@ -1,0 +1,238 @@
+<html>
+    <head>
+        <title>Update Character Customization</title>
+        {% load static %}
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="{% static 'assets/logo.ico' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'stylesheet/homepage.css' %}">
+        <link rel="stylesheet" href="{% static 'stylesheet/customize_character.css' %}">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Handjet:wght@100..900&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap" rel="stylesheet">
+        <style>
+            .alert {
+                padding: 10px 20px;
+                margin: 20px 0;
+                border-radius: 5px;
+                font-size: 16px;
+                font-weight: bold;
+            }
+    
+            /* Style for error messages */
+            .alert.error {
+                background-color: #f8d7da;
+                color: #721c24;
+                border: 1px solid #f5c6cb;
+            }
+    
+            /* Style for the 'Go Back to Character Review' link */
+            a {
+                display: inline-block;
+                padding: 10px 20px;
+                background-color: #401D1D; /* Background color */
+                color: white;              /* Text color */
+                text-decoration: none;     /* Remove underline */
+                font-size: 16px;
+                font-weight: bold;
+                border-radius: 5px;        /* Rounded corners */
+                transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+            }
+    
+            /* Hover effect for the link */
+            a:hover {
+                background-color: #5A2E2E; /* Darker shade for hover effect */
+            }
+    
+            /* Focus effect for accessibility */
+            a:focus {
+                outline: 2px solid #fff;
+                outline-offset: 2px;
+            }
+    
+        </style>
+    </head>
+    <body>
+      <form method="POST" id="customization-form">
+        <a href="{% url 'character_review' character.id %}" >Go Back to Character Review</a>
+        {% csrf_token %}
+        <h1>Customize Character: {{ character.name }}</h1>
+    
+        {% if messages %}
+            <ul>
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    
+        <div>
+            <h2>Select Spells</h2>
+            
+            <!-- Level 4 Spells -->
+            <div>
+                <h3>Level 4 Spells (1 required)</h3>
+                {% for spell in spells %}
+                    {% if spell.level == 4 %}
+                        <label>
+                            <input type="checkbox" name="spells" value="{{ spell.id }}" 
+                                   {% if spell in customization.spells.all %} checked {% endif %}>
+                            {{ spell.name }}: {{ spell.description }}
+                        </label><br>
+                    {% endif %}
+                {% endfor %}
+            </div>
+            
+    
+            <!-- Level 3 Spells -->
+            <div>
+                <h3>Level 3 Spell (1 required)</h3>
+                {% for spell in spells %}
+                    {% if spell.level == 3 %}
+                        <label>
+                            <input type="checkbox" name="spells" value="{{ spell.id }}" 
+                                   {% if spell in customization.spells.all %} checked {% endif %}>
+                            {{ spell.name }}: {{ spell.description }}
+                        </label><br>
+                    {% endif %}
+                {% endfor %}
+            </div>
+    
+            <!-- Level 2 Spells -->
+            <div>
+                <h3>Level 2 Spells (2 required)</h3>
+                {% for spell in spells %}
+                    {% if spell.level == 2 %}
+                        <label>
+                            <input type="checkbox" name="spells" value="{{ spell.id }}" 
+                                {% if spell in customization.spells.all %} checked {% endif %}>
+                            {{ spell.name }}: {{ spell.description }}
+                        </label><br>
+                    {% endif %}
+                {% endfor %}
+            </div>
+    
+            <!-- Level 1 Spells -->
+            <div>
+                <h3>Level 1 Spells (2 required)</h3>
+                {% for spell in spells %}
+                    {% if spell.level == 1 %}
+                        <label>
+                            <input type="checkbox" name="spells" value="{{ spell.id }}" 
+                                {% if spell in customization.spells.all %} checked {% endif %}>
+                            {{ spell.name }}: {{ spell.description }}
+                        </label><br>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    
+        <div>
+            <h2>Select Weapons</h2>
+            
+            <!-- Primary Weapon -->
+            <div>
+                <h3>Primary Weapon</h3>
+                {% for weapon in weapons %}
+                    <label>
+                        <input type="radio" name="primary_weapon" value="{{ weapon.id }}" 
+                               {% if weapon == customization.weapons.all.0 %} checked {% endif %}>
+                        {{ weapon.name }}: {{ weapon.description }}
+                    </label><br>
+                {% endfor %}
+            </div>
+            
+    
+            <!-- Secondary Weapon -->
+            <div>
+                <label>Secondary Weapon</label>
+                {% for weapon in weapons %}
+                    <label>
+                        <input type="radio" name="secondary_weapon" value="{{ weapon.id }}" 
+                               {% if weapon == customization.weapons.all.1 %} checked {% endif %}
+                               onclick="updateSidebar()">
+                        {{ weapon.name }}: {{ weapon.description }}
+                    </label><br>
+                {% endfor %}
+            </div>            
+        </div>
+    
+        <div> 
+            <h2>Select Equipment</h2>
+            {% for equipment in equipments %}
+                <label>
+                    <input type="checkbox" name="equipments" value="{{ equipment.id }}" class="equipment-checkbox" 
+                    {% if equipment in customization.equipments.all %} checked {% endif %}>
+                    {{ equipment.name }}: {{ equipment.description }}
+                </label><br>
+            {% endfor %}
+        </div>
+        
+    
+        <button type="submit">Save Customization</button>
+    </form>  
+          <!-- Sidebar to show selected items -->
+          <div id="sidebar" class="sidebar">
+            <span class="close-btn" onclick="closeSidebar()">×</span>
+            <h3>Selected Items</h3>
+            <div id="selected-items">
+              <h4>Spells:</h4>
+              <ul id="selected-spells"></ul>
+              <h4>Weapons</h4>
+              <ul id="selected-weapons"></ul>
+              <h4>Equipment:</h4>
+              <ul id="selected-equipment"></ul>
+            </div>
+          </div>
+    <script>
+            // Open the sidebar
+            function openSidebar() {
+              document.getElementById('sidebar').style.display = 'block';
+            }
+        
+            // Close the sidebar
+            function closeSidebar() {
+              document.getElementById('sidebar').style.display = 'none';
+            }
+        
+            // Update the sidebar with selected items
+            function updateSidebar() {
+              let selectedSpells = [];
+              let selectedWeapons = [];
+              let selectedEquipment = [];
+        
+              // Collect selected spells
+              document.querySelectorAll('input[name="spells"]:checked').forEach((checkbox) => {
+                let spellName = checkbox.parentElement.innerText.trim().split(':')[0];
+                selectedSpells.push(spellName);
+              });
+        
+              document.querySelectorAll('input[name="primary_weapon"]:checked, input[name="secondary_weapon"]:checked').forEach((radio) => {
+                let weaponName = radio.parentElement.innerText.trim().split(':')[0];
+                selectedWeapons.push(weaponName);
+            });
+        
+              // Collect selected equipment
+              document.querySelectorAll('input[name="equipments"]:checked').forEach((checkbox) => {
+                let equipmentName = checkbox.parentElement.innerText.trim().split(':')[0];
+                selectedEquipment.push(equipmentName);
+              });
+        
+              // Update sidebar
+              document.getElementById('selected-spells').innerHTML = selectedSpells.map(spell => `<li>${spell}</li>`).join('');
+              document.getElementById('selected-weapons').innerHTML = selectedWeapons.map(weapon => `<li>${weapon}</li>`).join('');
+              document.getElementById('selected-equipment').innerHTML = selectedEquipment.map(equipment => `<li>${equipment}</li>`).join('');
+        
+              // Show the sidebar if at least one item is selected
+              if (selectedSpells.length || selectedWeapons.length || selectedEquipment.length) {
+                openSidebar();
+              } else {
+                closeSidebar();
+              }
+            }
+
+    </script>
+    </body>
+</html>
+

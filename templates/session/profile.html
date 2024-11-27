@@ -11,6 +11,52 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Handjet:wght@100..900&display=swap" rel="stylesheet">
+    <style>
+        /* Style for the character list section */
+
+        .list-of-char {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;  /* Ensures space between the cards */
+            justify-content: space-around; /* Distributes the cards evenly with space around them */
+        }
+
+        .character-card {
+            background-color: #9c9787;
+            padding: 15px;
+            border-radius: 8px;
+            width: calc(33.333% - 20px); /* Ensures that 3 cards fit per row, taking gap into account */
+            text-align: center;
+            box-sizing: border-box; /* Ensures padding and border are included in width calculation */
+        }
+
+        .character-card h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .character-card p {
+            font-size: 14px;
+            margin: 5px 0;
+        }
+
+        .character-card .button {
+            display: inline-block;
+            padding: 8px 15px;
+            margin-top: 10px;
+            background-color: #401D1D;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        .character-card .button:hover {
+            background-color: #b86565;
+        }
+
+
+    </style>
 </head>
 <body>
     <header>
@@ -27,7 +73,7 @@
                             <div class="tools-container">
                                 <div class="tools-column">
                                     <div class="tool-item">
-                                        <a href="#">Characters</a>
+                                        <a href="{% url 'character_menu' %}">Characters</a>
                                     </div>
                                     <div class="tool-item">
                                         <a href="{% url 'actcompendium' %}">Compendium</a>
@@ -65,53 +111,66 @@
                 <li>First Name:{{ first_name }}</li>
                 <li>Last Name: {{ last_name }}</li>
                 <li>Username: {{ username }}</li>
+                <div>
+                    <p>{{ characters }}</p>  <!-- This will print the characters list -->
+                </div>
+                
             </ul>
-
         </div>
-        <div id="characters" class="content-section" style="display: none;">
-            <h2>Characters</h2>
-            <div class="list-of-char">
-                <ol>
-                    <li>
-                        <div class="char">
-                            
-                        </div>
-                    </li>
-                    <li>
-                        <div class="char">
 
-                        </div>
-                    </li>
-                </ol>
 
+
+            <div id="characters" class="content-section" style="display: none;">
+                <h2>Characters</h2>
+                <div class="list-of-char">
+                    {% for character in characters %}
+                    <div class="character-card">
+                        <h3>{{ character.name }}</h3>
+                        <p>Race: {{ character.race }}</p>
+                        <p>Class: {{ character.char_class }}</p>
+                        <!-- Link to the character review page passing character_id -->
+                        <a href="{% url 'character_review' character_id=character.id %}" class="button">Review</a>
+                        <a class="button" id="delete-character" href="#" data-url="{% url 'delete_character' character_id=character.id %}">Delete Character</a>
+                    </div>
+                    {% empty %}
+                    <p>No characters created yet. Start creating your characters!</p>
+                    {% endfor %}
+                </div>
             </div>
-        </div>
+            
+
+
+
+
+
         <div id="additional_information" class="content-section" style="display: none;">
             <h2>Additional Information</h2>
             <p></p>
         </div>
     </div>
 <script>
-    function showSection(sectionId) {
-        // Hide all sections
-        const sections = document.querySelectorAll('.content-section');
-        sections.forEach(section => section.style.display = 'none');
-    
-        // Show the selected section
-        const selectedSection = document.getElementById(sectionId);
-        if (selectedSection) {
-            selectedSection.style.display = 'block';
-        }
-    
-        // Update the active link
-        document.querySelectorAll('.sidebar a').forEach(link => link.classList.remove('active'));
-        document.querySelector(`.sidebar a[onclick="showSection('${sectionId}')"]`).classList.add('active');
+function showSection(sectionId) {
+    // Hide all sections
+    const sections = document.querySelectorAll('.content-section');
+    sections.forEach(section => section.style.display = 'none');
+
+    // Show the selected section
+    const selectedSection = document.getElementById(sectionId);
+    if (selectedSection) {
+        selectedSection.style.display = 'block';
     }
+
+    // Update the active link
+    document.querySelectorAll('.sidebar a').forEach(link => link.classList.remove('active'));
+    document.querySelector(`.sidebar a[onclick="showSection('${sectionId}')"]`).classList.add('active');
+}
+
     
     // Set the default selection to "CIT-U Crate" on page load
     document.addEventListener('DOMContentLoaded', () => {
         showSection('profile');
     });
+
     
     // JavaScript to add 'active' class to the clicked link
     document.querySelectorAll('.sidebar a').forEach(link => {
@@ -120,6 +179,19 @@
             this.classList.add('active');
         });
     });
+
+    
+    document.getElementById("delete-character").addEventListener("click", function (event) {
+                event.preventDefault(); // Prevent default link behavior
+
+                const deleteUrl = this.getAttribute("data-url"); // Get the URL from the data attribute
+                const confirmation = confirm("Are you sure you want to cancel character creation? This will delete your character and its progress.");
+
+                if (confirmation) {
+                    // Redirect to the deletion URL
+                    window.location.href = deleteUrl;
+                }
+            });
 </script>
 </body>
 </html>

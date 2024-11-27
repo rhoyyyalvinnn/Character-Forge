@@ -1,301 +1,379 @@
-{% extends 'session/characterCreation/create/createbase.html' %}
-
-{% block content %}
 <html>
     <head>
         <title>Create Character</title>
         {% load static %}
-        <link rel="stylesheet" href="{% static 'stylesheet/create_character.css' %}">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="{% static 'assets/logo.ico' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'stylesheet/homepage.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'stylesheet/create_character.css' %}">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Handjet:wght@100..900&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap" rel="stylesheet">
     </head>
-</html>
-<form method="POST" action="{% url 'create_character' %}"> 
-    {% csrf_token %} 
-    <h2>Create a New Character</h2> 
-        {% if messages %}
-        <div class="alert alert-danger">
-            {% for message in messages %}
-                <p>{{ message }}</p>
-            {% endfor %}
+<body>
+    <header>
+        <div class="head">
+            <nav class="nav-left">
+                <ul>
+                    <li>
+                        <a id="cancel-creation" href="#" data-url="{% url 'character_menu' %}">Cancel Creation</a>
+                    </li>
+                </ul>
+            </nav>
         </div>
-    {% endif %}
+    </header>
+    <form method="POST" action="{% url 'create_character' %}"> 
+        {% csrf_token %} 
+        <h2>Create a New Character</h2> 
+            {% if messages %}
+            <div class="alert alert-danger">
+                {% for message in messages %}
+                    <p>{{ message }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
 
-    <label for="name">Character Name:</label> 
-    <input type="text" id="name" name="name" required> 
-    <br><br> 
+        <label for="name">Character Name:</label> 
+        <input type="text" id="name" name="name" required> 
+        <br><br> 
 
-    <label for="raceSelects">Choose a Race:</label> 
-    <select id="raceSelect" name="race" onchange="updateRaceInfo()">
-        <option value="" disabled selected>Select Race</option>
-        <option value="Dragonborn">Dragonborn</option>
-        <option value="Dwarf">Dwarf</option>
-        <option value="Elf">Elf</option>
-        <option value="Gnome">Gnome</option>
-        <option value="Half-Elf">Half-Elf</option>
-        <option value="Half-Orc">Half-Orc</option>
-        <option value="Halfling">Halfling</option>
-        <option value="Human">Human</option>
-        <option value="Tiefling">Tiefling</option>
-    </select>
+        <label for="raceSelects">Choose a Race:</label> 
+        <select id="raceSelect" name="race" onchange="updateRaceInfo()">
+            <option value="" disabled selected>Select Race</option>
+            <option value="Dragonborn">Dragonborn</option>
+            <option value="Dwarf">Dwarf</option>
+            <option value="Elf">Elf</option>
+            <option value="Gnome">Gnome</option>
+            <option value="Half-Elf">Half-Elf</option>
+            <option value="Half-Orc">Half-Orc</option>
+            <option value="Halfling">Halfling</option>
+            <option value="Human">Human</option>
+            <option value="Tiefling">Tiefling</option>
+        </select>
 
-    <br><br> 
-    <label for="character_class">Character Class:</label> 
-    <select id="classSelect" name="char_class">
-        <option value="" disabled selected>Select Class</option>
-        <option value="Artificer">Artificer</option>
-        <option value="Barbarian">Barbarian</option>
-        <option value="Bard">Bard</option>
-        <option value="Blood Hunter">Blood Hunter</option>
-        <option value="Cleric">Cleric</option>
-        <option value="Druid">Druid</option>
-        <option value="Fighter">Fighter</option>
-        <option value="Monk">Monk</option>
-        <option value="Paladin">Paladin</option>
-        <option value="Ranger">Ranger</option>
-        <option value="Rogue">Rogue</option>
-        <option value="Sorcerer">Sorcerer</option>
-        <option value="Warlock">Warlock</option>
-        <option value="Wizard">Wizard</option>
-    </select>
+        <br><br> 
+        <label for="character_class">Character Class:</label> 
+        <select id="classSelect" name="char_class">
+            <option value="" disabled selected>Select Class</option>
+            <option value="Artificer">Artificer</option>
+            <option value="Barbarian">Barbarian</option>
+            <option value="Bard">Bard</option>
+            <option value="Blood Hunter">Blood Hunter</option>
+            <option value="Cleric">Cleric</option>
+            <option value="Druid">Druid</option>
+            <option value="Fighter">Fighter</option>
+            <option value="Monk">Monk</option>
+            <option value="Paladin">Paladin</option>
+            <option value="Ranger">Ranger</option>
+            <option value="Rogue">Rogue</option>
+            <option value="Sorcerer">Sorcerer</option>
+            <option value="Warlock">Warlock</option>
+            <option value="Wizard">Wizard</option>
+        </select>
 
-    <br><br> 
+        <br><br> 
 
-    <!-- Character Background Field --> 
-    <label for="background">Character Background:</label> 
-    <input type="text" id="background" name="background" required> 
+        <!-- Character Background Field --> 
+        <label for="background">Character Background:</label> 
+        <select id="backgroundSelect" name="background">
+            <option value="" disabled selected>Select Class</option>
+            <option value="Acolyte">Acolyte</option>
+            <option value="Anthropologist">Anthropologist</option>
+            <option value="Archaeologist">Archaeologist</option>
+            <option value="Athlete">Athlete</option>
+            <option value="Charlatan">Charlatan</option>
+            <option value="City Watch">City Watch</option>
+            <option value="Clan Crafter">Clan Crafter</option>
+            <option value="Cloistered Scholar">Cloistered Scholar</option>
+            <option value="Courtier">Courtier</option>
+            <option value="Criminal">Criminal</option>
+            <option value="Entertainer">Entertainer</option>
+            <option value="Faceless">Faceless</option>
+            <option value="Faction Agent">Faction Agent</option>
+            <option value="Far Traveler">Far Traveler</option>
+            <option value="Feylost">Feylost</option>
+            <option value="Fisher">Fisher</option>
+            <option value="Folk Hero">Folk Hero</option>
+            <option value="Giant Foundling">Giant Foundling</option>
+            <option value="Gladiator">Gladiator</option>
+            <option value="Guild Artisan">Guild Artisan</option>
+            <option value="Guild Merchant">Guild Merchant</option>
+            <option value="Haunted One">Haunted One</option>
+            <option value="Hermit">Hermit</option>
+            <option value="House Agent">House Agent</option>
+            <option value="Inheritor">Inheritor</option>
+            <option value="Investigator (SCAG)">Investigator (SCAG)</option>
+            <option value="Investigator (VRGR)">Investigator (VRGR)</option>
+            <option value="Knight">Knight</option>
+            <option value="Knight of the Order">Knight of the Order</option>
+            <option value="Marine">Marine</option>
+            <option value="Mercenary Veteran">Mercenary Veteran</option>
+            <option value="Noble">Noble</option>
+            <option value="Outlander">Outlander</option>
+            <option value="Pirate">Pirate</option>
+            <option value="Rewarded">Rewarded</option>
+            <option value="Ruined">Ruined</option>
+            <option value="Rune Carver">Rune Carver</option>
+            <option value="Sage">Sage</option>
+            <option value="Sailor">Sailor</option>
+            <option value="Shipwright">Shipwright</option>
+            <option value="Smuggler">Smuggler</option>
+            <option value="Soldier">Soldier</option>
+            <option value="Spy">Spy</option>
+        </select>
 
-    <br><br> 
-        <h3>Ability Scores (Standard Array)</h3>
-        <p>Choose the scores for each stat:</p>
+        <br><br> 
+            <h3>Ability Scores (Standard Array)</h3>
+            <p>Choose the scores for each stat:</p>
 
 
-    <label for="strength">Strength</label>
-    <select class="stat-select" name="strength" id="strength" required>
-        <option value="15">15</option>
-        <option value="14">14</option>
-        <option value="13">13</option>
-        <option value="12">12</option>
-        <option value="10">10</option>
-        <option value="8">8</option>
-    </select>
+        <label for="strength">Strength</label>
+        <select class="stat-select" name="strength" id="strength" required>
+            <option value="15">15</option>
+            <option value="14">14</option>
+            <option value="13">13</option>
+            <option value="12">12</option>
+            <option value="10">10</option>
+            <option value="8">8</option>
+        </select>
 
-    <label for="dexterity">Dexterity</label>
-    <select class="stat-select" name="dexterity" id="dexterity" required>
-        <option value="15">15</option>
-        <option value="14">14</option>
-        <option value="13">13</option>
-        <option value="12">12</option>
-        <option value="10">10</option>
-        <option value="8">8</option>
-    </select>
+        <label for="dexterity">Dexterity</label>
+        <select class="stat-select" name="dexterity" id="dexterity" required>
+            <option value="15">15</option>
+            <option value="14">14</option>
+            <option value="13">13</option>
+            <option value="12">12</option>
+            <option value="10">10</option>
+            <option value="8">8</option>
+        </select>
 
-    <label for="constitution">Constitution</label>
-    <select class="stat-select" name="constitution" id="constitution" required>
-        <option value="15">15</option>
-        <option value="14">14</option>
-        <option value="13">13</option>
-        <option value="12">12</option>
-        <option value="10">10</option>
-        <option value="8">8</option>
-    </select>
+        <label for="constitution">Constitution</label>
+        <select class="stat-select" name="constitution" id="constitution" required>
+            <option value="15">15</option>
+            <option value="14">14</option>
+            <option value="13">13</option>
+            <option value="12">12</option>
+            <option value="10">10</option>
+            <option value="8">8</option>
+        </select>
 
-    <label for="intelligence">Intelligence</label>
-    <select class="stat-select" name="intelligence" id="intelligence" required>
-        <option value="15">15</option>
-        <option value="14">14</option>
-        <option value="13">13</option>
-        <option value="12">12</option>
-        <option value="10">10</option>
-        <option value="8">8</option>
-    </select>
+        <label for="intelligence">Intelligence</label>
+        <select class="stat-select" name="intelligence" id="intelligence" required>
+            <option value="15">15</option>
+            <option value="14">14</option>
+            <option value="13">13</option>
+            <option value="12">12</option>
+            <option value="10">10</option>
+            <option value="8">8</option>
+        </select>
 
-    <label for="wisdom">Wisdom</label>
-    <select class="stat-select" name="wisdom" id="wisdom" required>
-        <option value="15">15</option>
-        <option value="14">14</option>
-        <option value="13">13</option>
-        <option value="12">12</option>
-        <option value="10">10</option>
-        <option value="8">8</option>
-    </select>
+        <label for="wisdom">Wisdom</label>
+        <select class="stat-select" name="wisdom" id="wisdom" required>
+            <option value="15">15</option>
+            <option value="14">14</option>
+            <option value="13">13</option>
+            <option value="12">12</option>
+            <option value="10">10</option>
+            <option value="8">8</option>
+        </select>
 
-    <label for="charisma">Charisma</label>
-    <select class="stat-select" name="charisma" id="charisma" required>
-        <option value="15">15</option>
-        <option value="14">14</option>
-        <option value="13">13</option>
-        <option value="12">12</option>
-        <option value="10">10</option>
-        <option value="8">8</option>
-    </select>
-    <!-- Submit Button --> 
-    <button type="submit">Create Character</button> 
-</form> 
+        <label for="charisma">Charisma</label>
+        <select class="stat-select" name="charisma" id="charisma" required>
+            <option value="15">15</option>
+            <option value="14">14</option>
+            <option value="13">13</option>
+            <option value="12">12</option>
+            <option value="10">10</option>
+            <option value="8">8</option>
+        </select>
+        <!-- Submit Button --> 
+        <button type="submit">Create Character</button> 
+    </form> 
 
 <!-- Information Popup for Race Selection -->
-<div class="info-popup" id="infoPopup">
-    <h3>Race Info</h3>
-    <p id="raceInfoText">Select a race to see more details here.</p>
-</div>
+    <div class="info-popup" id="infoPopup">
+        <h3>Race Info</h3>
+        <p id="raceInfoText">Select a race to see more details here.</p>
+    </div>
 
-<script>
-    function updateRaceInfo() {
-        var selectedRace = document.getElementById('raceSelect').value;
-        var popup = document.getElementById('infoPopup');
-        var infoText = document.getElementById('raceInfoText');
-        var raceInfo = {
-            "Dragonborn": `
-                <strong>Dragonborn Traits:</strong><br>
-                <strong>Ability Score Increase:</strong> Your Strength score increases by 2, and your Charisma score increases by 1.<br>
-                <strong>Age:</strong> Dragonborn reach adulthood in their late teens and can live to be around 80 years old.<br>
-                <strong>Alignment:</strong> Dragonborn tend to be ambitious and proud, often following a code of honor. Their alignments vary widely, but many are lawful.<br>
-                <strong>Size:</strong> Dragonborn are taller and heavier than humans, standing between 6 and 7 feet tall. They are Medium creatures.<br>
-                <strong>Speed:</strong> Your base walking speed is 30 feet.<br>
-                <strong>Draconic Ancestry:</strong> You have a dragon ancestor, granting you a damage type and a breath weapon based on that ancestry.<br>
-                <strong>Breath Weapon:</strong> As an action, you can exhale destructive energy in a 15-foot cone or a 5-foot line (30 feet long). The type of damage depends on your draconic ancestry. You must succeed on a saving throw against your Constitution.<br>
-                <strong>Damage Resistance:</strong> You have resistance to the damage type associated with your draconic ancestry.<br>
-                <strong>Languages:</strong> You can speak, read, and write Common and Draconic.<br>
-            `,
-            "Dwarf": `
-                <strong>Dwarf Traits:</strong><br>
-                <strong>Ability Score Increase:</strong> Your Constitution score increases by 2.<br>
-                <strong>Age:</strong> Dwarves mature at the same rate as humans but live much longer, often over 350 years.<br>
-                <strong>Alignment:</strong> Dwarves tend to be lawful and good, with a strong sense of duty and tradition.<br>
-                <strong>Size:</strong> Dwarves stand between 4 and 5 feet tall and are stocky, making them Medium creatures.<br>
-                <strong>Speed:</strong> Your base walking speed is 25 feet.<br>
-                <strong>Darkvision:</strong> You can see in the dark up to 60 feet.<br>
-                <strong>Dwarven Resilience:</strong> You have advantage on saving throws against poison and resistance to poison damage.<br>
-                <strong>Languages:</strong> You can speak, read, and write Common and Dwarvish.<br>
-            `,
-            "Elf": `
-                <strong>Elf Traits:</strong><br>
-                <strong>Ability Score Increase:</strong> Your Dexterity score increases by 2.<br>
-                <strong>Age:</strong> Elves reach adulthood at around 100 years old and can live up to 750 years.<br>
-                <strong>Alignment:</strong> Elves tend to be good and chaotic, with a love for nature and freedom.<br>
-                <strong>Size:</strong> Elves are around 5 to 6 feet tall, making them Medium creatures.<br>
-                <strong>Speed:</strong> Your base walking speed is 30 feet.<br>
-                <strong>Darkvision:</strong> You can see in the dark up to 60 feet.<br>
-                <strong>Keen Senses:</strong> You have proficiency in the Perception skill.<br>
-                <strong>Languages:</strong> You can speak, read, and write Common and Elvish.<br>
-            `,
-            "Human": `
-                <strong>Human Traits:</strong><br>
-                <strong>Ability Score Increase:</strong> Your ability scores each increase by 1.<br>
-                <strong>Age:</strong> Humans reach adulthood in their late teens and live less than a century.<br>
-                <strong>Alignment:</strong> Humans tend to be more flexible in their moral and ethical
-                alignments. They can be any alignment.<br>
-                <strong>Size:</strong> Humans are about the same size as elves and dwarves, ranging from 5 to
-                over 6 feet tall. They are Medium creatures.<br>
-                <strong>Speed:</strong> Your base walking speed is 30 feet.<br>
-                <strong>Languages:</strong> You can speak, read, and write Common and one extra language of
-                your choice.<br>
-            `,
-            "Halfling": `
-                <strong>Halfling Traits:</strong><br>
-                <strong>Ability Score Increase:</strong> Your Dexterity score increases by 2, and your Charisma
-                score increases by 1.<br>
-                <strong>Age:</strong> Halflings reach adulthood at around 20 years and live to be about 150 years
-                old.<br>
-                <strong>Alignment:</strong> Most halflings are good-hearted and tend toward lawful alignments.<br>
-                <strong>Size:</strong> Halflings are about 3 to 4 feet tall and are Small creatures.<br>
-                <strong>Speed:</strong> Your base walking speed is 25 feet.<br>
-                <strong>Lucky:</strong> When you roll a 1 on an attack roll, ability check, or saving throw, you can
-                reroll the die and must use the new roll.<br>
-                <strong>Brave:</strong> You have advantage on saving throws against being frightened.<br>
-                <strong>Halfling Nimbleness:</strong> You can move through the space of any creature that is of a
-                size larger than yours.<br>
-                <strong>Languages:</strong> You can speak, read, and write Common and Halfling.<br>
-            `,
-            "Gnome": `
-                <strong>Gnome Traits:</strong><br>
-                <strong>Ability Score Increase:</strong> Your Intelligence score increases by 2, and your Dexterity
-                score increases by 1.<br>
-                <strong>Age:</strong> Gnomes reach adulthood around 40 years old and can live to be over 350
-                years old.<br>
-                <strong>Alignment:</strong> Gnomes tend to be good-hearted and prefer to follow a chaotic
-                alignment, valuing personal freedom and creativity.<br>
-                <strong>Size:</strong> Gnomes are between 3 to 4 feet tall. They are Small creatures.<br>
-                <strong>Speed:</strong> Your base walking speed is 25 feet.<br>
-                <strong>Darkvision:</strong> You can see in dim light as if it were bright light, and in darkness as if
-                it were dim light. You can't discern color in darkness, only shades of gray.<br>
-                <strong>Gnome Cunning:</strong> You have advantage on all Intelligence, Wisdom, and Charisma
-                saving throws against magic.<br>
-                <strong>Languages:</strong> You can speak, read, and write Common and Gnomish.<br>
-             `,
-            "Half-Elf": `
-            <strong>Half-Elf Traits:</strong><br>
-            <strong>Ability Score Increase:</strong> Your Charisma score increases by 2, Intelligence and Wisdom increases by 1<br>
-            <strong>Age:</strong> Half-elves reach adulthood at about the same age as humans, but they can
-            live to be over 180 years old.<br>
-            <strong>Alignment:</strong> Half-elves tend to be more adaptable than their elven ancestors, often
-            leaning toward chaotic alignments.<br>
-            <strong>Size:</strong> Half-elves are about the same size as humans, ranging from 5 to over 6 feet
-            tall. They are Medium creatures.<br>
-            <strong>Speed:</strong> Your base walking speed is 30 feet.<br>
-            <strong>Darkvision:</strong> You can see in dim light as if
-            it were bright light, and in darkness as if it were dim light. You can't discern color
-            in darkness, only shades of gray.<br>
-            <strong>Fey Ancestry:</strong> You have advantage on saving throws against being charmed, and
-            magic can't put you to sleep.<br>
-            <strong>Skill Versatility:</strong> You gain proficiency in two skills of your choice.<br>
-            <strong>Languages:</strong> You can speak, read, and write Common, Elvish, and one extra
-            language of your choice.<br>
-            `,
-            "Half-Orc": `
-            <strong>Half-Orc Traits:</strong><br>
-            <strong>Ability Score Increase:</strong> Your Strength score increases by 2, and your Constitution
-            score increases by 1.<br>
-            <strong>Age:</strong> Half-orcs reach adulthood in their late teens and typically live less than a
-            century.<br>
-            <strong>Alignment:</strong> Half-orcs are often chaotic, valuing freedom and individualism.<br>
-            <strong>Size:</strong> Half-orcs are about the same size as humans, ranging from 5 to over 6 feet
-            tall. They are Medium creatures.<br>
-            <strong>Speed:</strong> Your base walking speed is 30 feet.<br>
-            <strong>Darkvision:</strong> You can see in dim light as if it were bright light, and in darkness as
-            if it were dim light. You can't discern color in darkness, only shades of gray.<br>
-            <strong>Menacing:</strong> You gain proficiency in the Intimidation skill.<br>
-            <strong>Relentless Endurance:</strong> When you are reduced to 0 hit points but not killed
-            outright, you can drop to 1 hit point instead. You can't use this feature again until
-            you finish a long rest.<br>
-            <strong>Savage Attacks:</strong> When you score a critical hit with a melee weapon attack, you can
-            roll one additional damage die.<br>
-            <strong>Languages:</strong> You can speak, read, and write Common and Orc.<br>
-            `,
-            "Tiefling": `
-                <strong>Tiefling Traits:</strong><br>
-                <strong>Ability Score Increase:</strong> Your Charisma score increases by 2, and your Intelligence
-                score increases by 1.<br>
-                <strong>Age:</strong> Tieflings reach adulthood in their late teens and can live to be around 100
-                years old.<br>
-                <strong>Alignment:</strong> Tieflings tend to be chaotic and often have a rebellious streak, valuing
-                their freedom.<br>
-                <strong>Size:</strong> Tieflings are about the same size as humans, ranging from 5 to over 6 feet
+    <footer class="footer">
+        <p>Terms of Service</p>
+        <p>©Copyright</p>
+        <p>Privacy</p>
+    </footer>
+
+    <script>
+        function updateRaceInfo() {
+            var selectedRace = document.getElementById('raceSelect').value;
+            var popup = document.getElementById('infoPopup');
+            var infoText = document.getElementById('raceInfoText');
+            var raceInfo = {
+                "Dragonborn": `
+                    <strong>Dragonborn Traits:</strong><br>
+                    <strong>Ability Score Increase:</strong> Your Strength score increases by 2, and your Charisma score increases by 1.<br>
+                    <strong>Age:</strong> Dragonborn reach adulthood in their late teens and can live to be around 80 years old.<br>
+                    <strong>Alignment:</strong> Dragonborn tend to be ambitious and proud, often following a code of honor. Their alignments vary widely, but many are lawful.<br>
+                    <strong>Size:</strong> Dragonborn are taller and heavier than humans, standing between 6 and 7 feet tall. They are Medium creatures.<br>
+                    <strong>Speed:</strong> Your base walking speed is 30 feet.<br>
+                    <strong>Draconic Ancestry:</strong> You have a dragon ancestor, granting you a damage type and a breath weapon based on that ancestry.<br>
+                    <strong>Breath Weapon:</strong> As an action, you can exhale destructive energy in a 15-foot cone or a 5-foot line (30 feet long). The type of damage depends on your draconic ancestry. You must succeed on a saving throw against your Constitution.<br>
+                    <strong>Damage Resistance:</strong> You have resistance to the damage type associated with your draconic ancestry.<br>
+                    <strong>Languages:</strong> You can speak, read, and write Common and Draconic.<br>
+                `,
+                "Dwarf": `
+                    <strong>Dwarf Traits:</strong><br>
+                    <strong>Ability Score Increase:</strong> Your Constitution score increases by 2.<br>
+                    <strong>Age:</strong> Dwarves mature at the same rate as humans but live much longer, often over 350 years.<br>
+                    <strong>Alignment:</strong> Dwarves tend to be lawful and good, with a strong sense of duty and tradition.<br>
+                    <strong>Size:</strong> Dwarves stand between 4 and 5 feet tall and are stocky, making them Medium creatures.<br>
+                    <strong>Speed:</strong> Your base walking speed is 25 feet.<br>
+                    <strong>Darkvision:</strong> You can see in the dark up to 60 feet.<br>
+                    <strong>Dwarven Resilience:</strong> You have advantage on saving throws against poison and resistance to poison damage.<br>
+                    <strong>Languages:</strong> You can speak, read, and write Common and Dwarvish.<br>
+                `,
+                "Elf": `
+                    <strong>Elf Traits:</strong><br>
+                    <strong>Ability Score Increase:</strong> Your Dexterity score increases by 2.<br>
+                    <strong>Age:</strong> Elves reach adulthood at around 100 years old and can live up to 750 years.<br>
+                    <strong>Alignment:</strong> Elves tend to be good and chaotic, with a love for nature and freedom.<br>
+                    <strong>Size:</strong> Elves are around 5 to 6 feet tall, making them Medium creatures.<br>
+                    <strong>Speed:</strong> Your base walking speed is 30 feet.<br>
+                    <strong>Darkvision:</strong> You can see in the dark up to 60 feet.<br>
+                    <strong>Keen Senses:</strong> You have proficiency in the Perception skill.<br>
+                    <strong>Languages:</strong> You can speak, read, and write Common and Elvish.<br>
+                `,
+                "Human": `
+                    <strong>Human Traits:</strong><br>
+                    <strong>Ability Score Increase:</strong> Your ability scores each increase by 1.<br>
+                    <strong>Age:</strong> Humans reach adulthood in their late teens and live less than a century.<br>
+                    <strong>Alignment:</strong> Humans tend to be more flexible in their moral and ethical
+                    alignments. They can be any alignment.<br>
+                    <strong>Size:</strong> Humans are about the same size as elves and dwarves, ranging from 5 to
+                    over 6 feet tall. They are Medium creatures.<br>
+                    <strong>Speed:</strong> Your base walking speed is 30 feet.<br>
+                    <strong>Languages:</strong> You can speak, read, and write Common and one extra language of
+                    your choice.<br>
+                `,
+                "Halfling": `
+                    <strong>Halfling Traits:</strong><br>
+                    <strong>Ability Score Increase:</strong> Your Dexterity score increases by 2, and your Charisma
+                    score increases by 1.<br>
+                    <strong>Age:</strong> Halflings reach adulthood at around 20 years and live to be about 150 years
+                    old.<br>
+                    <strong>Alignment:</strong> Most halflings are good-hearted and tend toward lawful alignments.<br>
+                    <strong>Size:</strong> Halflings are about 3 to 4 feet tall and are Small creatures.<br>
+                    <strong>Speed:</strong> Your base walking speed is 25 feet.<br>
+                    <strong>Lucky:</strong> When you roll a 1 on an attack roll, ability check, or saving throw, you can
+                    reroll the die and must use the new roll.<br>
+                    <strong>Brave:</strong> You have advantage on saving throws against being frightened.<br>
+                    <strong>Halfling Nimbleness:</strong> You can move through the space of any creature that is of a
+                    size larger than yours.<br>
+                    <strong>Languages:</strong> You can speak, read, and write Common and Halfling.<br>
+                `,
+                "Gnome": `
+                    <strong>Gnome Traits:</strong><br>
+                    <strong>Ability Score Increase:</strong> Your Intelligence score increases by 2, and your Dexterity
+                    score increases by 1.<br>
+                    <strong>Age:</strong> Gnomes reach adulthood around 40 years old and can live to be over 350
+                    years old.<br>
+                    <strong>Alignment:</strong> Gnomes tend to be good-hearted and prefer to follow a chaotic
+                    alignment, valuing personal freedom and creativity.<br>
+                    <strong>Size:</strong> Gnomes are between 3 to 4 feet tall. They are Small creatures.<br>
+                    <strong>Speed:</strong> Your base walking speed is 25 feet.<br>
+                    <strong>Darkvision:</strong> You can see in dim light as if it were bright light, and in darkness as if
+                    it were dim light. You can't discern color in darkness, only shades of gray.<br>
+                    <strong>Gnome Cunning:</strong> You have advantage on all Intelligence, Wisdom, and Charisma
+                    saving throws against magic.<br>
+                    <strong>Languages:</strong> You can speak, read, and write Common and Gnomish.<br>
+                `,
+                "Half-Elf": `
+                <strong>Half-Elf Traits:</strong><br>
+                <strong>Ability Score Increase:</strong> Your Charisma score increases by 2, Intelligence and Wisdom increases by 1<br>
+                <strong>Age:</strong> Half-elves reach adulthood at about the same age as humans, but they can
+                live to be over 180 years old.<br>
+                <strong>Alignment:</strong> Half-elves tend to be more adaptable than their elven ancestors, often
+                leaning toward chaotic alignments.<br>
+                <strong>Size:</strong> Half-elves are about the same size as humans, ranging from 5 to over 6 feet
                 tall. They are Medium creatures.<br>
                 <strong>Speed:</strong> Your base walking speed is 30 feet.<br>
-                <strong>Darkvision:</strong> You can see in dim light as if it were bright light, and in darkness as if
-                it were dim light. You can't discern color in darkness, only shades of gray.<br>
-                <strong>Hellish Resistance:</strong> You have resistance to fire damage.<br>
-                <strong>Infernal Legacy:</strong> You know the thaumaturgy cantrip. When you reach 3rd level, you
-                can cast the hellish rebuke spell once with this trait and regain the ability to do so
-                when you finish a long rest. When you reach 5th level, you can cast the darkness
-                spell once with this trait and regain the ability to do so when you finish a long
-                rest.<br>
-                <strong>Languages:</strong> You can speak, read, and write Common and Infernal.<br>
-             `,
-        };
-        // Display the information if a race is selected
-        if (selectedRace && raceInfo[selectedRace]) {
-            infoText.innerHTML = raceInfo[selectedRace];
-            popup.style.display = 'block';
-        } else {
-            popup.style.display = 'none'; // Hide if no race is selected
+                <strong>Darkvision:</strong> You can see in dim light as if
+                it were bright light, and in darkness as if it were dim light. You can't discern color
+                in darkness, only shades of gray.<br>
+                <strong>Fey Ancestry:</strong> You have advantage on saving throws against being charmed, and
+                magic can't put you to sleep.<br>
+                <strong>Skill Versatility:</strong> You gain proficiency in two skills of your choice.<br>
+                <strong>Languages:</strong> You can speak, read, and write Common, Elvish, and one extra
+                language of your choice.<br>
+                `,
+                "Half-Orc": `
+                <strong>Half-Orc Traits:</strong><br>
+                <strong>Ability Score Increase:</strong> Your Strength score increases by 2, and your Constitution
+                score increases by 1.<br>
+                <strong>Age:</strong> Half-orcs reach adulthood in their late teens and typically live less than a
+                century.<br>
+                <strong>Alignment:</strong> Half-orcs are often chaotic, valuing freedom and individualism.<br>
+                <strong>Size:</strong> Half-orcs are about the same size as humans, ranging from 5 to over 6 feet
+                tall. They are Medium creatures.<br>
+                <strong>Speed:</strong> Your base walking speed is 30 feet.<br>
+                <strong>Darkvision:</strong> You can see in dim light as if it were bright light, and in darkness as
+                if it were dim light. You can't discern color in darkness, only shades of gray.<br>
+                <strong>Menacing:</strong> You gain proficiency in the Intimidation skill.<br>
+                <strong>Relentless Endurance:</strong> When you are reduced to 0 hit points but not killed
+                outright, you can drop to 1 hit point instead. You can't use this feature again until
+                you finish a long rest.<br>
+                <strong>Savage Attacks:</strong> When you score a critical hit with a melee weapon attack, you can
+                roll one additional damage die.<br>
+                <strong>Languages:</strong> You can speak, read, and write Common and Orc.<br>
+                `,
+                "Tiefling": `
+                    <strong>Tiefling Traits:</strong><br>
+                    <strong>Ability Score Increase:</strong> Your Charisma score increases by 2, and your Intelligence
+                    score increases by 1.<br>
+                    <strong>Age:</strong> Tieflings reach adulthood in their late teens and can live to be around 100
+                    years old.<br>
+                    <strong>Alignment:</strong> Tieflings tend to be chaotic and often have a rebellious streak, valuing
+                    their freedom.<br>
+                    <strong>Size:</strong> Tieflings are about the same size as humans, ranging from 5 to over 6 feet
+                    tall. They are Medium creatures.<br>
+                    <strong>Speed:</strong> Your base walking speed is 30 feet.<br>
+                    <strong>Darkvision:</strong> You can see in dim light as if it were bright light, and in darkness as if
+                    it were dim light. You can't discern color in darkness, only shades of gray.<br>
+                    <strong>Hellish Resistance:</strong> You have resistance to fire damage.<br>
+                    <strong>Infernal Legacy:</strong> You know the thaumaturgy cantrip. When you reach 3rd level, you
+                    can cast the hellish rebuke spell once with this trait and regain the ability to do so
+                    when you finish a long rest. When you reach 5th level, you can cast the darkness
+                    spell once with this trait and regain the ability to do so when you finish a long
+                    rest.<br>
+                    <strong>Languages:</strong> You can speak, read, and write Common and Infernal.<br>
+                `,
+            };
+            // Display the information if a race is selected
+            if (selectedRace && raceInfo[selectedRace]) {
+                infoText.innerHTML = raceInfo[selectedRace];
+                popup.style.display = 'block';
+            } else {
+                popup.style.display = 'none'; // Hide if no race is selected
+            }
         }
-    }
-    // Initialize the dropdowns when the page is loaded
-    window.onload = function () {
-        updateSelectOptions();
-    };
-</script>
+        // Initialize the dropdowns when the page is loaded
+        window.onload = function () {
+            updateSelectOptions();
+        };
 
+        document.getElementById("cancel-creation").addEventListener("click", function (event) {
+            event.preventDefault(); // Prevent default link behavior
 
+            const menuUrl = this.getAttribute("data-url"); // Get the URL from the data attribute
+            const confirmation = confirm("Are you sure you want to cancel character creation? This will discard your progress.");
 
-{% endblock %}
+            if (confirmation) {
+                // Redirect to the character menu
+                window.location.href = menuUrl;
+            }
+        });
+
+    </script>
+</body>
+</html>

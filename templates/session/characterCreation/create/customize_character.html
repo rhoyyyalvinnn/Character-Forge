@@ -1,15 +1,35 @@
 <!-- templates/customize_character.html -->
 
-{% extends 'session/characterCreation/create/createbase.html' %}
-
-{% block content %}
 <html>
     <head>
         <title>Character Customization</title>
         {% load static %}
-        <link rel="stylesheet" href="{% static 'stylesheet/customize_character.css' %}"
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="{% static 'assets/logo.ico' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'stylesheet/homepage.css' %}">
+        <link rel="stylesheet" href="{% static 'stylesheet/customize_character.css' %}">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Handjet:wght@100..900&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap" rel="stylesheet">
     </head>
     <body>
+
+        <header>
+          <div class="head">
+              <nav class="nav-left">
+                  <ul>
+                      <li>
+                        <a id="cancel-creation" href="#" data-url="{% url 'delete_character' character_id=character.id %}">Cancel Creation</a>
+                      </li>
+                  </ul>
+              </nav>
+          </div>
+      </header>
+
+
+
         <form method="POST" id="customization-form">
             {% csrf_token %}
             <h1>Customize Character: {{ character.name }}</h1>
@@ -120,7 +140,9 @@
               <ul id="selected-equipment"></ul>
             </div>
           </div>
-          <script>
+
+
+    <script>
             // Open the sidebar
             function openSidebar() {
               document.getElementById('sidebar').style.display = 'block';
@@ -166,8 +188,21 @@
                 closeSidebar();
               }
             }
-          </script>
-        {% endblock %}
+
+
+            document.getElementById("cancel-creation").addEventListener("click", function (event) {
+                event.preventDefault(); // Prevent default link behavior
+
+                const deleteUrl = this.getAttribute("data-url"); // Get the URL from the data attribute
+                const confirmation = confirm("Are you sure you want to cancel character creation? This will delete your character and its progress.");
+
+                if (confirmation) {
+                    // Redirect to the deletion URL
+                    window.location.href = deleteUrl;
+                }
+            });
+
+    </script>
     </body>
 </html>
 

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Character Review</title>
+    <link rel="icon" href="{% static 'assets/logo.ico' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'stylesheet/homepage.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Handjet:wght@100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap" rel="stylesheet">
+    <style>
+        /* Global styles */
+body {
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+/* Main content area */
+main {
+    font-family: 'Cinzel', sans-serif;
+    padding: 40px;
+    background-color: #fff;
+    max-width: 1200px;
+    margin: 25px auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    font-size: 32px;
+    color: #222;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+h2, h3 {
+    font-size: 24px;
+    color: #333;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+p {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 8px;
+}
+
+strong {
+    font-weight: bold;
+}
+
+/* Styling for the list of spells and equipment */
+ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+ul li {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+ul li span {
+    font-weight: bold;
+    color: #555;
+}
+
+/* Button styling */
+button {
+    font-family: 'Cinzel', sans-serif;
+    background-color: #401D1D;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+    display: inline-block;
+    text-align: center;
+    margin-top: 20px;
+    text-decoration: none;
+}
+
+button:hover {
+    background-color: #cc7676;
+}
+
+.buts{
+    background-color: #401D1D;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+    display: inline-block;
+    text-align: center;
+    margin-top: 20px;
+    text-decoration: none;
+}
+
+    </style>
+</head>
+<body>
+    <main>
+        <h1>Character Review</h1>
+
+        <h2>Character Details</h2>
+        <div>
+            <p><strong>Name:</strong> {{ character.name }}</p>
+            <p><strong>Race:</strong> {{ character.race }}</p>
+            <p><strong>Class:</strong> {{ character.char_class }}</p>
+            <p><strong>Background:</strong> {{ character.background }}</p>
+            <p><strong>Strength:</strong> {{ character.strength }}</p>
+            <p><strong>Dexterity:</strong> {{ character.dexterity }}</p>
+            <p><strong>Constitution:</strong> {{ character.constitution }}</p>
+            <p><strong>Intelligence:</strong> {{ character.intelligence }}</p>
+            <p><strong>Wisdom:</strong> {{ character.wisdom }}</p>
+            <p><strong>Charisma:</strong> {{ character.charisma }}</p>
+        </div>
+        <a href="{% url 'update_character_details' character.id %}" class="buts">Update Character Details</a>
+
+        <h2>Customization Details</h2>
+        <div>
+            {% if customization.weapons.all %}
+                <p><strong>Primary Weapon:</strong> {{ customization.weapons.all.0.name }}</p>
+            {% else %}
+                <p><strong>Primary Weapon:</strong> None</p>
+            {% endif %}
+
+            {% if customization.weapons.all|length > 1 %}
+                <p><strong>Secondary Weapon:</strong> {{ customization.weapons.all.1.name }}</p>
+            {% else %}
+                <p><strong>Secondary Weapon:</strong> None</p>
+            {% endif %}
+            
+            {% if customization.spells.all %}
+                <h3>Spells</h3>
+                <ul>
+                    {% for spell in customization.spells.all %}
+                        <li><strong>{{ spell.name }}</strong> (Level {{ spell.level }}): {{ spell.description }}</li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p><strong>No Spells:</strong> None</p>
+            {% endif %}
+
+            {% if customization.equipments.all %}
+                <h3>Equipment</h3>
+                <ul>
+                    {% for equipment in customization.equipments.all %}
+                        <li><strong>{{ equipment.name }}:</strong> {{ equipment.effect }} - {{ equipment.description }}</li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p><strong>No Equipment:</strong> None</p>
+            {% endif %}
+        </div>
+        <a href="{% url 'update_character_customization' character.id %}" class="buts">Update Character Customization</a> <br><br>
+        
+        <a class="buts" href="{% url 'character_menu' %}">Finalize Character</a>
+        <a class="buts" href="#">Print Character Sheet</a>
+    </main>
+
+    <footer class="footer">
+        <p>Terms of Service</p>
+        <p>©Copyright</p>
+        <p>Privacy</p>
+    </footer>
+</body>
+</html>
