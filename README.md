@@ -47,9 +47,9 @@
         <br>
       <h2><b>Useful Links</b></h2>
         <ul>
-          <li>Gantt Chart:  https://docs.google.com/spreadsheets/d/1GPY5kD_TPPS0MNuZNZuc4IH-qJj9hxmou4LR_ejCUhM/edit?usp=sharing</li>
-          <li>UI/UX:  https://www.figma.com/design/ejYJyLsdadiqOqJ6o0GmkR/FRAMES?recovery=true&t=HGEJ4N6hxxXFs8ii-0</li>
-          <li>ERD - https://online.visual-paradigm.com/share/book/character-forge-1-pdf-1wj3ahbkpx</li>
+          <li><a href="https://online.visual-paradigm.com/share.jsp?id=333232383038352d31">View ERD Here</a></li>
+          <li><a href="https://www.figma.com/design/ejYJyLsdadiqOqJ6o0GmkR/FRAMES?recovery=true&t=HGEJ4N6hxxXFs8ii-0">View UI/UX Here</a></li>
+          <li><a href="https://docs.google.com/spreadsheets/d/1GPY5kD_TPPS0MNuZNZuc4IH-qJj9hxmou4LR_ejCUhM/edit?gid=0#gid=0">View Gantt Chart Here</a></li>
         </ul>
         <br>
       <h2><b>Contributions</b></h2>
