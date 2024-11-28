@@ -3,6 +3,11 @@ from django.contrib.auth import logout
 from django.contrib import messages
 from .models import Character, Spell, Weapon, Equipment, Customization
 from django.contrib.auth.decorators import login_required
+from django.http import HttpResponse
+from django.template.loader import render_to_string
+from xhtml2pdf import pisa
+from django.template.loader import get_template
+
 # Create your views here.
 def home(request):
     user = request.user
@@ -188,8 +193,6 @@ def create_character(request):
 
     return render(request, 'session/characterCreation/create/create_character.html')
 
-
-
 def customize_character(request, character_id):
     # Fetch the character object, ensuring it belongs to the logged-in user
     character = get_object_or_404(Character, id=character_id, user=request.user)
@@ -280,7 +283,6 @@ def character_review(request, character_id):
         'character': character,
         'customization': customization
     })
-
 
 def update_character_details(request, character_id):
     # Fetch the character from the database using the provided character_id
@@ -381,7 +383,6 @@ def update_character_details(request, character_id):
         'original_charisma': original_charisma,
     })
 
-
 def update_character_customization(request, character_id):
     # Fetch the character object, ensuring it belongs to the logged-in user
     character = get_object_or_404(Character, id=character_id, user=request.user)
@@ -468,3 +469,37 @@ def update_character_customization(request, character_id):
         'equipments': equipments,
         'customization': customization,  # Pass existing customization data if it exists
     })
+
+def render_to_pdf(template_src, context_dict={}):
+    """
+    Renders an HTML template into a PDF using xhtml2pdf.
+    """
+    template = get_template(template_src)
+    html = template.render(context_dict)
+    response = HttpResponse(content_type='application/pdf')
+    pisa_status = pisa.CreatePDF(html, dest=response)
+    if pisa_status.err:
+        return HttpResponse(f'Error generating PDF: {pisa_status.err}', status=400)
+    return response
+
+def generate_character_pdf(request, character_id):
+    # Fetch character and customization data
+    try:
+        character = Character.objects.get(id=character_id, user=request.user)
+        customization = Customization.objects.get(character=character)
+    except (Character.DoesNotExist, Customization.DoesNotExist):
+        return HttpResponse("Character not found or you don't have access.", status=404)
+
+    # Prepare the context for the template
+    context = {
+        'character': character,
+        'customization': customization,
+    }
+
+
+    # Debug: Check the types of key fields (e.g., stats, spells)
+    print(f"Strength: {character.strength}, Type: {type(character.strength)}")
+    print(f"Dexterity: {character.dexterity}, Type: {type(character.dexterity)}")
+
+    # Render the PDF using an HTML template
+    return render_to_pdf('session/characterCreation/create/character_sheet_layout.html', context)

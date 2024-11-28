@@ -55,3 +55,5 @@ class Customization(models.Model):
 
     def __str__(self):
         return f"Customization for {self.character.name}"
+
+

@@ -37,7 +37,8 @@ urlpatterns = [
     path('character/delete/<int:character_id>/', views.delete_character, name='delete_character'), # this path is called upon cancellation of character creation
     path('character/review/<int:character_id>/', views.character_review, name='character_review'),
     path('character/updatecharacter/<int:character_id>/', views.update_character_details, name='update_character_details'),
-    path('character/updatecustomization/<int:character_id>/', views.update_character_customization, name='update_character_customization')
+    path('character/updatecustomization/<int:character_id>/', views.update_character_customization, name='update_character_customization'),
+    path('character/<int:character_id>/pdf/', views.generate_character_pdf, name='character_pdf'),
 
     # path('customize/<int:character_id>/', views.customize_character, name='customize_character'),
 

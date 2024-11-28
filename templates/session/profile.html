@@ -111,10 +111,6 @@
                 <li>First Name:{{ first_name }}</li>
                 <li>Last Name: {{ last_name }}</li>
                 <li>Username: {{ username }}</li>
-                <div>
-                    <p>{{ characters }}</p>  <!-- This will print the characters list -->
-                </div>
-                
             </ul>
         </div>
 
@@ -128,7 +124,6 @@
                         <h3>{{ character.name }}</h3>
                         <p>Race: {{ character.race }}</p>
                         <p>Class: {{ character.char_class }}</p>
-                        <!-- Link to the character review page passing character_id -->
                         <a href="{% url 'character_review' character_id=character.id %}" class="button">Review</a>
                         <a class="button" id="delete-character" href="#" data-url="{% url 'delete_character' character_id=character.id %}">Delete Character</a>
                     </div>
@@ -165,33 +160,35 @@ function showSection(sectionId) {
     document.querySelector(`.sidebar a[onclick="showSection('${sectionId}')"]`).classList.add('active');
 }
 
-    
-    // Set the default selection to "CIT-U Crate" on page load
-    document.addEventListener('DOMContentLoaded', () => {
-        showSection('profile');
+// Set the default selection to "CIT-U Crate" on page load
+document.addEventListener('DOMContentLoaded', () => {
+    showSection('profile');
+});
+
+// JavaScript to add 'active' class to the clicked link
+document.querySelectorAll('.sidebar a').forEach(link => {
+    link.addEventListener('click', function () {
+        document.querySelectorAll('.sidebar a').forEach(item => item.classList.remove('active'));
+        this.classList.add('active');
     });
+});
 
-    
-    // JavaScript to add 'active' class to the clicked link
-    document.querySelectorAll('.sidebar a').forEach(link => {
-        link.addEventListener('click', function () {
-            document.querySelectorAll('.sidebar a').forEach(item => item.classList.remove('active'));
-            this.classList.add('active');
-        });
-    });
+// Use event delegation to handle delete action for dynamically created buttons
+document.querySelector('.list-of-char').addEventListener('click', function(event) {
+    // Check if the clicked element is a delete button
+    if (event.target && event.target.id === 'delete-character') {
+        event.preventDefault(); // Prevent the default link behavior
 
-    
-    document.getElementById("delete-character").addEventListener("click", function (event) {
-                event.preventDefault(); // Prevent default link behavior
+        const deleteUrl = event.target.getAttribute("data-url"); // Get the URL from the data attribute
+        const confirmation = confirm("Are you sure you want to delete this character?");
 
-                const deleteUrl = this.getAttribute("data-url"); // Get the URL from the data attribute
-                const confirmation = confirm("Are you sure you want to cancel character creation? This will delete your character and its progress.");
+        if (confirmation) {
+            // Redirect to the deletion URL
+            window.location.href = deleteUrl;
+        }
+    }
+});
 
-                if (confirmation) {
-                    // Redirect to the deletion URL
-                    window.location.href = deleteUrl;
-                }
-            });
 </script>
 </body>
 </html>
