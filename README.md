@@ -1,6 +1,5 @@
 <html>
   <head>
-    
   </head>
   <body>
     <div style="text-align: center">
@@ -18,10 +17,11 @@
     </p>
     <h2>✨ Why Choose Character Forge?</h2>
     <ul>
-        <li><span class="highlight">Comprehensive Customization</span>: Build your character from the ground up with a vast selection of races, classes, and stats.</li>
-        <li><span class="highlight">Rich Arsenal</span>: Arm your character with a diverse array of weapons, spells, and equipment tailored to your adventure.</li>
-        <li><span class="highlight">Save and Share</span>: Keep your characters organized, update them as they grow, and download beautifully crafted, ready-to-print character sheets.</li>
-        <li><span class="highlight">User-Friendly Design</span>: Perfect for both beginners and experienced players, Character Forge provides a seamless experience.</li>
+        <li>Comprehensive Customization</span>: Build your character from the ground up with a vast selection of races, classes, and stats.</li>
+        <li>Rich Arsenal</span>: Arm your character with a diverse array of weapons, spells, and equipment tailored to your adventure.</li>
+        <li>Save and Share</span>: Keep your characters organized, update them as they grow, and download beautifully crafted, ready-to-print character sheets.</li>
+        <li>User-Friendly Design</span>: Perfect for both beginners and experienced players, Character Forge provides a seamless experience.</li>
+      <li>>Downloadable Sheets</span>: Generate and download professional-grade character sheets in PDF format, ready for printing or sharing.</li>
     </ul>
     <h2>📜 Features</h2>
     <ul>
@@ -52,17 +52,6 @@
           <li>ERD - https://online.visual-paradigm.com/share/book/character-forge-1-pdf-1wj3ahbkpx</li>
         </ul>
         <br>
-      <h2><b>Key Features</b></h2>
-      <p>
-        Character Forge provides a variety of features to enhance the character creation experience:
-      </p>
-      <ul>
-        <li>Easy-to-use interface for character creation, with guided steps to select race, class, and abilities.</li>
-        <li>Customization options for character spells, weapons, and equipments.</li>
-        <li>Secure user authentication for saving and managing multiple characters.</li>
-        <li>Option to download a PDF character sheet for easy reference during gameplay.</li>
-        <li>Responsive design that works on desktop (for now)</li>
-      </ul>
       <h2><b>Contributions</b></h2>
         <br>
       <h2><b>Members</b></h2>
