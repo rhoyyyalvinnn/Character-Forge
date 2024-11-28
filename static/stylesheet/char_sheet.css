@@ -1,0 +1,87 @@
+body {
+    padding: 0;
+    width: 210mm; /* A4 paper size */
+    height: 297mm; /* A4 paper size */
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, sans-serif;
+}
+
+main {
+    font-family: 'Cinzel', serif;
+    display: flex;
+    justify-content: space-between; /* Ensure cards are spaced */
+    gap: 50px; /* Add 50px gap between the front and back */
+    width: 90%; 
+    height: 100%;
+    margin-left: -200px; /* Move the cards to the left to fit within the page */
+}
+
+.card {
+    width: 82.55mm;  /* Card width in mm */
+    height: 480px; /* Card height in mm */
+    background-image: url("http://127.0.0.1:8000/static/images/background.jpg");
+    border: 2px double black;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    font-size: 12px;
+    line-height: 1.3;
+    margin: 1% 0;
+    padding: 5mm;
+    page-break-inside: avoid; /* Ensure content doesn’t break in the middle */
+}
+
+/* For both front and back cards */
+.card-header {
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+h1, h3 {
+    text-align: center;
+    font-size: 16px;
+    margin: 0;
+}
+
+.section {
+    margin-bottom: 10px;
+}
+
+.section h2 {
+    font-size: 14px;
+    text-decoration: underline;
+    margin-bottom: 5px;
+}
+
+.stats {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+}
+
+.stats div {
+    width: 30%;
+}
+
+.footer {
+    text-align: center;
+    font-size: 10px;
+    color: #888;
+    margin-top: 10px;
+}
+
+ul {
+    padding-left: 20px;
+}
+
+li {
+    font-size: 12px;
+    margin-bottom: 3px;
+}
+
+.card-header {
+    margin-bottom: 15px;
+    text-align: center;
+}

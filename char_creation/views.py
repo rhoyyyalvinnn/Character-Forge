@@ -7,6 +7,7 @@ from django.http import HttpResponse
 from django.template.loader import render_to_string
 from xhtml2pdf import pisa
 from django.template.loader import get_template
+import weasyprint
 
 # Create your views here.
 def home(request):
@@ -472,14 +473,17 @@ def update_character_customization(request, character_id):
 
 def render_to_pdf(template_src, context_dict={}):
     """
-    Renders an HTML template into a PDF using xhtml2pdf.
+    Renders an HTML template into a PDF using WeasyPrint.
     """
     template = get_template(template_src)
     html = template.render(context_dict)
-    response = HttpResponse(content_type='application/pdf')
-    pisa_status = pisa.CreatePDF(html, dest=response)
-    if pisa_status.err:
-        return HttpResponse(f'Error generating PDF: {pisa_status.err}', status=400)
+    
+    # Use WeasyPrint to convert HTML to PDF
+    pdf = weasyprint.HTML(string=html).write_pdf()
+    
+    # Create the HTTP response with the PDF content
+    response = HttpResponse(pdf, content_type='application/pdf')
+    response['Content-Disposition'] = 'inline; filename="character_sheet.pdf"'
     return response
 
 def generate_character_pdf(request, character_id):
@@ -495,7 +499,6 @@ def generate_character_pdf(request, character_id):
         'character': character,
         'customization': customization,
     }
-
 
     # Debug: Check the types of key fields (e.g., stats, spells)
     print(f"Strength: {character.strength}, Type: {type(character.strength)}")
