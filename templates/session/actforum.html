@@ -28,7 +28,7 @@
                             <div class="tools-container">
                                 <div class="tools-column">
                                     <div class="tool-item">
-                                        <a href="#">Characters</a>
+                                        <a href="{% url 'character_menu' %}">Characters</a>
                                     </div>
                                     <div class="tool-item">
                                         <a href="{% url 'compendium' %}">Compendium</a>
@@ -50,11 +50,9 @@
             </nav>
         </div>
     </header>
-
-    <!--Main content here-->
     <div class="main-content">
         <h1>General Discussion</h1>
-        <div class="image-row"> <!-- New div for horizontal arrangement -->
+        <div class="image-row">
             <div class="image-container">
                 <img src="{% static 'assets/pngkey.com-old-paper-png-276162.png' %}" alt="old paper" class="oldpaper">
                 <div class="overlay-text"><h2>RULES & ETIQUETTE</h2> <b>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ut nisi sit amet eros consequat volutpat. Nulla euismod feugiat urna, nec commodo dolor malesuada at.</b></div>
@@ -73,8 +71,6 @@
             </div>
         </div>
     </div>
-    
-    
     
     <footer class="footer">
         <p>Terms of Service</p>

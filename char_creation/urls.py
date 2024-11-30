@@ -29,21 +29,7 @@ urlpatterns = [
     path('actcompendium/human', views.actwiki_lineages_human, name="actwiki_lineages_human"),
     path('actcompendium/tiefling', views.actwiki_lineages_tiefling, name="actwiki_lineages_tiefling"),
     path('actcompendium/dwarf', views.actwiki_lineages_dwarf, name="actwiki_lineages_dwarf"),
-    # other compedium stuffs
-
-    path('menu/', views.character_menu, name="character_menu"),
-    path('create/', views.create_character, name='create_character'),
-    path('character/customize/<int:character_id>/', views.customize_character, name='customize_character'),
-    path('character/delete/<int:character_id>/', views.delete_character, name='delete_character'), # this path is called upon cancellation of character creation
-    path('character/review/<int:character_id>/', views.character_review, name='character_review'),
-    path('character/updatecharacter/<int:character_id>/', views.update_character_details, name='update_character_details'),
-    path('character/updatecustomization/<int:character_id>/', views.update_character_customization, name='update_character_customization'),
-    path('character/<int:character_id>/pdf/', views.generate_character_pdf, name='character_pdf'),
-
-    
-    #backgrounds
-    
-    path('actcompendium/acolyte', views.actwiki_backgrounds_acolyte, name="actwiki_backgrounds_acolyte"),
+        path('actcompendium/acolyte', views.actwiki_backgrounds_acolyte, name="actwiki_backgrounds_acolyte"),
     path('actcompendium/anthropologist', views.actwiki_backgrounds_anthropologist, name="actwiki_backgrounds_anthropologist"),
     path('actcompendium/archaeologist', views.actwiki_backgrounds_archaeologist, name="actwiki_backgrounds_archaeologist"),
     path('actcompendium/athlete', views.actwiki_backgrounds_athlete, name="actwiki_backgrounds_athlete"),
@@ -86,34 +72,14 @@ urlpatterns = [
     path('actcompendium/smuggler', views.actwiki_backgrounds_smuggler, name="actwiki_backgrounds_smuggler"),
     path('actcompendium/soldier', views.actwiki_backgrounds_soldier, name="actwiki_backgrounds_soldier"),
     path('actcompendium/spy', views.actwiki_backgrounds_spy, name="actwiki_backgrounds_spy"), 
-    # path('customize/<int:character_id>/', views.customize_character, name='customize_character'),
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    # path('character_creation',views.character_creation, name='character_creation'),
-    # path('race/', views.character_race, name="character_race"),
-    # path('class/', views.character_class, name="character_class"),
-    # path('abilities/', views.character_abilities, name="character_abilities"),
-    # path('backgrounds/', views.character_background, name="character_background"),
-    # path('equipments/', views.character_equipment, name="character_equipment"),
-    # path('spells/', views.character_spell, name="character_spell"),
-    # path('feats/', views.character_feats, name="character_feats"),
-    # path('bio/', views.character_bio, name="character_bio"),
-    # path('save_race/', views.save_race, name='save_race'),
-    # path for charactercreationthings
-    # path('save_character/', views.save_character, name='save_character'),
+    path('menu/', views.character_menu, name="character_menu"),
+    path('create/', views.create_character, name='create_character'),
+    path('character/customize/<int:character_id>/', views.customize_character, name='customize_character'),
+    path('character/delete/<int:character_id>/', views.delete_character, name='delete_character'), # this path is called upon cancellation of character creation
+    path('character/review/<int:character_id>/', views.character_review, name='character_review'),
+    path('character/updatecharacter/<int:character_id>/', views.update_character_details, name='update_character_details'),
+    path('character/updatecustomization/<int:character_id>/', views.update_character_customization, name='update_character_customization'),
+    path('character/<int:character_id>/pdf/', views.generate_character_pdf, name='character_pdf'),
 ]
 
 
