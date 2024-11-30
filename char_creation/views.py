@@ -506,3 +506,138 @@ def generate_character_pdf(request, character_id):
 
     # Render the PDF using an HTML template
     return render_to_pdf('session/characterCreation/create/character_sheet_layout.html', context)
+
+
+
+# ALL BACKGROUNDS
+def actwiki_backgrounds_acolyte(request):
+    return render(request, 'session/actcompendium/backgrounds/acolyte.html')
+
+def actwiki_backgrounds_athlete(request):
+    return render(request, 'session/actcompendium/backgrounds/athlete.html')
+
+def actwiki_backgrounds_anthropologist(request):
+    return render(request, 'session/actcompendium/backgrounds/anthropologist.html')
+
+def actwiki_backgrounds_archaeologist(request):
+    return render(request, 'session/actcompendium/backgrounds/archaeologist.html')
+
+def actwiki_backgrounds_athelete(request):
+    return render(request, 'session/actcompendium/backgrounds/athelete.html')
+
+def actwiki_backgrounds_charlatan(request):
+    return render(request, 'session/actcompendium/backgrounds/charlatan.html')
+
+def actwiki_backgrounds_citywatch(request):
+    return render(request, 'session/actcompendium/backgrounds/citywatch.html')
+
+def actwiki_backgrounds_clancrafter(request):
+    return render(request, 'session/actcompendium/backgrounds/clancrafter.html')
+
+def actwiki_backgrounds_cloisteredscholar(request):
+    return render(request, 'session/actcompendium/backgrounds/cloisteredscholar.html')
+
+def actwiki_backgrounds_courtier(request):
+    return render(request, 'session/actcompendium/backgrounds/courtier.html')
+
+def actwiki_backgrounds_criminal(request):
+    return render(request, 'session/actcompendium/backgrounds/criminal.html')
+
+def actwiki_backgrounds_entertainer(request):
+    return render(request, 'session/actcompendium/backgrounds/entertainer.html')
+
+def actwiki_backgrounds_faceless(request):
+    return render(request, 'session/actcompendium/backgrounds/faceless.html')
+
+def actwiki_backgrounds_factionagent(request):
+    return render(request, 'session/actcompendium/backgrounds/factionagent.html')
+
+def actwiki_backgrounds_fartraveler(request):
+    return render(request, 'session/actcompendium/backgrounds/fartraveler.html')
+
+def actwiki_backgrounds_feylost(request):
+    return render(request, 'session/actcompendium/backgrounds/feylost.html')
+
+def actwiki_backgrounds_fisher(request):
+    return render(request, 'session/actcompendium/backgrounds/fisher.html')
+
+def actwiki_backgrounds_folkhero(request):
+    return render(request, 'session/actcompendium/backgrounds/folkhero.html')
+
+def actwiki_backgrounds_giantfoundling(request):
+    return render(request, 'session/actcompendium/backgrounds/giantfoundling.html')
+
+def actwiki_backgrounds_gladiator(request):
+    return render(request, 'session/actcompendium/backgrounds/gladiator.html')
+
+def actwiki_backgrounds_guildartisan(request):
+    return render(request, 'session/actcompendium/backgrounds/guildartisan.html')
+
+def actwiki_backgrounds_guildmerchant(request):
+    return render(request, 'session/actcompendium/backgrounds/guildmerchant.html')
+
+def actwiki_backgrounds_hauntedone(request):
+    return render(request, 'session/actcompendium/backgrounds/hauntedone.html')
+
+def actwiki_backgrounds_hermit(request):
+    return render(request, 'session/actcompendium/backgrounds/hermit.html')
+
+def actwiki_backgrounds_houseagent(request):
+    return render(request, 'session/actcompendium/backgrounds/houseagent.html')
+
+def actwiki_backgrounds_inheritor(request):
+    return render(request, 'session/actcompendium/backgrounds/inheritor.html')
+
+def actwiki_backgrounds_investigator_scag(request):
+    return render(request, 'session/actcompendium/backgrounds/investigator_scag.html')
+
+def actwiki_backgrounds_investigator_vrgr(request):
+    return render(request, 'session/actcompendium/backgrounds/investigator_vrgr.html')
+
+def actwiki_backgrounds_knight(request):
+    return render(request, 'session/actcompendium/backgrounds/knight.html')
+
+def actwiki_backgrounds_knightoftheorder(request):
+    return render(request, 'session/actcompendium/backgrounds/knightoftheorder.html')
+
+def actwiki_backgrounds_marine(request):
+    return render(request, 'session/actcompendium/backgrounds/marine.html')
+
+def actwiki_backgrounds_mercenaryveteran(request):
+    return render(request, 'session/actcompendium/backgrounds/mercenaryveteran.html')
+
+def actwiki_backgrounds_noble(request):
+    return render(request, 'session/actcompendium/backgrounds/noble.html')
+
+def actwiki_backgrounds_outlander(request):
+    return render(request, 'session/actcompendium/backgrounds/outlander.html')
+
+def actwiki_backgrounds_pirate(request):
+    return render(request, 'session/actcompendium/backgrounds/pirate.html')
+
+def actwiki_backgrounds_rewarded(request):
+    return render(request, 'session/actcompendium/backgrounds/rewarded.html')
+
+def actwiki_backgrounds_ruined(request):
+    return render(request, 'session/actcompendium/backgrounds/ruined.html')
+
+def actwiki_backgrounds_runecarver(request):
+    return render(request, 'session/actcompendium/backgrounds/runecarver.html')
+
+def actwiki_backgrounds_sage(request):
+    return render(request, 'session/actcompendium/backgrounds/sage.html')
+
+def actwiki_backgrounds_sailor(request):
+    return render(request, 'session/actcompendium/backgrounds/sailor.html')
+
+def actwiki_backgrounds_shipwright(request):
+    return render(request, 'session/actcompendium/backgrounds/shipwright.html')
+
+def actwiki_backgrounds_smuggler(request):
+    return render(request, 'session/actcompendium/backgrounds/smuggler.html')
+
+def actwiki_backgrounds_soldier(request):
+    return render(request, 'session/actcompendium/backgrounds/soldier.html')
+
+def actwiki_backgrounds_spy(request):
+    return render(request, 'session/actcompendium/backgrounds/spy.html')

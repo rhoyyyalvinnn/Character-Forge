@@ -145,3 +145,142 @@ def wiki_lineages_human(request):
 
 def wiki_lineages_tiefling(request):
     return render(request, 'compendium/lineages/tiefling.html')
+
+
+
+
+#  ALL BACKGROUNDS
+
+def wiki_backgrounds_acolyte(request):
+    return render(request, 'compendium/backgrounds/acolyte.html')
+
+def wiki_backgrounds_athlete(request):
+    return render(request, 'compendium/backgrounds/athlete.html')
+
+def wiki_backgrounds_anthropologist(request):
+    return render(request, 'compendium/backgrounds/anthropologist.html')
+
+def wiki_backgrounds_archaeologist(request):
+    return render(request, 'compendium/backgrounds/archaeologist.html')
+
+def wiki_backgrounds_athelete(request):
+    return render(request, 'compendium/backgrounds/athelete.html')
+
+def wiki_backgrounds_charlatan(request):
+    return render(request, 'compendium/backgrounds/charlatan.html')
+
+def wiki_backgrounds_citywatch(request):
+    return render(request, 'compendium/backgrounds/citywatch.html')
+
+def wiki_backgrounds_clancrafter(request):
+    return render(request, 'compendium/backgrounds/clancrafter.html')
+
+def wiki_backgrounds_cloisteredscholar(request):
+    return render(request, 'compendium/backgrounds/cloisteredscholar.html')
+
+def wiki_backgrounds_courtier(request):
+    return render(request, 'compendium/backgrounds/courtier.html')
+
+def wiki_backgrounds_criminal(request):
+    return render(request, 'compendium/backgrounds/criminal.html')
+
+def wiki_backgrounds_entertainer(request):
+    return render(request, 'compendium/backgrounds/entertainer.html')
+
+def wiki_backgrounds_faceless(request):
+    return render(request, 'compendium/backgrounds/faceless.html')
+
+def wiki_backgrounds_factionagent(request):
+    return render(request, 'compendium/backgrounds/factionagent.html')
+
+def wiki_backgrounds_fartraveler(request):
+    return render(request, 'compendium/backgrounds/fartraveler.html')
+
+def wiki_backgrounds_feylost(request):
+    return render(request, 'compendium/backgrounds/feylost.html')
+
+def wiki_backgrounds_fisher(request):
+    return render(request, 'compendium/backgrounds/fisher.html')
+
+def wiki_backgrounds_folkhero(request):
+    return render(request, 'compendium/backgrounds/folkhero.html')
+
+def wiki_backgrounds_giantfoundling(request):
+    return render(request, 'compendium/backgrounds/giantfoundling.html')
+
+def wiki_backgrounds_gladiator(request):
+    return render(request, 'compendium/backgrounds/gladiator.html')
+
+def wiki_backgrounds_guildartisan(request):
+    return render(request, 'compendium/backgrounds/guildartisan.html')
+
+def wiki_backgrounds_guildmerchant(request):
+    return render(request, 'compendium/backgrounds/guildmerchant.html')
+
+def wiki_backgrounds_hauntedone(request):
+    return render(request, 'compendium/backgrounds/hauntedone.html')
+
+def wiki_backgrounds_hermit(request):
+    return render(request, 'compendium/backgrounds/hermit.html')
+
+def wiki_backgrounds_houseagent(request):
+    return render(request, 'compendium/backgrounds/houseagent.html')
+
+def wiki_backgrounds_inheritor(request):
+    return render(request, 'compendium/backgrounds/inheritor.html')
+
+def wiki_backgrounds_investigator_scag(request):
+    return render(request, 'compendium/backgrounds/investigator_scag.html')
+
+def wiki_backgrounds_investigator_vrgr(request):
+    return render(request, 'compendium/backgrounds/investigator_vrgr.html')
+
+def wiki_backgrounds_knight(request):
+    return render(request, 'compendium/backgrounds/knight.html')
+
+def wiki_backgrounds_knightoftheorder(request):
+    return render(request, 'compendium/backgrounds/knightoftheorder.html')
+
+def wiki_backgrounds_marine(request):
+    return render(request, 'compendium/backgrounds/marine.html')
+
+def wiki_backgrounds_mercenaryveteran(request):
+    return render(request, 'compendium/backgrounds/mercenaryveteran.html')
+
+def wiki_backgrounds_noble(request):
+    return render(request, 'compendium/backgrounds/noble.html')
+
+def wiki_backgrounds_outlander(request):
+    return render(request, 'compendium/backgrounds/outlander.html')
+
+def wiki_backgrounds_pirate(request):
+    return render(request, 'compendium/backgrounds/pirate.html')
+
+def wiki_backgrounds_rewarded(request):
+    return render(request, 'compendium/backgrounds/rewarded.html')
+
+def wiki_backgrounds_ruined(request):
+    return render(request, 'compendium/backgrounds/ruined.html')
+
+def wiki_backgrounds_runecarver(request):
+    return render(request, 'compendium/backgrounds/runecarver.html')
+
+def wiki_backgrounds_sage(request):
+    return render(request, 'compendium/backgrounds/sage.html')
+
+def wiki_backgrounds_sailor(request):
+    return render(request, 'compendium/backgrounds/sailor.html')
+
+def wiki_backgrounds_shipwright(request):
+    return render(request, 'compendium/backgrounds/shipwright.html')
+
+def wiki_backgrounds_smuggler(request):
+    return render(request, 'compendium/backgrounds/smuggler.html')
+
+def wiki_backgrounds_soldier(request):
+    return render(request, 'compendium/backgrounds/soldier.html')
+
+def wiki_backgrounds_spy(request):
+    return render(request, 'compendium/backgrounds/spy.html')
+
+

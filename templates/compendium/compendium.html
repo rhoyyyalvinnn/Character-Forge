@@ -1,24 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {% load static %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Game Rules</title>
-    {% load static %}
+    <title>Forge Wiki</title>
+    <link rel="icon" href="{% static 'assets/logo.ico' %}">
+    
     <link rel="stylesheet" type="text/css" href="{% static 'stylesheet/compendium/compendium.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'stylesheet/index.css' %}">
     <link href="https://fonts.googleapis.com/css2?family=Handjet&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="about_container2">
+       
         <div class="text-area_header">
-            <p><h1><a style="color: black;" href="{% url 'index' %}">DND Character Forge</a></h1><i>community wiki</i><br><br>
-            
+            <p>
+                <h1 class="custom-h1">
+                    <a style="color:black;" href="{% url 'index' %}">Character Forge Wiki</a>
+                </h1>
+                <i>community wiki</i><br><br>
                 <h3>Welcome to this Dungeons & Dragons wiki.</h3>
                 This wiki hosts DND content that is setting-specific, play-test content, or unofficial 'homebrew' content. 
-                Some content found on this page may not be suitable 
-                for play at your table.
-                </p>
+                Some content found on this page may not be suitable for play at your table.
+            </p>
         </div>
     </div>
     <div class="about_container">
@@ -79,49 +84,49 @@
             <div class="text-card">
                 <h1>All Backgrounds</h1>
                 <p>
-                    • <a href="#">Acolyte</a><br>
-                    • <a href="#">Anthropologist</a><br>
-                    • <a href="#">Archaeologist</a><br>
-                    • <a href="#">Athlete</a><br>
-                    • <a href="#">Charlatan</a><br>
-                    • <a href="#">City Watch</a><br>
-                    • <a href="#">Clan Crafter</a><br>
-                    • <a href="#">Cloistered Scholar</a><br>
-                    • <a href="#">Courtier</a><br>
-                    • <a href="#">Criminal</a><br>
-                    • <a href="#">Entertainer</a><br>
-                    • <a href="#">Faceless</a><br>
-                    • <a href="#">Faction Agent</a><br>
-                    • <a href="#">Far Traveler</a><br>
-                    • <a href="#">Feylost</a><br>
-                    • <a href="#">Fisher</a><br>
-                    • <a href="#">Folk Hero</a><br>
-                    • <a href="#">Giant Foundling</a><br>
-                    • <a href="#">Gladiator</a><br>
-                    • <a href="#">Guild Artisan</a><br>
-                    • <a href="#">Guild Merchant</a><br>
-                    • <a href="#">Haunted One</a><br>
-                    • <a href="#">Hermit</a><br>
-                    • <a href="#">House Agent</a><br>
-                    • <a href="#">Inheritor</a><br>
-                    • <a href="#">Investigator (SCAG)</a><br>
-                    • <a href="#">Investigator (VRGR)</a><br>
-                    • <a href="#">Knight</a><br>
-                    • <a href="#">Knight of the Order</a><br>
-                    • <a href="#">Marine</a><br>
-                    • <a href="#">Mercenary Veteran</a><br>
-                    • <a href="#">Noble</a><br>
-                    • <a href="#">Outlander</a><br>
-                    • <a href="#">Pirate</a><br>
-                    • <a href="#">Rewarded</a><br>
-                    • <a href="#">Ruined</a><br>
-                    • <a href="#">Rune Carver</a><br>
-                    • <a href="#">Sage</a><br>
-                    • <a href="#">Sailor</a><br>
-                    • <a href="#">Shipwright</a><br>
-                    • <a href="#">Smuggler</a><br>
-                    • <a href="#">Soldier</a><br>
-                    • <a href="#">Spy</a><br>
+                    • <a href="{% url 'wiki_backgrounds_acolyte' %}">Acolyte</a><br>
+                    • <a href="{% url 'wiki_backgrounds_anthropologist' %}">Anthropologist</a><br>
+                    • <a href="{% url 'wiki_backgrounds_archaeologist' %}">Archaeologist</a><br>
+                    • <a href="{% url 'wiki_backgrounds_athlete' %}">Athlete</a><br>
+                    • <a href="{% url 'wiki_backgrounds_charlatan' %}">Charlatan</a><br>
+                    • <a href="{% url 'wiki_backgrounds_citywatch' %}">City Watch</a><br>
+                    • <a href="{% url 'wiki_backgrounds_clancrafter' %}">Clan Crafter</a><br>
+                    • <a href="{% url 'wiki_backgrounds_cloisteredscholar' %}">Cloistered Scholar</a><br>
+                    • <a href="{% url 'wiki_backgrounds_courtier' %}">Courtier</a><br>
+                    • <a href="{% url 'wiki_backgrounds_criminal' %}">Criminal</a><br>
+                    • <a href="{% url 'wiki_backgrounds_entertainer' %}">Entertainer</a><br>
+                    • <a href="{% url 'wiki_backgrounds_faceless' %}">Faceless</a><br>
+                    • <a href="{% url 'wiki_backgrounds_factionagent' %}">Faction Agent</a><br>
+                    • <a href="{% url 'wiki_backgrounds_fartraveler' %}">Far Traveler</a><br>
+                    • <a href="{% url 'wiki_backgrounds_feylost' %}">Feylost</a><br>
+                    • <a href="{% url 'wiki_backgrounds_fisher' %}">Fisher</a><br>
+                    • <a href="{% url 'wiki_backgrounds_folkhero' %}">Folk Hero</a><br>
+                    • <a href="{% url 'wiki_backgrounds_giantfoundling' %}">Giant Foundling</a><br>
+                    • <a href="{% url 'wiki_backgrounds_gladiator' %}">Gladiator</a><br>
+                    • <a href="{% url 'wiki_backgrounds_guildartisan' %}">Guild Artisan</a><br>
+                    • <a href="{% url 'wiki_backgrounds_guildmerchant' %}">Guild Merchant</a><br>
+                    • <a href="{% url 'wiki_backgrounds_hauntedone' %}">Haunted One</a><br>
+                    • <a href="{% url 'wiki_backgrounds_hermit' %}">Hermit</a><br>
+                    • <a href="{% url 'wiki_backgrounds_houseagent' %}">House Agent</a><br>
+                    • <a href="{% url 'wiki_backgrounds_inheritor' %}">Inheritor</a><br>
+                    • <a href="{% url 'wiki_backgrounds_investigator_scag' %}">Investigator (SCAG)</a><br>
+                    • <a href="{% url 'wiki_backgrounds_investigator_vrgr' %}">Investigator (VRGR)</a><br>
+                    • <a href="{% url 'wiki_backgrounds_knight' %}">Knight</a><br>
+                    • <a href="{% url 'wiki_backgrounds_knightoftheorder' %}">Knight of the Order</a><br>
+                    • <a href="{% url 'wiki_backgrounds_marine' %}">Marine</a><br>
+                    • <a href="{% url 'wiki_backgrounds_mercenaryveteran' %}">Mercenary Veteran</a><br>
+                    • <a href="{% url 'wiki_backgrounds_noble' %}">Noble</a><br>
+                    • <a href="{% url 'wiki_backgrounds_outlander' %}">Outlander</a><br>
+                    • <a href="{% url 'wiki_backgrounds_pirate' %}">Pirate</a><br>
+                    • <a href="{% url 'wiki_backgrounds_rewarded' %}">Rewarded</a><br>
+                    • <a href="{% url 'wiki_backgrounds_ruined' %}">Ruined</a><br>
+                    • <a href="{% url 'wiki_backgrounds_runecarver' %}">Rune Carver</a><br>
+                    • <a href="{% url 'wiki_backgrounds_sage' %}">Sage</a><br>
+                    • <a href="{% url 'wiki_backgrounds_sailor' %}">Sailor</a><br>
+                    • <a href="{% url 'wiki_backgrounds_shipwright' %}">Shipwright</a><br>
+                    • <a href="{% url 'wiki_backgrounds_smuggler' %}">Smuggler</a><br>
+                    • <a href="{% url 'wiki_backgrounds_soldier' %}">Soldier</a><br>
+                    • <a href="{% url 'wiki_backgrounds_spy' %}">Spy</a><br>
                 </p>
             </div>
         </div>

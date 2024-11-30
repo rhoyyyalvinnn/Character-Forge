@@ -8,7 +8,6 @@
     text-align: left;
     color: black; 
     margin:0;
-    
 }
 .text-area_header h1{
     color: #333333;
@@ -17,6 +16,8 @@
     -webkit-border-radius: 2px;
     border-radius: 2px;
     margin: 0%;
+    font-size: 300%;
+    font-variant: small-caps;
 }
 
 
@@ -58,20 +59,20 @@
     min-width: 500px;
 }
 
-.about_container2 a,
+/* .about_container2 a,
 .about_container a {
     text-decoration: none;
     font-family: 'Handjet', cursive;
     font-size: 150%;
-    color: #FFD700; /* Gold for readability on a red background */
-    transition: color 0.3s ease, font-size 0.3s ease; /* Smooth transition */
+    color: #FFD700; 
+    transition: color 0.3s ease, font-size 0.3s ease; 
 }
 
 .about_container a:hover, 
 .about_container2 a:hover {
     color: white;
     font-size: 200%;
-}
+} */
 
 .text-area_header a{
     text-decoration: none;
@@ -113,6 +114,20 @@
     font-family: Arial, sans-serif;
     width: 100%;
 }
+
+.text-card a{
+    text-decoration: none;
+    font-family: 'Handjet', cursive;
+    font-size: 150%;
+    color: #FFD700; /* Gold for readability on a red background */
+    transition: color 0.3s ease, font-size 0.3s ease; 
+}
+
+.text-card a:hover{
+    color: white;
+    font-size: 200%;
+}
+
 .text-card h1{
     font-family: 'Handjet', cursive;
     color: Black;
@@ -122,6 +137,24 @@
     text-shadow: 0px 3px 3px rgba(255,255,255,0.5);
     font-size: 300%;
 }
+
+
+.custom-h1 {
+    color: #333333; /* Default color */
+    line-height: 1.2; /* Set a consistent line height */
+    text-decoration: none;
+    font-family: 'Handjet', cursive;
+    font-size: 300%;
+    color: #FFD700; /* Gold for readability on a red background */
+    transition: color 0.3s ease, font-size 0.3s ease; 
+}
+
+.custom-h1:hover {
+    color: #000000; /* Change color on hover */
+    font-size: 300%; /* Change font size on hover */
+    text-decoration: underline solid rgb(68, 68, 68);
+}
+
 
 /* Media query for responsiveness */
 @media (max-height: 500px) {
