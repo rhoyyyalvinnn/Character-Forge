@@ -164,7 +164,7 @@ button:hover {
         <a href="{% url 'update_character_customization' character.id %}" class="buts">Update Character Customization</a> <br><br>
         
         <a class="buts" href="{% url 'character_menu' %}">Finalize Character</a>
-        <a class="buts" href="{% url 'character_pdf' character.id %}" class="btn btn-primary"">Print Character Sheet</a>
+        <a class="buts" href="{% url 'character_pdf' character.id %}" class="btn btn-primary" target="_blank">Download Character Sheet</a>
     </main>
 
     <footer class="footer">

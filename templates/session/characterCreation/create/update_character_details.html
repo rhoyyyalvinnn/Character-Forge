@@ -22,33 +22,25 @@
             font-size: 16px;
             font-weight: bold;
         }
-
-        /* Style for error messages */
         .alert.error {
             background-color: #f8d7da;
             color: #721c24;
             border: 1px solid #f5c6cb;
         }
-
-        /* Style for the 'Go Back to Character Review' link */
         a {
             display: inline-block;
             padding: 10px 20px;
-            background-color: #401D1D; /* Background color */
-            color: white;              /* Text color */
-            text-decoration: none;     /* Remove underline */
+            background-color: #401D1D;
+            color: white;
+            text-decoration: none;
             font-size: 16px;
             font-weight: bold;
-            border-radius: 5px;        /* Rounded corners */
-            transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
         }
-
-        /* Hover effect for the link */
         a:hover {
-            background-color: #5A2E2E; /* Darker shade for hover effect */
+            background-color: #5A2E2E;
         }
-
-        /* Focus effect for accessibility */
         a:focus {
             outline: 2px solid #fff;
             outline-offset: 2px;
@@ -57,9 +49,6 @@
     </style>
 </head>
 <body>
-    
-
-    <!-- Form to update the character's details -->
     <form method="post">
         <a href="{% url 'character_review' character.id %}" >Go Back to Character Review</a>
         <h1>Update Character Details</h1>
@@ -105,9 +94,8 @@
             <option value="Sorcerer" {% if character.char_class == 'Sorcerer' %}selected{% endif %}>Sorcerer</option>
             <option value="Warlock" {% if character.char_class == 'Warlock' %}selected{% endif %}>Warlock</option>
             <option value="Wizard" {% if character.char_class == 'Wizard' %}selected{% endif %}>Wizard</option>
-        </select>
-        
-            <!-- Character Background Field --> 
+        </select> 
+
         <label for="background">Character Background:</label> 
         <select id="backgroundSelect" name="background">
             <option value="" disabled selected>Select Background</option>
@@ -155,71 +143,82 @@
             <option value="Soldier" {% if character.background == 'Soldier' %}selected{% endif %}>Soldier</option>
             <option value="Spy" {% if character.background == 'Spy' %}selected{% endif %}>Spy</option>
         </select>
-
-
+        
         <label for="strength">Strength</label>
         <select class="stat-select" name="strength" id="strength" required>
-            <option value="15" {% if character.strength == 15 %}selected{% endif %}>15</option>
-            <option value="14" {% if character.strength == 14 %}selected{% endif %}>14</option>
-            <option value="13" {% if character.strength == 13 %}selected{% endif %}>13</option>
-            <option value="12" {% if character.strength == 12 %}selected{% endif %}>12</option>
-            <option value="10" {% if character.strength == 10 %}selected{% endif %}>10</option>
-            <option value="8" {% if character.strength == 8 %}selected{% endif %}>8</option>
+            <option value="15" {% if original_strength == 15 %}selected{% endif %}>15</option>
+            <option value="14" {% if original_strength == 14 %}selected{% endif %}>14</option>
+            <option value="13" {% if original_strength == 13 %}selected{% endif %}>13</option>
+            <option value="12" {% if original_strength == 12 %}selected{% endif %}>12</option>
+            <option value="10" {% if original_strength == 10 %}selected{% endif %}>10</option>
+            <option value="8"  {% if original_strength == 8 %}selected{% endif %}>8</option>
         </select>
         
         <label for="dexterity">Dexterity</label>
         <select class="stat-select" name="dexterity" id="dexterity" required>
-            <option value="15" {% if character.dexterity == 15 %}selected{% endif %}>15</option>
-            <option value="14" {% if character.dexterity == 14 %}selected{% endif %}>14</option>
-            <option value="13" {% if character.dexterity == 13 %}selected{% endif %}>13</option>
-            <option value="12" {% if character.dexterity == 12 %}selected{% endif %}>12</option>
-            <option value="10" {% if character.dexterity == 10 %}selected{% endif %}>10</option>
-            <option value="8" {% if character.dexterity == 8 %}selected{% endif %}>8</option>
+            <option value="15" {% if original_dexterity == 15 %}selected{% endif %}>15</option>
+            <option value="14" {% if original_dexterity == 14 %}selected{% endif %}>14</option>
+            <option value="13" {% if original_dexterity == 13 %}selected{% endif %}>13</option>
+            <option value="12" {% if original_dexterity == 12 %}selected{% endif %}>12</option>
+            <option value="10" {% if original_dexterity == 10 %}selected{% endif %}>10</option>
+            <option value="8"  {% if original_dexterity == 8 %}selected{% endif %}>8</option>
         </select>
         
         <label for="constitution">Constitution</label>
         <select class="stat-select" name="constitution" id="constitution" required>
-            <option value="15" {% if character.constitution == 15 %}selected{% endif %}>15</option>
-            <option value="14" {% if character.constitution == 14 %}selected{% endif %}>14</option>
-            <option value="13" {% if character.constitution == 13 %}selected{% endif %}>13</option>
-            <option value="12" {% if character.constitution == 12 %}selected{% endif %}>12</option>
-            <option value="10" {% if character.constitution == 10 %}selected{% endif %}>10</option>
-            <option value="8" {% if character.constitution == 8 %}selected{% endif %}>8</option>
+            <option value="15" {% if original_constitution == 15 %}selected{% endif %}>15</option>
+            <option value="14" {% if original_constitution == 14 %}selected{% endif %}>14</option>
+            <option value="13" {% if original_constitution == 13 %}selected{% endif %}>13</option>
+            <option value="12" {% if original_constitution == 12 %}selected{% endif %}>12</option>
+            <option value="10" {% if original_constitution == 10 %}selected{% endif %}>10</option>
+            <option value="8"  {% if original_constitution == 8 %}selected{% endif %}>8</option>
         </select>
         
         <label for="intelligence">Intelligence</label>
         <select class="stat-select" name="intelligence" id="intelligence" required>
-            <option value="15" {% if character.intelligence == 15 %}selected{% endif %}>15</option>
-            <option value="14" {% if character.intelligence == 14 %}selected{% endif %}>14</option>
-            <option value="13" {% if character.intelligence == 13 %}selected{% endif %}>13</option>
-            <option value="12" {% if character.intelligence == 12 %}selected{% endif %}>12</option>
-            <option value="10" {% if character.intelligence == 10 %}selected{% endif %}>10</option>
-            <option value="8" {% if character.intelligence == 8 %}selected{% endif %}>8</option>
+            <option value="15" {% if original_intelligence == 15 %}selected{% endif %}>15</option>
+            <option value="14" {% if original_intelligence == 14 %}selected{% endif %}>14</option>
+            <option value="13" {% if original_intelligence == 13 %}selected{% endif %}>13</option>
+            <option value="12" {% if original_intelligence == 12 %}selected{% endif %}>12</option>
+            <option value="10" {% if original_intelligence == 10 %}selected{% endif %}>10</option>
+            <option value="8"  {% if original_intelligence == 8 %}selected{% endif %}>8</option>
         </select>
         
         <label for="wisdom">Wisdom</label>
         <select class="stat-select" name="wisdom" id="wisdom" required>
-            <option value="15" {% if character.wisdom == 15 %}selected{% endif %}>15</option>
-            <option value="14" {% if character.wisdom == 14 %}selected{% endif %}>14</option>
-            <option value="13" {% if character.wisdom == 13 %}selected{% endif %}>13</option>
-            <option value="12" {% if character.wisdom == 12 %}selected{% endif %}>12</option>
-            <option value="10" {% if character.wisdom == 10 %}selected{% endif %}>10</option>
-            <option value="8" {% if character.wisdom == 8 %}selected{% endif %}>8</option>
+            <option value="15" {% if original_wisdom == 15 %}selected{% endif %}>15</option>
+            <option value="14" {% if original_wisdom == 14 %}selected{% endif %}>14</option>
+            <option value="13" {% if original_wisdom == 13 %}selected{% endif %}>13</option>
+            <option value="12" {% if original_wisdom == 12 %}selected{% endif %}>12</option>
+            <option value="10" {% if original_wisdom == 10 %}selected{% endif %}>10</option>
+            <option value="8"  {% if original_wisdom == 8 %}selected{% endif %}>8</option>
         </select>
         
         <label for="charisma">Charisma</label>
         <select class="stat-select" name="charisma" id="charisma" required>
-            <option value="15" {% if character.charisma == 15 %}selected{% endif %}>15</option>
-            <option value="14" {% if character.charisma == 14 %}selected{% endif %}>14</option>
-            <option value="13" {% if character.charisma == 13 %}selected{% endif %}>13</option>
-            <option value="12" {% if character.charisma == 12 %}selected{% endif %}>12</option>
-            <option value="10" {% if character.charisma == 10 %}selected{% endif %}>10</option>
-            <option value="8" {% if character.charisma == 8 %}selected{% endif %}>8</option>
+            <option value="15" {% if original_charisma == 15 %}selected{% endif %}>15</option>
+            <option value="14" {% if original_charisma == 14 %}selected{% endif %}>14</option>
+            <option value="13" {% if original_charisma == 13 %}selected{% endif %}>13</option>
+            <option value="12" {% if original_charisma == 12 %}selected{% endif %}>12</option>
+            <option value="10" {% if original_charisma == 10 %}selected{% endif %}>10</option>
+            <option value="8"  {% if original_charisma == 8 %}selected{% endif %}>8</option>
         </select>
+
         <button type="submit">Update Character Details</button>
     </form>
+    <!-- Information Popup for Race Selection -->
+    <div class="info-popup" id="infoPopup">
+        <h3>Race Info</h3>
+        <p id="raceInfoText">Select a race to see more details here.</p>
+    </div>
+
+    <footer class="footer">
+        <p>Terms of Service</p>
+        <p>©Copyright</p>
+        <p>Privacy</p>
+    </footer>
     <script>
-                function updateRaceInfo() {
+            function updateRaceInfo() {
             var selectedRace = document.getElementById('raceSelect').value;
             var popup = document.getElementById('infoPopup');
             var infoText = document.getElementById('raceInfoText');
