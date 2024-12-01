@@ -116,12 +116,12 @@ button:hover {
             <p><strong>Race:</strong> {{ character.race }}</p>
             <p><strong>Class:</strong> {{ character.char_class }}</p>
             <p><strong>Background:</strong> {{ character.background }}</p>
-            <p><strong>Strength:</strong> {{ character.strength }}</p>
-            <p><strong>Dexterity:</strong> {{ character.dexterity }}</p>
-            <p><strong>Constitution:</strong> {{ character.constitution }}</p>
-            <p><strong>Intelligence:</strong> {{ character.intelligence }}</p>
-            <p><strong>Wisdom:</strong> {{ character.wisdom }}</p>
-            <p><strong>Charisma:</strong> {{ character.charisma }}</p>
+            <p><strong>Strength:</strong> {{ character.final_strength }}</p>
+            <p><strong>Dexterity:</strong> {{ character.final_dexterity }}</p>
+            <p><strong>Constitution:</strong> {{ character.final_constitution }}</p>
+            <p><strong>Intelligence:</strong> {{ character.final_intelligence }}</p>
+            <p><strong>Wisdom:</strong> {{ character.final_wisdom }}</p>
+            <p><strong>Charisma:</strong> {{ character.final_charisma }}</p>
         </div>
         <a href="{% url 'update_character_details' character.id %}" class="buts">Update Character Details</a>
 

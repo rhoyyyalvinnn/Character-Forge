@@ -8,12 +8,20 @@ class Character(models.Model):
     char_class = models.CharField(max_length=255) 
     background = models.CharField(max_length=255)
     # Stats as individual fields
-    strength = models.IntegerField(default=10)
-    dexterity = models.IntegerField(default=10)
-    constitution = models.IntegerField(default=10)
-    intelligence = models.IntegerField(default=10)
-    wisdom = models.IntegerField(default=10)
-    charisma = models.IntegerField(default=10)
+    # Base stats
+    base_strength = models.IntegerField(default=10)
+    base_dexterity = models.IntegerField(default=10)
+    base_constitution = models.IntegerField(default=10)
+    base_intelligence = models.IntegerField(default=10)
+    base_wisdom = models.IntegerField(default=10)
+    base_charisma = models.IntegerField(default=10)
+    # Final stats
+    final_strength = models.IntegerField(default=10)
+    final_dexterity = models.IntegerField(default=10)
+    final_constitution = models.IntegerField(default=10)
+    final_intelligence = models.IntegerField(default=10)
+    final_wisdom = models.IntegerField(default=10)
+    final_charisma = models.IntegerField(default=10)
     def __str__(self):
         return self.name
     

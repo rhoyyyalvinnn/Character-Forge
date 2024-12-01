@@ -18,20 +18,20 @@
             <div class="card front">
                 <div class="card-header">
                     <h1>{{ character.name }}</h1>
-                    <h3>Race: {{ character.race }} | Class: {{ character.char_class }}</h3>
+                    <h3>Race: {{ character.race }} <br> Class: {{ character.char_class }}</h3>
                 </div>
     
                 <div class="section">
                     <h2>Basic Stats</h2>
                     <div class="stats">
-                        <div>Str: {{ character.strength }}</div>
-                        <div>Dex: {{ character.dexterity }}</div>
-                        <div>Con: {{ character.constitution }}</div>
+                        <div>Str: {{ character.final_strength }}</div>
+                        <div>Dex: {{ character.final_dexterity }}</div>
+                        <div>Con: {{ character.final_constitution }}</div>
                     </div>
                     <div class="stats">
-                        <div>Int: {{ character.intelligence }}</div>
-                        <div>Wis: {{ character.wisdom }}</div>
-                        <div>Cha: {{ character.charisma }}</div>
+                        <div>Int: {{ character.final_intelligence }}</div>
+                        <div>Wis: {{ character.final_wisdom }}</div>
+                        <div>Cha: {{ character.final_charisma }}</div>
                     </div>
                 </div>
                 <div class="section">
@@ -83,7 +83,6 @@
                 </div>
             </div>
         </div>
-
     </main>
 </body>
 </html>

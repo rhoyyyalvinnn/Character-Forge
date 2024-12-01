@@ -25,7 +25,6 @@ def signout(request):
     logout(request)
     return redirect('index')
 
-
 @login_required
 def profile(request):
     user = request.user
@@ -38,9 +37,6 @@ def profile(request):
         'characters': characters,  # Pass the characters to the template
     }
     return render(request, "session/profile.html", context)
-
-
-
 
 def actgamerules(request):
     return render(request, "session/actgamerules.html")
@@ -251,23 +247,25 @@ def create_character(request):
         race = request.POST.get('race')
         char_class = request.POST.get('char_class')
         background = request.POST.get('background')
+
         try:
-            strength = int(request.POST.get('strength'))
-            dexterity = int(request.POST.get('dexterity'))
-            constitution = int(request.POST.get('constitution'))
-            intelligence = int(request.POST.get('intelligence'))
-            wisdom = int(request.POST.get('wisdom'))
-            charisma = int(request.POST.get('charisma'))
+            # Extract base stats from the form
+            base_strength = int(request.POST.get('strength'))
+            base_dexterity = int(request.POST.get('dexterity'))
+            base_constitution = int(request.POST.get('constitution'))
+            base_intelligence = int(request.POST.get('intelligence'))
+            base_wisdom = int(request.POST.get('wisdom'))
+            base_charisma = int(request.POST.get('charisma'))
         except ValueError:
             # Handle the case where conversion fails
             messages.error(request, "All stats must be valid integers.")
             return render(request, 'session/characterCreation/create/create_character.html')
 
         # Collect all the stats in a list
-        stats = [strength, dexterity, constitution, intelligence, wisdom, charisma]
+        base_stats = [base_strength, base_dexterity, base_constitution, base_intelligence, base_wisdom, base_charisma]
 
         # Check if any stats have the same value
-        if len(stats) != len(set(stats)):
+        if len(base_stats) != len(set(base_stats)):
             # If there are duplicates, show an error message
             messages.error(request, "No two stats should have the same value!")
             return render(request, 'session/characterCreation/create/create_character.html', {
@@ -275,14 +273,13 @@ def create_character(request):
                 'race': race,
                 'char_class': char_class,
                 'background': background,
-                'strength': strength,
-                'dexterity': dexterity,
-                'constitution': constitution,
-                'intelligence': intelligence,
-                'wisdom': wisdom,
-                'charisma': charisma,
+                'strength': base_strength,
+                'dexterity': base_dexterity,
+                'constitution': base_constitution,
+                'intelligence': base_intelligence,
+                'wisdom': base_wisdom,
+                'charisma': base_charisma,
             })
-
         # Define race-based stat bonuses
         race_stat_modifiers = {
             "dragonborn": {"strength": 2, "charisma": 1},
@@ -296,15 +293,23 @@ def create_character(request):
             "tiefling": {"charisma": 2, "intelligence": 1},
         }
 
+        # Calculate final stats by applying race-based stat bonuses
+        final_strength = base_strength
+        final_dexterity = base_dexterity
+        final_constitution = base_constitution
+        final_intelligence = base_intelligence
+        final_wisdom = base_wisdom
+        final_charisma = base_charisma
+
         # Apply race-based stat bonuses if race exists in the dictionary
         if race.lower() in race_stat_modifiers:
             modifiers = race_stat_modifiers[race.lower()]
-            strength += modifiers.get("strength", 0)
-            dexterity += modifiers.get("dexterity", 0)
-            constitution += modifiers.get("constitution", 0)
-            intelligence += modifiers.get("intelligence", 0)
-            wisdom += modifiers.get("wisdom", 0)
-            charisma += modifiers.get("charisma", 0)
+            final_strength += modifiers.get("strength", 0)
+            final_dexterity += modifiers.get("dexterity", 0)
+            final_constitution += modifiers.get("constitution", 0)
+            final_intelligence += modifiers.get("intelligence", 0)
+            final_wisdom += modifiers.get("wisdom", 0)
+            final_charisma += modifiers.get("charisma", 0)
 
         # Create the character instance and save to the database
         character = Character(
@@ -313,12 +318,20 @@ def create_character(request):
             race=race,
             char_class=char_class,
             background=background,
-            strength=strength,
-            dexterity=dexterity,
-            constitution=constitution,
-            intelligence=intelligence,
-            wisdom=wisdom,
-            charisma=charisma
+            # Save base stats
+            base_strength=base_strength,
+            base_dexterity=base_dexterity,
+            base_constitution=base_constitution,
+            base_intelligence=base_intelligence,
+            base_wisdom=base_wisdom,
+            base_charisma=base_charisma,
+            # Save final stats
+            final_strength=final_strength,
+            final_dexterity=final_dexterity,
+            final_constitution=final_constitution,
+            final_intelligence=final_intelligence,
+            final_wisdom=final_wisdom,
+            final_charisma=final_charisma
         )
         character.save()
 
@@ -530,65 +543,57 @@ def update_character_details(request, character_id):
     # Fetch the character from the database using the provided character_id
     character = get_object_or_404(Character, id=character_id)
 
-    race_stat_modifiers = {
-        "dragonborn": {"strength": 2, "charisma": 1},
-        "dwarf": {"constitution": 2},
-        "elf": {"dexterity": 2},
-        "gnome": {"intelligence": 2, "dexterity": 1},
-        "half-elf": {"charisma": 2, "intelligence": 1, "wisdom": 1},
-        "half-orc": {"strength": 2, "constitution": 1},
-        "halfling": {"dexterity": 2, "charisma": 1},
-        "human": {"strength": 1, "dexterity": 1, "constitution": 1, "intelligence": 1, "wisdom": 1, "charisma": 1},
-        "tiefling": {"charisma": 2, "intelligence": 1},
-    }
-
-    # Get the race modifier for the character's current race
-    race = character.race.lower()
-    modifiers = race_stat_modifiers.get(race, {})
-
-    # Subtract the race-based modifiers from the stats to get the original values
-    original_strength = character.strength - modifiers.get("strength", 0)
-    original_dexterity = character.dexterity - modifiers.get("dexterity", 0)
-    original_constitution = character.constitution - modifiers.get("constitution", 0)
-    original_intelligence = character.intelligence - modifiers.get("intelligence", 0)
-    original_wisdom = character.wisdom - modifiers.get("wisdom", 0)
-    original_charisma = character.charisma - modifiers.get("charisma", 0)
+    # Use base stats as original stats
+    original_strength = character.base_strength
+    original_dexterity = character.base_dexterity
+    original_constitution = character.base_constitution
+    original_intelligence = character.base_intelligence
+    original_wisdom = character.base_wisdom
+    original_charisma = character.base_charisma
 
     if request.method == 'POST':
-        # Attempt to get the updated stat values from the form
+        # Attempt to get the updated values from the form
         name = request.POST.get('name')
         new_race = request.POST.get('race')
         char_class = request.POST.get('char_class')
         background = request.POST.get('background')
 
         try:
-            new_strength = int(request.POST.get('strength'))
-            new_dexterity = int(request.POST.get('dexterity'))
-            new_constitution = int(request.POST.get('constitution'))
-            new_intelligence = int(request.POST.get('intelligence'))
-            new_wisdom = int(request.POST.get('wisdom'))
-            new_charisma = int(request.POST.get('charisma'))
+            new_base_strength = int(request.POST.get('strength'))
+            new_base_dexterity = int(request.POST.get('dexterity'))
+            new_base_constitution = int(request.POST.get('constitution'))
+            new_base_intelligence = int(request.POST.get('intelligence'))
+            new_base_wisdom = int(request.POST.get('wisdom'))
+            new_base_charisma = int(request.POST.get('charisma'))
         except ValueError:
             messages.error(request, "All stats must be valid integers.")
             return render(request, 'session/characterCreation/create/update_character_details.html', {'character': character})
 
         # Collect all the stats in a list
-        stats = [new_strength, new_dexterity, new_constitution, new_intelligence, new_wisdom, new_charisma]
+        new_base_stats = [
+            new_base_strength,
+            new_base_dexterity,
+            new_base_constitution,
+            new_base_intelligence,
+            new_base_wisdom,
+            new_base_charisma,
+        ]
 
         # Check if any stats have the same value
-        if len(stats) != len(set(stats)):
-            # If there are duplicates, show an error message
+        if len(new_base_stats) != len(set(new_base_stats)):
             messages.error(request, "No two stats should have the same value!")
             return render(request, 'session/characterCreation/create/update_character_details.html', {
                 'character': character,
-                'strength': new_strength,
-                'dexterity': new_dexterity,
-                'constitution': new_constitution,
-                'intelligence': new_intelligence,
-                'wisdom': new_wisdom,
-                'charisma': new_charisma,
+                'strength': new_base_strength,
+                'dexterity': new_base_dexterity,
+                'constitution': new_base_constitution,
+                'intelligence': new_base_intelligence,
+                'wisdom': new_base_wisdom,
+                'charisma': new_base_charisma,
             })
-        race_stat_modifiers2 = {
+
+        # Define race-based stat modifiers
+        race_stat_modifiers = {
             "dragonborn": {"strength": 2, "charisma": 1},
             "dwarf": {"constitution": 2},
             "elf": {"dexterity": 2},
@@ -600,35 +605,43 @@ def update_character_details(request, character_id):
             "tiefling": {"charisma": 2, "intelligence": 1},
         }
 
-        # Apply race-based stat bonuses after the user submits the form
-        if character.race.lower() in race_stat_modifiers2:
-            modifiers = race_stat_modifiers[character.race.lower()]
-            new_strength += modifiers.get("strength", 0)
-            new_dexterity += modifiers.get("dexterity", 0)
-            new_constitution += modifiers.get("constitution", 0)
-            new_intelligence += modifiers.get("intelligence", 0)
-            new_wisdom += modifiers.get("wisdom", 0)
-            new_charisma += modifiers.get("charisma", 0)  # Apply race-based bonus
+        # Apply race-based modifiers to calculate final stats
+        modifiers = race_stat_modifiers.get(new_race.lower(), {})
+        new_strength = new_base_strength + modifiers.get("strength", 0)
+        new_dexterity = new_base_dexterity + modifiers.get("dexterity", 0)
+        new_constitution = new_base_constitution + modifiers.get("constitution", 0)
+        new_intelligence = new_base_intelligence + modifiers.get("intelligence", 0)
+        new_wisdom = new_base_wisdom + modifiers.get("wisdom", 0)
+        new_charisma = new_base_charisma + modifiers.get("charisma", 0)
 
+        # Update character attributes
         character.name = name
         character.race = new_race
         character.char_class = char_class
         character.background = background
-        character.strength = new_strength
-        character.dexterity = new_dexterity
-        character.constitution = new_constitution
-        character.intelligence = new_intelligence
-        character.wisdom = new_wisdom
-        character.charisma = new_charisma
+
+        # Update both base and final stats
+        character.base_strength = new_base_strength
+        character.base_dexterity = new_base_dexterity
+        character.base_constitution = new_base_constitution
+        character.base_intelligence = new_base_intelligence
+        character.base_wisdom = new_base_wisdom
+        character.base_charisma = new_base_charisma
+
+        character.final_strength = new_strength
+        character.final_dexterity = new_dexterity
+        character.final_constitution = new_constitution
+        character.final_intelligence = new_intelligence
+        character.final_wisdom = new_wisdom
+        character.final_charisma = new_charisma
 
         # Save the updated character object to the database
         character.save()
 
-        # Reload the character object to reflect updated stats
-        character = get_object_or_404(Character, id=character_id)
+        # Redirect to the character review page
         return redirect('character_review', character_id=character.id)
 
-    # If the request method is GET, pass the character to the template to pre-populate the form
+    # If the request method is GET, pass the character and base stats to the template
     return render(request, 'session/characterCreation/create/update_character_details.html', {
         'character': character,
         'original_strength': original_strength,
@@ -746,7 +759,6 @@ def render_to_pdf(template_src, context_dict={}):
     
     return response
 
-
 def generate_character_pdf(request, character_id):
     # Fetch character and customization data
     try:
@@ -762,8 +774,8 @@ def generate_character_pdf(request, character_id):
     }
 
     # Debug: Check the types of key fields (e.g., stats, spells)
-    print(f"Strength: {character.strength}, Type: {type(character.strength)}")
-    print(f"Dexterity: {character.dexterity}, Type: {type(character.dexterity)}")
+    print(f"Strength: {character.final_strength}, Type: {type(character.final_strength)}")
+    print(f"Dexterity: {character.final_dexterity}, Type: {type(character.final_dexterity)}")
 
     # Render the PDF using an HTML template
     return render_to_pdf('session/characterCreation/create/character_sheet_layout.html', context)
