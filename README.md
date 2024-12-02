@@ -45,6 +45,28 @@
         and appearance. It also allows for the review and update of characters, as well as the ability to download character sheets in PDF format.
       </p>
         <br>
+    <h2>Functionalities Overview</h2>
+    <p>Our application provides an interactive platform for users to manage their DnD adventures with the following key features:</p>
+    <ul>
+      <li>
+        <strong>User Authentication</strong>: Secure user registration and login to access personalized content.
+      </li>
+      <li>
+        <strong>Character Creation</strong>: Easily create unique DnD characters with customizable attributes.
+      </li>
+      <li>
+        <strong>Character Customization</strong>: Modify character details, including abilities, equipment, and traits.
+      </li>
+      <li>
+        <strong>Character Management</strong>: Update or delete existing characters to keep your roster up-to-date.
+      </li>
+      <li>
+        <strong>Printable Character Sheet</strong>: Download ready-to-use character sheets in PDF format.
+      </li>
+      <li>
+        <strong>Access to DnD Compendium</strong>: Explore an extensive library of DnD rules, items, spells, and lore for immersive gameplay.
+      </li>
+    </ul>
       <h2><b>Useful Links</b></h2>
         <ul>
           <li><a href="https://online.visual-paradigm.com/share.jsp?id=333232383038352d31">View ERD Here</a></li>
