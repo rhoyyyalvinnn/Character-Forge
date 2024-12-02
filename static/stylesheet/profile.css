@@ -200,3 +200,60 @@ header {
 }
 
 
+/* CSS for the List of Characters */
+
+.list-of-char {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-around;
+    max-height: 500px; /* Set a max height for the scrollable area */
+    overflow-y: auto; /* Enable vertical scrolling */
+    padding: 10px;
+}
+
+.character-card {
+    background-color: #9c9787;
+    padding: 15px;
+    border-radius: 8px;
+    width: calc(33.333% - 20px); /* Ensures that 3 cards fit per row */
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.character-card h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.character-card p {
+    font-size: 14px;
+    margin: 5px 0;
+}
+
+.character-card .button {
+    display: inline-block;
+    padding: 8px 15px;
+    margin-top: 10px;
+    background-color: #401D1D;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.character-card .button:hover {
+    background-color: #b86565;
+}
+.list-of-char::-webkit-scrollbar {
+    width: 8px;
+}
+
+.list-of-char::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+}
+
+.list-of-char::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1);
+}

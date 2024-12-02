@@ -77,7 +77,8 @@
                     {% if spell.level == 4 %}
                         <label>
                             <input type="checkbox" name="spells" value="{{ spell.id }}" 
-                                   {% if spell in customization.spells.all %} checked {% endif %}>
+                                   {% if spell in customization.spells.all %} checked {% endif %}
+                                   onclick="updateSidebar()">
                             {{ spell.name }}: {{ spell.description }}
                         </label><br>
                     {% endif %}
@@ -92,7 +93,8 @@
                     {% if spell.level == 3 %}
                         <label>
                             <input type="checkbox" name="spells" value="{{ spell.id }}" 
-                                   {% if spell in customization.spells.all %} checked {% endif %}>
+                                   {% if spell in customization.spells.all %} checked {% endif %}
+                                   onclick="updateSidebar()">
                             {{ spell.name }}: {{ spell.description }}
                         </label><br>
                     {% endif %}
@@ -106,7 +108,8 @@
                     {% if spell.level == 2 %}
                         <label>
                             <input type="checkbox" name="spells" value="{{ spell.id }}" 
-                                {% if spell in customization.spells.all %} checked {% endif %}>
+                                {% if spell in customization.spells.all %} checked {% endif %}
+                                onclick="updateSidebar()">
                             {{ spell.name }}: {{ spell.description }}
                         </label><br>
                     {% endif %}
@@ -120,7 +123,8 @@
                     {% if spell.level == 1 %}
                         <label>
                             <input type="checkbox" name="spells" value="{{ spell.id }}" 
-                                {% if spell in customization.spells.all %} checked {% endif %}>
+                                {% if spell in customization.spells.all %} checked {% endif %}
+                                onclick="updateSidebar()">
                             {{ spell.name }}: {{ spell.description }}
                         </label><br>
                     {% endif %}
@@ -137,7 +141,8 @@
                 {% for weapon in weapons %}
                     <label>
                         <input type="radio" name="primary_weapon" value="{{ weapon.id }}" 
-                               {% if weapon == customization.weapons.all.0 %} checked {% endif %}>
+                               {% if weapon == customization.weapons.all.0 %} checked {% endif %}
+                               onclick="updateSidebar()">
                         {{ weapon.name }}: {{ weapon.description }}
                     </label><br>
                 {% endfor %}
@@ -163,7 +168,8 @@
             {% for equipment in equipments %}
                 <label>
                     <input type="checkbox" name="equipments" value="{{ equipment.id }}" class="equipment-checkbox" 
-                    {% if equipment in customization.equipments.all %} checked {% endif %}>
+                    {% if equipment in customization.equipments.all %} checked {% endif %}
+                    onclick="updateSidebar()">
                     {{ equipment.name }}: {{ equipment.description }}
                 </label><br>
             {% endfor %}
