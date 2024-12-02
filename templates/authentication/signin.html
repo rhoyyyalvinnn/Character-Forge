@@ -12,14 +12,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Handjet:wght@100..900&display=swap" rel="stylesheet">
 </head>
     <body>
-
-
-
         <div class="cont">
 
             <img src="{% static 'assets/index2.png' %}" alt="Enter your information" class="woman">
             <div class="container">
-                <img src="{% static 'assets/logo.ico' %}" alt="logo image" class="dice-logo">
+                <a href="{% url 'index' %}"><img src="{% static 'assets/logo.ico' %}" alt="logo image" class="dice-logo"></a>
                 <h3>Sign In to Your Account</h3>
                 {% if messages %}
                     {% for message in messages %}       
