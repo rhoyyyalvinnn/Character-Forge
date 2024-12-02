@@ -74,7 +74,7 @@
           <li><a href="https://docs.google.com/spreadsheets/d/1GPY5kD_TPPS0MNuZNZuc4IH-qJj9hxmou4LR_ejCUhM/edit?gid=0#gid=0">View Gantt Chart Here</a></li>
         </ul>
         <br>
-      <h2><b>Contributions</b></h2>
+      <h2>NOTE</h2>
         <br>
       <h2><b>Members</b></h2>
         <ul>
