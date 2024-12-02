@@ -1,5 +1,4 @@
-<html>
-  <head>
+ <head>
   </head>
   <body>
     <div style="text-align: center">
@@ -69,13 +68,36 @@
     </ul>
       <h2><b>Useful Links</b></h2>
         <ul>
-          <li><a href="https://online.visual-paradigm.com/share.jsp?id=333232383038352d31">View ERD Here</a></li>
-          <li><a href="https://www.figma.com/design/ejYJyLsdadiqOqJ6o0GmkR/FRAMES?recovery=true&t=HGEJ4N6hxxXFs8ii-0">View UI/UX Here</a></li>
+          <li>
+            <a href="https://online.visual-paradigm.com/share.jsp?id=333232383038352d31">View ERD Here<br>
+                <img src="https://github.com/rhoyyyalvinnn/images/blob/main/CHARACTER%20FORGE.png?raw=true" alt="ERD Image">
+            </a>
+          </li>
+          <li>
+            <a href="https://www.figma.com/design/ejYJyLsdadiqOqJ6o0GmkR/FRAMES?recovery=true&t=HGEJ4N6hxxXFs8ii-0">View UI/UX Here<br>
+                <img src="https://github.com/rhoyyyalvinnn/images/blob/main/UIUX.png?raw=true" alt="UI/UX">
+            </a>
+          </li>
           <li><a href="https://docs.google.com/spreadsheets/d/1GPY5kD_TPPS0MNuZNZuc4IH-qJj9hxmou4LR_ejCUhM/edit?gid=0#gid=0">View Gantt Chart Here</a></li>
         </ul>
         <br>
-      <h2><b>Contributions</b></h2>
-        <br>
+            <section>
+        <h2>Important Note</h2>
+        <p>If you encounter the following error while running the program:</p>
+        <div style="text-align: center; margin: 20px 0;">
+          <img 
+            src="https://github.com/rhoyyyalvinnn/images/blob/main/error.png?raw=true" alt="Error Screenshot">Error Screenshot</p>
+        </div>
+        <p>To resolve this issue, follow the instructions below:</p>
+        <div style="text-align: center; margin: 20px 0;">
+          <img src="https://github.com/rhoyyyalvinnn/images/blob/main/instructions.png?raw=true" alt="Instruction Screenshot" >Instruction Screenshot</p>
+        </div>
+        <p>To download GTK, click the link below:</p>
+          <a href="https://github.com/tschoonj/GTK-for-Windows-Runtime-Environment-Installer/releases?fbclid=IwZXh0bgNhZW0CMTEAAR1yyzFkyLkeJT5Sd240J2vnCW6o5lDtVhjA_FwabRJA99kKYHCho5NVRXo_aem_MCDtSdDDzOXlcNcsa9u1mg">
+            <strong>Download GTK Here</strong>
+          </a>
+        </p>
+      </section>
       <h2><b>Members</b></h2>
         <ul>
           <li>Kyle Gabrielli Peralta</li>
