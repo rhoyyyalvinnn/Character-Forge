@@ -7,104 +7,11 @@
     <title>Character Review</title>
     <link rel="icon" href="{% static 'assets/logo.ico' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'stylesheet/homepage.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'stylesheet/char_review.css' %}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Handjet:wght@100..900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap" rel="stylesheet">
-    <style>
-        /* Global styles */
-body {
-    color: #333;
-    margin: 0;
-    padding: 0;
-}
-
-/* Main content area */
-main {
-    font-family: 'Cinzel', sans-serif;
-    padding: 40px;
-    background-color: #fff;
-    max-width: 1200px;
-    margin: 25px auto;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-h1 {
-    font-size: 32px;
-    color: #222;
-    text-align: center;
-    margin-bottom: 30px;
-}
-
-h2, h3 {
-    font-size: 24px;
-    color: #333;
-    margin-top: 20px;
-    margin-bottom: 10px;
-}
-
-p {
-    font-size: 16px;
-    line-height: 1.6;
-    margin-bottom: 8px;
-}
-
-strong {
-    font-weight: bold;
-}
-
-/* Styling for the list of spells and equipment */
-ul {
-    list-style: none;
-    padding-left: 0;
-}
-
-ul li {
-    font-size: 16px;
-    margin-bottom: 10px;
-}
-
-ul li span {
-    font-weight: bold;
-    color: #555;
-}
-
-/* Button styling */
-button {
-    font-family: 'Cinzel', sans-serif;
-    background-color: #401D1D;
-    color: white;
-    border: none;
-    padding: 12px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    border-radius: 4px;
-    display: inline-block;
-    text-align: center;
-    margin-top: 20px;
-    text-decoration: none;
-}
-
-button:hover {
-    background-color: #cc7676;
-}
-
-.buts{
-    background-color: #401D1D;
-    color: white;
-    border: none;
-    padding: 12px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    border-radius: 4px;
-    display: inline-block;
-    text-align: center;
-    margin-top: 20px;
-    text-decoration: none;
-}
-
-    </style>
 </head>
 <body>
     <main>
@@ -127,6 +34,7 @@ button:hover {
 
         <h2>Customization Details</h2>
         <div>
+            <h3>Weapons</h3>
             {% if customization.weapons.all %}
                 <p><strong>Primary Weapon:</strong> {{ customization.weapons.all.0.name }}</p>
             {% else %}

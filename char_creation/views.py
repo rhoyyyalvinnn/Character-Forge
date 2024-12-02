@@ -292,7 +292,7 @@ def create_character(request):
             "human": {"strength": 1, "dexterity": 1, "constitution": 1, "intelligence": 1, "wisdom": 1, "charisma": 1},
             "tiefling": {"charisma": 2, "intelligence": 1},
         }
-
+        
         # Calculate final stats by applying race-based stat bonuses
         final_strength = base_strength
         final_dexterity = base_dexterity
@@ -300,7 +300,7 @@ def create_character(request):
         final_intelligence = base_intelligence
         final_wisdom = base_wisdom
         final_charisma = base_charisma
-
+        
         # Apply race-based stat bonuses if race exists in the dictionary
         if race.lower() in race_stat_modifiers:
             modifiers = race_stat_modifiers[race.lower()]
@@ -310,6 +310,14 @@ def create_character(request):
             final_intelligence += modifiers.get("intelligence", 0)
             final_wisdom += modifiers.get("wisdom", 0)
             final_charisma += modifiers.get("charisma", 0)
+            # Debugging for basic stats
+            print("Comparing original and final stats")
+            print(f"Original Strength = {base_strength} 'Final Strength = {final_strength}")
+            print(f"Original Dexterity = {base_dexterity} 'Final Strength = {final_dexterity}")
+            print(f"Original Constitution = {base_constitution} 'Final Strength = {final_constitution}")
+            print(f"Original Intelligence = {base_intelligence} 'Final Strength = {final_intelligence}")
+            print(f"Original Wisdom = {base_wisdom} 'Final Strength = {final_wisdom}")
+            print(f"Original Charisma = {base_charisma} 'Final Strength = {final_charisma}")
 
         # Create the character instance and save to the database
         character = Character(
@@ -380,6 +388,14 @@ def customize_character(request, character_id):
             elif spell.level == 1:
                 spell_counts['level_1'] += 1
 
+    # For debugging purposes for spells 
+        print("Printing the count for the spells")
+        print(f"Level 1: {spell_counts['level_1']}")
+        print(f"Level 2: {spell_counts['level_2']}")
+        print(f"Level 3: {spell_counts['level_3']}")
+        print(f"Level 4: {spell_counts['level_4']}")
+
+
         # Validate spell selection
         if (spell_counts['level_4'] != 1 or
             spell_counts['level_3'] != 1 or
@@ -387,6 +403,7 @@ def customize_character(request, character_id):
             spell_counts['level_1'] != 2):
             messages.error(request, "You must select exactly 1 Level 4 spell, 1 Level 3 spell, 2 Level 2 spells, and 2 Level 1 spells.")
             return redirect('customize_character', character_id=character.id)
+        
 
         # Validation for weapons (1 primary and 1 secondary)
         if primary_weapon == secondary_weapon:
@@ -420,10 +437,9 @@ def customize_character(request, character_id):
     })
 
 def delete_character(request, character_id):
-    # Ensure the character belongs to the logged-in user
     character = get_object_or_404(Character, id=character_id, user=request.user)
-    character.delete()  # Delete the character from the database
-    return redirect('character_menu')  # Redirect to the character menu
+    character.delete()
+    return redirect('character_menu')
 
 def character_review(request, character_id):
     # Get the character and customization data
@@ -665,10 +681,8 @@ def render_to_pdf(template_src, context_dict={}):
     """
     template = get_template(template_src)
     html = template.render(context_dict)
-    
     # Use WeasyPrint to convert HTML to PDF
     pdf = weasyprint.HTML(string=html).write_pdf()
-    
     # Create the HTTP response with the PDF content
     response = HttpResponse(pdf, content_type='application/pdf')
     # This will open the PDF in a new tab (browsers typically use new tabs for inline PDF viewing)
@@ -680,7 +694,6 @@ def render_to_pdf(template_src, context_dict={}):
     return response
 
 def generate_character_pdf(request, character_id):
-    # Fetch character and customization data
     try:
         character = Character.objects.get(id=character_id, user=request.user)
         customization = Customization.objects.get(character=character)
@@ -692,10 +705,6 @@ def generate_character_pdf(request, character_id):
         'character': character,
         'customization': customization,
     }
-
-    # Debug: Check the types of key fields
-
-
     # Render the PDF using an HTML template
     return render_to_pdf('session/characterCreation/create/character_sheet_layout.html', context)
 
