@@ -70,7 +70,7 @@
         <ul>
           <li>
             <a href="https://online.visual-paradigm.com/share.jsp?id=333232383038352d31">View ERD Here<br>
-                <img src="https://github.com/rhoyyyalvinnn/images/blob/main/CHARACTER%20FORGE.png?raw=true" alt="ERD Image">
+                <img src="https://github.com/rhoyyyalvinnn/images/blob/main/final.png?raw=true" alt="ERD Image">
             </a>
           </li>
           <li>
